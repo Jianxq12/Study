@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //label标签
+        out:
+        for(var i = 0;i < 3;i++){
+            console.log("i循环" + i);
+            for(var j = 0;j < 3;j++){
+                console.log("j循环" + j);
+                if(i == 1 && j == 1){
+                    console.log("跳出循环，后面的循环都不执行");
+                    break out;
+                }
+            }
+        }
+
+
+//                for(var i = 0;i < 3;i++){
+//                    console.log("i循环" + i);
+//                    for(var j = 0;j < 3;j++){
+//                        console.log("j循环" + j);
+//                        if(i == 1 && j == 1){
+//                            break;
+//                        }
+//                    }
+//                }
+
+    //假设法
+//    for (var i = 0; i < 3; i++) {
+//        var flag = false;
+//        console.log("i循环" + i);
+//        for (var j = 0; j < 3; j++) {
+//            console.log("j循环" + j);
+//            if (i == 1 && j == 1) {
+//                flag = true;
+//                break;
+//            }
+//        }
+//        if(flag){
+//            break;
+//        }
+//    }
+</script>
+</body>
+</html>

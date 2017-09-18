@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="tencent.css">
+</head>
+<body>
+<div class="w">
+    <div class="logo">
+        <img src="images/b3_100901.png" alt="logo">
+    </div>
+
+    <div class="content">
+        <div class="content_t clearfix">
+            <div class="content_t_l fl">
+                <p>亲，说说你在做什么，想什么...</p>
+                <textarea cols="30" rows="10" maxlength="150"></textarea>
+                <ul>
+                    <li>方向:
+                        <select name="" id="">
+                            <option value="">上</option>
+                            <option value="">下</option>
+                            <option value="" selected>左</option>
+                            <option value="">右</option>
+                        </select>
+                    </li>
+                    <li><a href="javascript:void(0);">朋友</a></li>
+                    <li><a href="javascript:void(0);">表情</a></li>
+                    <li><a href="javascript:void(0);">照片</a></li>
+                    <li><a href="javascript:void(0);">视频</a></li>
+                </ul>
+                <div class="fabu">
+                    <p>您还能输入<span id="num">150</span>字</p>
+                    <button>广&nbsp;播</button>
+                </div>
+            </div>
+            <div class="content_t_r fr">
+                <img src="images/placeholder.png" alt="占位图">
+            </div>
+        </div>
+
+
+        <div class="content_b">
+            <ul id="list">
+                <li>
+                    <img src="images/icon.jpg" alt="用户头像" class="person_icon">
+                    <div class="show_txt">
+                        <a href="javascript:void (0);">小妹：</a>
+                        <span>测试文字测试文字</span>
+                        <div class="peitu">
+                            <img src="images/bigImg.jpg" alt="">
+                        </div>
+                        <span>09月09日 10:40</span>
+                        <a href="javascript:void ()" class="fr delbtn">删除</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+    </div>
+</div>
+
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+    $(function () {
+        //点击发布，新增微博到展示区
+        $("button").click(function () {
+            var txt = $("textarea").val();
+            if(txt.trim().length ==0){
+                alert("发送内容不得为空");
+                return false;
+            }
+            var li = $('<li><img src="images/icon.jpg" alt="用户头像" class="person_icon"><div class="show_txt"><a href="javascript:void (0);">小妹：</a><span>' + txt + '</span><div class="peitu"><img src="images/bigImg.jpg" alt=""></div><span>09月09日 10:40</span><a href="javascript:void ()" class="fr delbtn">删除</a></div></li>');
+            $("#list").append(li);
+            $("textarea").val("");
+        })
+
+        //点击删除，移除该条微博
+        $(".content_b").on("click", ".delbtn",function () {
+            $(this).closest("li").remove();
+        });
+
+        //自动修改剩余字数提示
+        $("textarea").keyup(function () {
+            var les = $("textarea").val().length;
+//            console.log(les);
+            $("#num").html(150-les);
+
+        })
+
+        //回车发布微博
+        window.onkeyup = function (e) {
+            e = e || window.event;
+            console.log(e.keyCode);
+            if(e.keyCode == 13 ){
+                        $("button").click();
+                    }
+                }
+
+    })
+</script>
+</body>
+</html>

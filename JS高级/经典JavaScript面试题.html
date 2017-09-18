@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //第一题
+    //注意a是局部变量  b是全局的
+   (function() {
+       var a = b = 5;
+   })();
+
+   console.log(b);//输出  5
+
+
+
+    //第二题
+    //在String对象上定义一个repeatify函数。这个函数接受一个整数参数，来明确字符串需要重复几次。
+    // 这个函数要求字符串重复指定的次数
+   String.prototype.repeatify = String.prototype.repeatify || function(times) {
+               var str = '';
+
+               for (var i = 0; i < times; i++) {
+                   str += this;
+               }
+
+               return str;
+           };
+
+
+
+    //第三题
+   function test() {
+       console.log(a);
+       console.log(foo());
+
+       var a = 1;
+       function foo() {
+           return 2;
+       }
+   }
+   test();//输出  undefined  2
+
+
+    //第四题
+    var fullname = 'John Doe';
+    var obj = {
+        fullname: 'Colin Ihrig',
+        prop: {
+            fullname: 'Aurelio De Rosa',
+            getFullname: function() {
+                return this.fullname;
+            }
+        }
+    };
+    console.log(obj.prop.getFullname());
+    var test = obj.prop.getFullname;
+    console.log(test());//输出  Aurelio De Rosa   John Doe
+
+
+    console.log(test.call(obj.prop));//输出  Aurelio De Rosa
+
+
+
+</script>
+</body>
+</html>

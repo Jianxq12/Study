@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #map {
+            width: 800px;
+            height: 600px;
+            background-color: #333;
+            position: relative;
+        }
+    </style>
+    <script src="food.js"></script>
+    <script src="snake.js"></script>
+    <script src="game.js"></script>
+    <script src="utils.js"></script>
+</head>
+<body>
+<button>开始游戏</button>
+<div id="map"></div>
+
+ <script>
+     var map1 = document.getElementById("map");
+     var btn = document.getElementsByTagName("button")[0];
+
+
+     var game = new Game(map1);
+
+     btn.onclick = function () {
+         game.startGame();
+     }
+
+
+//----------以下为封装对象之前的等效代码-----------
+
+//     var food = new Food({
+//         map : map1
+//     })
+//
+//     var snake = new Snake({
+//         map : map1
+//     })
+
+//     var timer = setInterval(function () {
+//         snake.move(food);
+//         if(snake.body[0].x < 0 || snake.body[0].x >= map1.offsetWidth / snake.width || snake.body[0].y < 0 || snake.body[0].y >= map1.offsetHeight / snake.height){
+//             clearInterval(timer);
+//             alert("Game Over");
+//         }
+//
+//         for(var i = 3;i < snake.body.length;i++){
+//             if(snake.body[0].x == snake.body[i].x && snake.body[0].y == snake.body[i].y){
+//                 clearInterval(timer);
+//                 alert("Game Over");
+//             }
+//         }
+//
+//     },200)
+
+//     document.onkeyup = function (e) {
+//         switch (e.keyCode){
+//             case 37 :
+//                 if(snake.direction != "right"){
+//                     snake.direction = "left";
+//                 }
+//                 break;
+//             case 38 :
+//                 if(snake.direction != "down"){
+//                     snake.direction = "up";
+//                 }
+//                 break;
+//             case 39 :
+//                 if(snake.direction != "left"){
+//                     snake.direction = "right";
+//                 }
+//                 break;
+//             case 40 :
+//                 if(snake.direction != "up"){
+//                     snake.direction = "down";
+//                 }
+//         }
+//     }
+
+
+//     function getRandom(min,max) {
+//         return  Math.floor(Math.random()*(max - min) + min);
+//     }
+ </script>
+</body>
+</html>

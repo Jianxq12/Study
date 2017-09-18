@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img {
+            display: block;
+            width: 50%;
+            margin: 80px auto;
+
+        }
+    </style>
+</head>
+<body>
+<img data-original="http://www.itcast.cn/images/slidead/BEIJING/2017442809442700.jpg" alt="">
+<img data-original="http://www.itcast.cn/images/slidead/BEIJING/2017051410052700.jpg" alt="">
+<img data-original="http://www.itcast.cn/images/slidead/BEIJING/2017471909473900.jpg" alt="">
+<img data-original="http://www.itcast.cn/images/slidead/BEIJING/2017421414422600.jpg" alt="">
+<img data-original="http://www.itcast.cn/images/slidead/BEIJING/2017291809295000.jpg" alt="">
+<img data-original="http://i.itcast.cn/Upload/Images/20170117/587dc5dd39498.jpg" alt="">
+<img data-original="http://i.itcast.cn/Upload/Images/20161111/58255c9bd57f9.jpg" alt="">
+<img data-original="http://i.itcast.cn/Upload/Images/20161206/584618b5d942a.jpg" alt="">
+
+
+<script src="jquery-1.12.4.js"></script>
+<script src="jquery.lazyload.js"></script>
+<script>
+    $(function () {
+        $("img").lazyload({
+            effect:"fadeIn",//图片显示效果
+            placeholder:"images/timg.gif",
+            threshold:"400",// 提前开始加载
+            event:"click",
+            failurelimit:5
+        //图片懒加载插件参考网址 http://www.jq22.com/jquery-info390
+
+        })
+
+    })
+</script>
+</body>
+</html>

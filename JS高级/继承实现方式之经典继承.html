@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var obj1 = {
+        name : "zhangsan",
+        age : 18
+    }
+
+    function myCreate(obj) {
+        if(Object.create){
+            return Object.create(obj);
+        }else {
+            function F() {
+
+            }
+            F.prototype = obj;
+            return new F();
+        }
+    }
+
+    var p = myCreate(obj1);
+    console.log(p.__proto__ ==obj1);//true
+    console.log(obj1.isPrototypeOf(p));//true
+    console.log(p.name);//zhangsan
+</script>
+</body>
+</html>

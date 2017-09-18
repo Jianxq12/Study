@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            height: 8000px;
+        }
+
+        a {
+            color: #FFF;
+        }
+
+        .actGotop {
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            width: 150px;
+            height: 195px;
+            display: none;
+            z-index: 100;
+        }
+
+        .actGotop a, .actGotop a:link {
+            width: 150px;
+            height: 195px;
+            display: inline-block;
+            background: url(images/gotop.png) no-repeat;
+            outline: none;
+        }
+
+        .actGotop a:hover {
+            width: 150px;
+            height: 195px;
+            background: url(images/gotop.gif) no-repeat;
+            outline: none;
+        }
+    </style>
+
+
+</head>
+<body>
+<!-- 返回顶部小火箭 -->
+<div class="actGotop"><a href="javascript:;" title="Top"></a></div>
+
+<script src="jquery-1.12.4.js"></script>
+
+<script>
+    $(function () {
+        /*
+     小火箭默认是隐藏的，当页面卷曲的高度大于一屏的高度时，小火箭显示
+     点击小火箭，页面回到顶部
+        */
+
+        $(window).scroll(function () {
+            if($(window).scrollTop() > $(window).height()){
+                $(".actGotop").fadeIn();
+            }else {
+                $(".actGotop").fadeOut();
+            }
+        })
+        
+        //点击火箭回到顶部
+        $(".actGotop").click(function () {
+//            $(window).scrollTop(0);//回到顶部
+
+            //window上不能设置样式scrollTop
+//            $(window).stop().animate({scrollTop:0});
+
+            //考虑兼容性问题  同时设置在HTML和body上
+            $("html,body").stop().animate({scrollTop:0});
+        })
+
+    })
+</script>
+
+</body>
+</html>

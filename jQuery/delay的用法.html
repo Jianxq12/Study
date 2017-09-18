@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 400px;
+            height: 50px;
+            background-color: skyblue;
+            margin: 50px auto;
+            text-align: center;
+            line-height: 50px;
+        }
+    </style>
+</head>
+<body>
+<div>醉后不知天在水</div>
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+    $(function () {
+//        $("div").fadeIn(500)
+//                .delay(1000)
+//                .fadeOut(500)
+
+        $("div").animate({width:"800px"})
+                .delay(2000)
+                .animate({height:"200px"})
+    })
+
+
+</script>
+</body>
+</html>

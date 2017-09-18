@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 200px;
+            height: 100px;
+            border: 1px solid black;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<script src="jquery-1.12.4.js"></script>
+<!--让jq中的颜色执行动画-->
+<script src="jquery.color.js"></script>
+    <script>
+        $(function(){
+            $("div").animate({width:"500px"},500)
+                    .animate({height:"600px"},500)
+                    .animate({backgroundColor:"red"},500)
+            //jq中animate动画  执行值是数值类型的 属性
+        })
+   </script>
+</body>
+</html>

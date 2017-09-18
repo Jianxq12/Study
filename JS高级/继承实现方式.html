@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //1.混入式继承
+   var obj1 = {};
+   var obj2 = {
+       name : "zhangsan",
+       age : 18
+   }
+
+   for(var k in obj2){
+       obj1[k] = obj2[k];
+   }
+
+    //2.原型式继承
+    //2.1 混入添加原型中的属性和方法
+   var obj1 = {
+       name : "zhangsan",
+       age : 18
+   }
+
+   function Person() {
+
+   }
+
+   for(var k in obj1){
+       Person.prototype[k] = obj1[k];
+   }
+
+   var p = new Person();
+
+    //2.2 直接将要继承的对象作为构造函数的prototype属性
+    var obj1 = {
+            name : "zhangsan",
+            age : 18
+        }
+
+    function Person() {
+
+    }
+
+    Person.prototype = obj1;
+
+    var p = new Person();
+
+
+</script>
+</body>
+</html>

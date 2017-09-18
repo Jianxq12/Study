@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .out{
+            width: 400px;
+            height: 400px;
+            border: 1px solid black;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+        .in{
+            width: 100px;
+            height: 100px;
+            border: 1px solid blue;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="out">
+    <div class="in"></div>
+</div>
+
+<script src="jquery-1.12.4.js"></script>
+
+<script>
+    $(function () {
+        //offset  获取的是相对于页面左上角的位置
+        console.log($(".in").offset());
+        console.log($(".in").offset().left);
+        console.log($(".in").offset().top);
+
+        //position 获取的是相对于最近有定位的父元素的位置
+        console.log($(".in").position());
+        console.log($(".in").position().left);
+        console.log($(".in").position().top);
+
+    })
+</script>
+</body>
+</html>

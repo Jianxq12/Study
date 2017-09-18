@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .slider {
+            height: 340px;
+            width: 790px;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .slider li {
+            position: absolute;
+            display: none;
+        }
+
+        .slider li:first-child {
+            display: block;
+        }
+
+
+        .arrow {
+            display: none;
+        }
+
+        .slider:hover .arrow {
+            display: block;
+        }
+
+        .arrow-left,
+        .arrow-right {
+            font-family: "SimSun", "宋体";
+            width: 30px;
+            height: 60px;
+            background-color: rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 50%;
+            margin-top: -30px;
+            cursor: pointer;
+            text-align: center;
+            line-height: 60px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 30px;
+        }
+
+        .arrow-left:hover,
+        .arrow-right:hover {
+            background-color: rgba(0, 0, 0, .5);
+        }
+
+        .arrow-left {
+            left: 0;
+        }
+
+        .arrow-right {
+            right: 0;
+        }
+
+    </style>
+</head>
+<body>
+<div class="slider">
+    <ul>
+        <li><a href="#"><img src="images/01.jpg" alt=""></a></li>
+        <li><a href="#"><img src="images/02.jpg" alt=""></a></li>
+        <li><a href="#"><img src="images/03.jpg" alt=""></a></li>
+        <li><a href="#"><img src="images/04.jpg" alt=""></a></li>
+        <li><a href="#"><img src="images/05.jpg" alt=""></a></li>
+        <li><a href="#"><img src="images/06.jpg" alt=""></a></li>
+        <li><a href="#"><img src="images/07.jpg" alt=""></a></li>
+        <li><a href="#"><img src="images/08.jpg" alt=""></a></li>
+    </ul>
+    <!--箭头-->
+    <div class="arrow">
+        <span class="arrow-left">&lt;</span>
+        <span class="arrow-right">&gt;</span>
+    </div>
+</div>
+
+<script src="jquery-1.12.4.js"></script>
+
+<script>
+    $(function () {
+        var index = 0;
+        $(".arrow-right").click(function () {
+            index++;
+            if(index >7){
+                index = 0;
+            }
+            $(".slider li").eq(index).fadeIn().siblings().fadeOut();
+        })
+
+        $(".arrow-left").click(function () {
+            index--;
+            if(index < 0){
+                index = 7;
+            }
+            $(".slider li").eq(index).fadeIn().siblings().fadeOut();
+
+        })
+    })
+</script>
+</body>
+</html>

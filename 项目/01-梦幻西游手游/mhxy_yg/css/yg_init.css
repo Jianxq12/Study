@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+/* 用来取消默认间距 */
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img,button,textarea,input {
+    margin: 0;
+    padding: 0;
+}
+
+fieldset, img, input, button, textarea {
+    border: none;
+    outline: none;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+
+textarea {
+    resize: none;
+}
+
+a{
+    text-decoration: none;
+}
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+body {
+    font: 12px/150% Microsoft YaHei, Arial, Verdana, "SimSun";
+
+}
+
+/*清除浮动最现代、最流行、最简单的方式*/
+.clearfix::before, .clearfix::after {
+    content: "";
+    display: block;
+}
+
+.clearfix::after {
+    clear: both;
+}
+
+/* 为了兼容IE8及以前的浏览器 */
+.clearfix {
+    *zoom: 1;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 100%;
+}
+
+s, i, em {
+    font-style: normal;
+    text-decoration: none;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+
+
+

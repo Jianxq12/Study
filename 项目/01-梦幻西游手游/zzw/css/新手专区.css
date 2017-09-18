@@ -1,0 +1,640 @@
+.zbg {
+    height: 392px;
+    background-image: url(../tupian/bg1_c1788e1.jpg);
+    background-position: center;
+}
+body{
+    font-family: "Microsoft YaHei", simSun, "Lucida Grande", "Lucida Sans Unicode", Arial;
+}
+.bx {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.zbg-head {
+    font-size: 14px;
+}
+
+.zbg-head p {
+    float: right;
+}
+
+.zbg-head p a {
+    color: #000;
+    margin-right: 10px;
+    line-height: 36px;
+}
+.zbg-body{
+    height: 858px;
+    background-image: url(../tupian/bg2_704c7cb.jpg);
+    background-position: center;
+    position: relative;
+}
+.body-one{
+    height: 300px;
+    position: relative;
+    background-color: transparent;
+    padding-top: 72px;
+    padding-bottom: 8px;
+    box-sizing: border-box;
+}
+.one-left{
+    width: 378px;
+    height: 157px;
+    background:url("../tupian/ht.png") no-repeat center;
+    float: left;
+    border-radius: 5px;
+    padding: 17px 16px 15px;
+    box-sizing: border-box;
+    margin-right: 23px;
+}
+.one-left img{
+    width: 125px;
+    height: 125px;
+    float: left;
+}
+.one-left .app{
+    width: 210px;
+    height: 58px;
+    margin-bottom: 9px;
+    background:url(../tupian/jl.png) no-repeat;
+    background-position: 0 -228px;
+    float: right;
+}
+.one-left .ad{
+    width: 210px;
+    height: 58px;
+    float: right;
+    background:url(../tupian/jl.png) no-repeat;
+    background-position: 0 -296px;
+}
+.one-right{
+    width: 299px;
+    height: 180.8px;
+    float: left;
+}
+.one-right a:nth-child(1){
+    width: 299px;
+    height: 67px;
+    float: left;
+    margin-bottom: 23px;
+    background:url(../tupian/jl.png) no-repeat;
+    background-position: -385px -490px;
+}
+.one-right a:nth-child(2){
+    width: 138px;
+    height: 68px;
+    float: left;
+    margin-right: 23px;
+    background:url("../tupian/jl.png") no-repeat;
+    background-position: 0 -354px;
+}
+.one-right a:nth-child(3){
+    width: 138px;
+    height: 68px;
+    float: left;
+    background:url(../tupian/jl.png) no-repeat;
+    background-position: 0 -422px;
+}
+.body-two{
+    height: 470px;
+    position: relative;
+    overflow: hidden;
+
+}
+.xOne {
+    width: 1000px;
+    height: 470px;
+    padding-left: 450px;
+    padding-top: 112px;
+    padding-bottom: 8px;
+    box-sizing: border-box;
+}
+.xBody-two ul li:nth-child(1){
+    background: url("../tupian/dtgf_1b64bf6.png") no-repeat;
+}
+.xBody-two ul li:nth-child(2){
+    background: url("../tupian/fcs_bfdb696.png") no-repeat;
+}
+.xBody-two ul li:nth-child(3){
+    background: url("../tupian/stl_c83e772.png") no-repeat;
+}
+.xBody-two ul li:nth-child(4){
+    background: url("../tupian/ycdf_5bc6721.png") no-repeat;
+}
+.xBody-two ul li:nth-child(5){
+    background: url("../tupian/pts_d34e2dc.png") no-repeat;
+}
+.xBody-two ul li:nth-child(6){
+    background: url("../tupian/lg_52c2b2f.png") no-repeat;
+}
+.xBody-two ul li:nth-child(7){
+    background: url("../tupian/mwz_373f3bd.png") no-repeat;
+}
+.xBody-two ul li:nth-child(8){
+    background: url("../tupian/hss_35c3816.png") no-repeat;
+}
+.xBody-two ul li:nth-child(9){
+    background: url("../tupian/yg_98180dc.png") no-repeat;
+}
+.two-text{
+    width: 550px;
+    height: 230px;
+    /*background-color: red;*/
+    font-size: 12px;
+    line-height: 34px;
+
+}
+.two-text h3:nth-child(1){
+    color: #229cd6;
+    font-weight: 700;
+}
+.f30{
+    font-size: 30px;
+}
+.f18{
+    font-size: 18px;
+    color: #000;
+    font-weight: 700;
+}
+.c-229cd6{
+    color: #229cd6;
+    font-weight: 700;
+}
+.two-text img{
+    width: 53px;
+    height:53px;
+    /*display: inline-block;*/
+    margin-right: 10px;
+    float: left;
+}
+.two-text div{
+    width: 215px;
+    display: inline-block;
+    float: left;
+}
+.two-text div p{
+    line-height: 16px;
+    padding-bottom: 18px;
+
+}
+.two-text div i{
+    font-weight: 700;
+}
+.body-two a{
+    color: #fd4505;
+    font-size: 12px;
+    font-family: simSun;
+    font-weight: bold;
+}
+.two-down{
+    width: 1134px;
+    height: 176px;
+    position: absolute;
+    left: 168px;
+    bottom: 12px;
+    background: url("../tupian/nav-bg_8c32b99.png") no-repeat;
+    background-position:0 0;
+    padding-top: 24px;
+    padding-left: 53px;
+    box-sizing: border-box;
+}
+.border-one{
+    width: 900px;
+    border:1px solid #54b2dd ;
+    position: absolute;
+    background-color: #54b2dd;
+    top: 66px;
+    left: 100px;
+}
+.two-down ul li{
+    display: inline-block;
+    float: left;
+    margin-right: 40px;
+    font-size: 18px;
+    text-align: center;
+    width: 72px;
+    height: 120px;
+    position: relative;
+    background-position: 0 3px;
+}
+.two-down ul li:nth-child(1){
+    width: 87px;
+    background: url("../tupian/d1.png") no-repeat;
+    background-position: 0 5px;
+    /*transition: all 0.2s;*/
+}
+/*.two-down ul li:nth-child(1):hover{*/
+    /*transform:scale(1.2);*/
+/*}*/
+.two-down ul li:nth-child(2){
+    background: url("../tupian/2.png") no-repeat;
+    background-position: 0 5px;
+}
+.two-down ul li:nth-child(3){
+    background: url("../tupian/3.png") no-repeat;
+    background-position: 0 5px;
+}
+.two-down ul li:nth-child(4){
+    background: url("../tupian/4.png") no-repeat;
+    background-position: 0 5px;
+}
+.two-down ul li:nth-child(5){
+    background: url("../tupian/5.png") no-repeat;
+    background-position: 0 5px;
+}
+.two-down ul li:nth-child(6){
+    background: url("../tupian/6.png") no-repeat;
+    background-position: 0 5px;
+}
+.two-down ul li:nth-child(7){
+    background: url("../tupian/7.png") no-repeat;
+    background-position: 0 5px;
+}
+.two-down ul li:nth-child(8){
+    background: url("../tupian/8.png") no-repeat;
+    background-position: 0 5px;
+}
+.two-down ul li:nth-child(9){
+    background: url("../tupian/9.png") no-repeat;
+    background-position: 0 5px;
+}
+.two-down .ul li a{
+    display: block;
+    width: 72px;
+    height: 100%;
+    font-size: 18px;
+    color: #fff;
+    padding-top: 90px;
+    box-sizing: border-box;
+    position: absolute;
+    top:0px;
+}
+.two-down .ul li:nth-child(1) a{
+    width: 87px;
+    text-align: center;
+}
+.ul{
+    position: absolute;
+    z-index: 1000;
+}
+.body-three{
+    width: 100%;
+    height: 1539px;
+    background: url("../tupian/bg3_e2c4cde.jpg") no-repeat center;
+}
+.three div{
+     width: 598px;
+    height: 356px;
+    background: url("../tupian/bg4_d7bce41.jpg") no-repeat center;
+    padding-top: 160px;
+}
+.four{
+    height: 380px;
+    margin-top: 21px;
+}
+.four ul{
+width: 100%;
+    height: 100%;
+}
+.four ul li{
+    display: inline-block;
+    width: 236px;
+    height: 100%;
+    float: left;
+}
+.four ul li:nth-child(1){
+    padding-right: 24px;
+    box-sizing: border-box;
+}
+.four ul li:nth-child(2){
+    padding-right: 24px;
+    padding-left: 24px;
+    box-sizing: border-box;
+    width: 262px;
+    background: url("../tupian/line_1e595a3.png") no-repeat;
+}
+.four ul li:nth-child(3){
+    padding-right: 24px;
+    padding-left: 24px;
+    box-sizing: border-box;
+    width: 262px;
+    background: url("../tupian/line_1e595a3.png") no-repeat;
+}
+.four ul li:nth-child(4){
+    padding-left: 24px;
+    box-sizing: border-box;
+    width: 236px;
+    background: url("../tupian/line_1e595a3.png") no-repeat;
+}
+.four-p{
+    width: 212px;
+    height: 56px;
+    margin-bottom: 15px;
+    float: left;
+}
+.p1{
+    background: url("../tupian/jl.png") no-repeat;
+    background-position: -260px -228px;
+}
+.p2{
+    background: url("../tupian/jl.png") no-repeat;
+    background-position: -260px -286px;
+}
+.p3{
+    background: url("../tupian/jl.png") no-repeat;
+    background-position: -472px -228px;
+}
+.p4{
+    background: url("../tupian/jl.png") no-repeat;
+    background-position: -472px -286px;
+}
+.four ul div{
+    width: 212px;
+    height: 272px;
+
+    font-size: 12px;
+    line-height: 20px;
+    float: left;
+}
+.four a{
+    display: block;
+}
+.four-d1 a:nth-child(2){
+    margin-top: 14px;
+}
+.four-d1 a:nth-child(3){
+    margin-top: 14px;
+}
+.four-d1 a:nth-child(4){
+    margin-top: 14px;
+}
+.four-d1 a:nth-child(5){
+    margin-top: 14px;
+}
+.four h3{
+    font-size: 14px;
+    font-weight: 700;
+    color: #000;
+}
+.four-d2 a{
+    width: 212px;
+    height: 80px;
+    padding-top: 10px;
+    padding-left: 88px;
+    box-sizing: border-box;
+}
+.four-d2 a:nth-child(1){
+    background: url("../tupian/s1_b51df29.png") no-repeat;
+}
+.four-d2 a:nth-child(2){
+    margin-top: 10px;
+    background: url("../tupian/s2_772bf7e.png") no-repeat;
+}
+.four-d2 a:nth-child(3){
+    margin-top: 10px;
+    background: url("../tupian/s3_45b71ba.png") no-repeat;
+}
+.four-d3 a{
+    width: 212px;
+    height: 80px;
+    padding-top: 10px;
+    padding-left: 88px;
+    box-sizing: border-box;
+}
+.four-d3 a:nth-child(1){
+    background: url("../tupian/s4_8836e09.png") no-repeat;
+}
+.four-d3 a:nth-child(2){
+    margin-top: 10px;
+    background: url("../tupian/s5_c9e454e.png") no-repeat;
+}
+.four-d3 a:nth-child(3){
+    margin-top: 10px;
+    background: url("../tupian/s6_11686a9.png") no-repeat;
+}
+.four-d4 a{
+    height: 20px;
+    margin-top: 19px;
+    padding-left: 20px;
+    background: url("../tupian/dd-style_0cadf43.png") no-repeat;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.fontA{
+    width: 90px;
+    height: 16px;
+    color: #fd4505;
+    font-family: simSun;
+    line-height: 22px;
+    float: left;
+}
+.five{
+    height: 320px;
+    padding-top: 60px;
+}
+.five li{
+    width: 316px;
+    height: 140px;
+    padding-top: 46px;
+    padding-left: 10px;
+    margin-top: 20px;
+    margin-right: 26px;
+    box-sizing: border-box;
+    float: left;
+    position: relative;
+    display: inline-block;
+    background-color: blue;
+    background: url("../tupian/con-bg_e95ac2c.jpg") no-repeat;
+}
+.five li:nth-child(1){
+    background-position: 0 0;
+}
+.five li:nth-child(2){
+    background-position: -633px 0;
+}
+.five li:nth-child(3){
+    margin-right: 0px;
+    background-position: -318px 0;
+}
+.five li:nth-child(4){
+    background-position: -1px -146px;
+}
+.five li:nth-child(5){
+    background-position: -315px -146px;
+}
+.five li:nth-child(6){
+    margin-right: 0px;
+    background-position: -632px -146px;
+}
+.fiveP1{
+    position: absolute;
+    left: -11px;
+    top:8px;
+    width: 138px;
+    height: 47px;
+    background-color: red;
+    background: url("../tupian/jl.png") no-repeat;
+}
+.pp1{
+    background-position: -264px -346px;
+}
+.pp2{
+    background-position: -544px -346px;
+}
+.pp3{
+    background-position: -404px -346px;
+}
+.pp4{
+    width: 155px;
+    background-position: -234px -442px;
+}
+.pp5{
+    background-position: -404px -394px;
+}
+.pp6{
+    background-position: -544px -394px;
+}
+.fiveP2{
+    width: 128px;
+    height: 44px;
+    color: #ffffff;
+    line-height: 22px;
+}
+.five .P2p{
+    height: 35px;
+}
+.p22{
+    height: 35px;
+}
+.five a{
+    width: 72px;
+    height: 24px;
+    display: inline-block;
+    background: url("../tupian/jl.png") no-repeat;
+    background-position: -224px -148px;
+}
+
+
+.zDown1{
+    height: 48px;
+    padding-top: 15px;
+    box-sizing: border-box;
+    background-color: #000;
+    color: #c7c7c7;
+}
+.zDown1 a{
+    font-size: 13px;
+    color: #c7c7c7;
+}
+.zDown1 a i{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 17px;
+    background-color: #c7c7c7;
+    line-height: 20px;
+    text-align: center;
+    color: #000000;
+}
+.zDown1 .D1p{
+    padding-left: 302px;
+    box-sizing: border-box;
+}
+.zDown2{
+    height: 103px;
+    background-color: #000;
+    padding-bottom: 30px;
+    box-sizing: border-box;
+}
+.D2{
+    padding-left: 80px;
+    padding-top: 15px;
+    padding-right: 80px;
+    padding-bottom: 40px;
+    box-sizing: border-box;
+}
+
+.D2left a{
+    margin-top: 10px;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 126px;
+    height: 31px;
+    float: left;
+}
+.D2left a:nth-child(1){
+    background: url("../tupian/netease.2.png") no-repeat;
+}
+.D2left a:nth-child(2){
+    background: url("../tupian/nie.2.png") no-repeat;
+    background-position: -10px 0;
+}
+.D2right{
+    margin-left: 50px;
+    float: left;
+    position: relative;
+
+}
+.D2right p{
+
+    font-size: 12px;
+    line-height: 20px;
+    color: #ffffff;
+}
+.D2rxp{
+    margin-top: 10px;
+}
+.D2right .D2rsp a{
+    color: #ffffff;
+}
+#over{
+    width: 142px;
+    height: 26px;
+    padding-left: 5px;
+    padding-right: 5px;
+    box-sizing: border-box;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    font-size: 12px;
+    color: #ffffff;
+    font-family: simSun;
+    background-color: #610000;
+    line-height: 26px;
+    text-align: center;
+}
+.fixed{
+    width: 232px;
+    height: 732px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    background: url("../tupian/aside-bg_499503f.png") no-repeat;
+}
+#inLeft{
+    border-style: none;
+    width: 213px;
+    height: 40px;
+    padding: 12px 7px 12px 8px;
+    box-sizing: border-box;
+    background-color: transparent;
+    color: #888;
+    font-size: 14px;
+    margin-left: 7px;
+
+}
+#inRight{
+    width: 70px;
+    height: 40px;
+    background-color: transparent;
+}
+.xBody-two{
+    position: relative;
+}
+.xBody-two ul{
+    position: absolute;
+}
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>第1个div</div>
+<div>第2个div</div>
+<div>第3个div</div>
+<div>第4个div</div>
+<div>第5个div</div>
+<div>第6个div</div>
+<div>第7个div</div>
+<div>第8个div</div>
+<div>第9个div</div>
+<div>第10个div</div>
+
+<script>
+    //给这10个div注册点击事件，点击每个div alert出来当前div的序号。不许使用自定义属性
+
+    //使用闭包解决问题：
+    
+    var divs = document.getElementsByTagName("div");
+
+    for(var i = 0;i < divs.length;i++){
+
+        function outer() {
+            var j = i;
+            function inner() {
+                alert("第" + j + "个div");
+            }
+            return inner;
+        }
+
+        divs[i].onclick = outer();
+    }
+</script>
+</body>
+</html>

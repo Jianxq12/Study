@@ -1,0 +1,497 @@
+body{
+    width: 100%;
+    height: 100%;
+    /*background-color: skyblue;*/
+    position: relative;
+}
+/*预加载开始*/
+.playvideo{
+    display: none;
+    /*height: 300px;*/
+}
+/*预加载结束*/
+
+
+/*logo区开始*/
+.yg_logo{
+    position: absolute;
+    width: 166px;
+    height: 65px;
+    top:75px;
+    left:35px;
+    z-index: 100;
+}
+.yg_play{
+    position: absolute;
+    width: 166px;
+    height: 26px;
+    top: 75px;
+    right: 240px;
+    z-index: 20;
+}
+/*logo区结束*/
+
+
+
+/*主页面开始*/
+
+/*顶部栏开始*/
+/*顶部栏结束*/
+
+/*主内容开始*/
+#main{
+    position: relative;
+    width: 100%;
+    height: 897px;
+    background: url("../images/bg_864de64.jpg") center;
+}
+
+
+/*注册区开始*/
+.yg_top_login{
+    position: absolute;
+    width: 181px;
+    height: 14px;
+    top:22px;
+    right: 60px;
+}
+.yg_top_login a{
+    float: left;
+    display: block;
+    width: 59px;
+    height: 14px;
+    font-size: 14px;
+    color: #868788;
+    border-left: 1px solid #a1a1a1;
+    text-align: center;
+    line-height: 14px;
+    cursor: pointer;
+    z-index: 1000;
+  position: relative;
+}
+.yg_top_login a:hover{
+    color: #fff;
+}
+.yg_top_login a:first-child{
+    border: none;
+}
+/*注册区结束*/
+
+
+/*文本区开始*/
+.main_content{
+    width: 1200px;
+    height: 897px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.content_area{
+    width: 1200px;
+    height: 897px;
+    padding-right: 100px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    left: 0;
+}
+.main_content .content_area{
+    font-family: "微软雅黑";
+    font-size: 14px;
+    line-height: 34px;
+    color: #fff;
+}
+
+/*第一章开始*/
+.content_area .part1,.part2,.part3{
+    position: absolute;
+    display: none;
+}
+.content_area div.part3{
+    width: 1283px;
+}
+.content_area div.part1{
+    display: block;
+}
+
+
+/*首章顶部大图*/
+.part1 .content_a_pic{
+    width: 1200px;
+    height: 245px;
+    top:100px;
+    position: relative;
+    padding-bottom: 200px;
+    
+    background: url("../images/slogan_2a90890.png") no-repeat ;
+}
+/*章节图*/
+.content_a_pic_p1{
+    margin: 20px 0;
+    z-index: 2;
+
+    position: relative;
+}
+/*章节号*/
+.content_a_pic_t1{
+    position: absolute;
+    right: 0;
+    top: 670px;
+}
+/*小节序号*/
+.content_a_cap {
+    margin: 25px 0;
+}
+/*小说内容区配图*/
+.content_a_pic_pt{
+    margin: 20px 0;
+}
+img.content_a_pic_pt3{
+    margin: 20px 0;
+    box-sizing: border-box;
+    position: absolute;
+    right: 80px;
+}
+/*第一章右侧最后一段*/
+.content_a_t1{
+    margin-left: 600px;
+    padding-top:300px;
+    padding-bottom: 350px;
+}
+/*第一章结束*/
+
+/*第二章开始*/
+/*章节图*/
+.content_a_pic_p2{
+    margin-bottom: 200px;
+    z-index: 2;
+
+    position: relative;
+    top:160px;
+    left: 0;
+}
+/*章节号*/
+.content_a_pic_t2{
+    position: absolute;
+    right: 0;
+    top: 370px;
+}
+/*第二章第三小节右侧1段*/
+.content_a_t2{
+    margin-left: 600px;
+    margin-top: 30px;
+    padding-bottom: 200px;
+}
+
+.content_a_t3{
+    margin-left: 600px;
+    margin-top: 30px;
+    padding-bottom: 80px;
+}
+/*第二章结束*/
+
+/*文本区结束*/
+
+/*右侧导航栏开始*/
+.side_right{
+    position: absolute;
+    right: 0;
+    top:15px;
+    width: 80px;
+    height: 870px;
+    overflow: hidden;
+    background: url("../images/nav_right_bg_d3e4b85.png") no-repeat center;
+}
+.side_right a{
+    width: 49px;
+    height: 49px;
+    position: relative;
+    background: url("../images/btn_right_bg_49a1f23.png") no-repeat center;
+    display: block;
+    text-align: center;
+    line-height: 49px;
+    margin: 0 auto;
+}
+.side_right .lines{
+    width: 20px;
+    height: 14px;
+    position: absolute;
+    top:17px;
+    left: 15px;
+}
+.side_right .lines li{
+    float: left;
+    height: 2px;
+    margin-bottom: 4px;
+    transition:all 0.6s ease;
+}
+.side_right .lines li:nth-child(even){
+    background-color: #505b61;
+}
+.side_right .lines li:nth-child(odd){
+    background-color: #f5f2eb;
+}
+.nav_menu .lines .line1,.line6{
+    width: 18px;
+}
+.nav_menu .lines .line2,.line5{
+    width: 2px;
+}
+.lines .line3{
+    width: 12px;
+}
+.lines .line4{
+    width: 8px;
+}
+.nav_menu:hover .line1{
+    width: 2px;
+}
+.nav_menu:hover .line2{
+    width: 18px;
+}
+
+.nav_menu:hover .line3{
+    width: 8px;
+}
+.nav_menu:hover .line4{
+    width: 12px;
+}
+.nav_menu:hover .line5{
+    width: 18px;
+}
+.nav_menu:hover .line6{
+    width: 2px;
+}
+
+.nav_person{
+    top:370px;
+}
+a.nav_scroll{
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    background: url("../images/btn_right_bg1_e967826.png") no-repeat center;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 5px rgba(255,255,255,.2);
+}
+.nav_scroll.start span{
+
+    background: url("../images/btn_right_pause_45c2b07.png") no-repeat center;
+    position: relative;
+    text-align: center;
+    width: 49px;
+    height: 49px;
+    display: block;
+
+}
+
+.nav_scroll.off span{
+    background: url("../images/btn_right_play_14ad2bc.png") no-repeat center;
+    position: relative;
+    text-align: center;
+    width: 49px;
+    height: 49px;
+    display: block;
+}
+/*右侧导航栏结束*/
+
+/*分享按钮开始*/
+.share{
+    position: absolute;
+    left:45px;
+    bottom: 60px;
+    height: 20px;
+    width: 300px;
+    z-index: 11;
+    /*background-color: red;*/
+}
+.share_button li{
+    float: left;
+    margin: 0 8px;
+}
+.share_button img{
+    width: 25px;
+    height: 25px;
+    color: #fff;
+}
+.share_button .weibo{
+    width: 30px;
+    height: 30px;
+}
+.share_more{
+    width: 198px;
+    border: 1px solid #c2c2c2;
+    position: absolute;
+    top:20px;
+    right: -30px;
+    background-color: #fff;
+    padding: 4px 8px;
+    display: none;
+    /*z-index: 10;*/
+}
+
+.share_more li{
+    float: left;
+    width: 99px;
+}
+.share_more li a{
+    height: 14px;
+    line-height: 14px;
+    width: 87px;
+    padding: 5px 0;
+    display: inline-block;
+    color: #333;
+}
+.share_more li img{
+    width: 18px;
+    height: 18px;
+    margin-right:5px;
+}
+/*分享按钮结束*/
+
+/*主内容结束*/
+
+/*底部开始*/
+.foot{
+    width: 100%;
+    /*height: 100px;*/
+    background-color: #000;
+
+    position: relative;
+}
+.inner{
+    width: 840px;
+    margin: 0 auto;
+    padding: 20px 0 15px;
+    font-size: 12px;
+    text-align: left;
+}
+.foot_left{
+    height: 48px;
+    width: 280px;
+    margin-right: 20px;
+    padding: 8px 0;
+}
+.foot_left a {
+    display: inline-block;
+}
+.foot_right{
+    position: relative;
+    height: 48px;
+}
+.foot_right i{
+    display: block;
+    line-height: 28px;
+}
+.foot_r_t{
+    color: #e23a3f;
+}
+.foot_r_t a{
+    color: #e23a3f;
+}
+.foot_r_b span{
+    color: #939393;
+}
+.foot_jh{
+    position: absolute;
+    right: 20px;
+    top:28px;
+    height: 26px;
+    line-height: 26px;
+    padding: 0 5px;
+    background-color: #610000;
+    color: #fff;
+
+}
+/*底部结束*/
+
+/*遮盖层开始*/
+.cover{
+    display: none;
+    position: fixed;
+    top:0;
+    left: 0;
+    z-index: 2000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.93);
+}
+
+/*遮盖层结束*/
+
+/*弹出层开始*/
+.menu_layer{
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2500;
+    /*background-color: skyblue;*/
+}
+.menu_layer_top{
+    background: url("../images/pop_moon_top_2cfe29e.png") no-repeat center;
+    position: relative;
+    height: 165px;
+    width: 100%;
+    margin:80px 0;
+}
+.menu_layer_bot{
+    position: relative;
+    width: 900px;
+    margin: 20px auto;
+    text-align: center;
+}
+.menu_layer_bot .active{
+    background: url("../images/pop_moon_hover_db7bb02.png") no-repeat center;
+}
+.menu_layer_bot li{
+    float: left;
+    position: relative;
+    width: 110px;
+    height: 134px;
+    margin: 0 100px 0 90px;
+    cursor: pointer;
+}
+.menu_layer_bot li p {
+    background: url("../images/pop_moon_line_797b998.png") no-repeat center bottom;
+    padding:15px 0;
+    font-size: 20px;
+    line-height: 48px;
+    color: #fff;
+    text-align: center;
+}
+.menu_layer_bot li img{
+    position: relative;
+    margin: 15px auto;
+    display: block;
+    height: 20px;
+}
+/*弹出层结束*/
+
+/*播放视频开始*/
+.stopvideo{
+    /*position: relative;*/
+    /*width: 900px;*/
+    /*height: 200px;*/
+    /*left: 50%;*/
+    /*top:50%;*/
+    /*margin:-253px 0 0 -450px;*/
+    display: none;
+}
+
+.stopvideo_c{
+    position: absolute;
+    right: 90px;
+    top:75px;
+    z-index: 2001;
+    font-size: 16px;
+}
+.stopvideo_c:hover{
+    color: #ccc;
+}
+
+/*播放视频结束*/
+/*主页面结束*/
+

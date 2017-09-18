@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>div标签
+    <p>p标签<span>span标签</span><span>span标签</span><span>span标签</span></p>
+    <p>p标签<span>span标签</span><span>span标签</span><span>span标签</span></p>
+    <p>p标签<span>span标签</span><span>span标签</span><span>span标签</span></p>
+</div>
+<div>div标签
+    <p>p标签<span>span标签</span><span>span标签</span><span>span标签</span></p>
+    <p>p标签<span>span标签</span><span>span标签</span><span>span标签</span></p>
+    <p>p标签<span>span标签</span><span>span标签</span><span>span标签</span></p>
+</div>
+<div>div标签
+    <p>p标签<span>span标签</span><span>span标签</span><span>span标签</span></p>
+    <p>p标签<span>span标签</span><span>span标签</span><span>span标签</span></p>
+    <p>p标签<span>span标签</span><span>span标签</span><span>span标签</span></p>
+</div>
+
+<script>
+    //递归实际应用：获取后代元素 统一添加样式
+
+    //DOM中没有现成的api可以获取指定元素的后代元素
+    //化归思想：虽然没有获取后代元素的api，但是有获取子代元素的api
+    
+    function getChildren(ele,callback) {
+        var children = ele.children;
+        for(var i = 0;i < children.length;i++){
+            var child = children[i];
+            callback(child);
+//            child.style.border = "1px solid skyblue";
+//            getChildren(child);
+            getChildren(child,callback);
+        }
+    }
+
+    getChildren(document.body,function (child) {
+        child.style.border = "1px solid red";
+    });
+</script>
+</body>
+</html>

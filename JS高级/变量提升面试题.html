@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // var scope = "global";
+    // function foo() {
+    //     console.log(scope); //
+    //     var scope = "local";
+    //     console.log(scope); //
+    // }
+    // foo()
+
+    //提升后代码：
+//    var scope;
+//    function foo() {
+//        var scope;
+//        console.log(scope);//undefined
+//        scope = "local";
+//        console.log(scope); //local
+//    }
+//    scope = "global";
+//    foo();
+//-----------------------------------------------
+
+    //属性名 in 对象    判断对象是否可以访问指定的属性
+
+
+
+    // if("a" in window){
+    //     var a = 10;
+    // }
+    // alert(a); // ?
+
+    //提升后代码：
+//    var a;
+//    if("a" in window){
+//         a = 10;
+//    }
+//    alert(a);//10
+
+//-------------------------------------------------
+
+//     var foo = 1;
+//     function bar() {
+//         if(!foo) {
+//             var foo = 10;
+//         }
+//         alert(foo); //
+//     }
+//     bar();
+
+    //提升后代码：
+//    var foo;
+//    function bar() {
+//        var foo;
+//        if(!foo) {
+//            foo = 10;
+//        }
+//        alert(foo); //10
+//    }
+//    foo = 1;
+//    bar();
+
+//-------------------------------------------------
+
+    //变态面试题:
+//    function Foo() {
+//        getName = function(){ alert(1); };
+//        return this;
+//    }
+//
+//    Foo.getName = function() { alert(2); };
+//    Foo.prototype.getName = function(){ alert(3); };
+//    var getName = function() { alert(4); };
+//    function getName(){ alert(5); }
+
+
+    //提升后代码：
+    function Foo() {
+        getName = function(){ alert(1); };
+        return this;
+    }
+    function getName(){ alert(5); }
+    Foo.getName = function() { alert(2); };
+    Foo.prototype.getName = function(){ alert(3); };
+    getName = function() { alert(4); };
+
+    //题目答案：
+    Foo.getName();//2
+    getName();//4
+    Foo().getName();//1
+    getName();//1
+
+    new Foo.getName();//2
+    new Foo().getName();//3
+
+    new new Foo().getName();//3
+
+</script>
+</body>
+</html>

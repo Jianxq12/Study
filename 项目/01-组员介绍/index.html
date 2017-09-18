@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Our Item Story</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<style type="text/css">
+		@font-face {
+			font-family: digit;
+			src: url('digital-7_mono.ttf') format("truetype");
+		}
+		#adoLink{
+			display: block;
+			width: 18px;
+			height: 15px;
+			position: absolute;
+			top: 5px;
+			left: 5px;
+			z-index: 100;
+			background-image: url("../images/sound_on.png");
+		}
+	</style>
+	<link href="css/default.css" type="text/css" rel="stylesheet">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/garden.js"></script>
+    <script type="text/javascript" src="js/functions.js"></script>
+</head>
+
+<body>
+<a href="javascript:void(0)" id="adoLink"></a>
+<audio src="../aq1.mp3"  autoplay loop id="adoMic"></audio>
+<script>
+	var flag=true;
+	var adoLink=document.getElementById("adoLink");
+	var adoMic=document.getElementById("adoMic");
+	adoLink.onclick=function () {
+		if (flag){
+			this.style.background="url(../images/sound_off.png)";
+			adoMic.pause();
+			flag=false;
+		}else{
+			this.style.background="url(../images/sound_on.png)";
+			adoMic.play();
+			flag=true;
+		}
+	}
+</script>
+	<div id="mainDiv">
+		<div id="content" style="margin-left: 50px;width: 1200px">
+			<span id="code">
+				<span class="comments">/**</span><br />
+				<span class="space"/><span class="comments">* 14期项目组,</span><br />
+				<span class="space"/><span class="comments">* 我们的项目是梦幻西游手游网页的设计与实现.</span><br />
+				<span class="space"/><span class="comments">*/</span><br />
+				<span class="keyword">Boy</span> oneBoy = <span class="keyword">new</span> Boy(<span class="string">"王程弘"</span>);<br />
+				<span class="keyword">Boy</span> twoBoy = <span class="keyword">new</span> Boy(<span class="string">"张正文"</span>);<br />
+				<span class="keyword">Boy</span> threeBoy = <span class="keyword">new</span> Boy(<span class="string">"王皓"</span>);<br />
+				<span class="keyword">Girl</span> Onegirl = <span class="keyword">new</span> Girl(<span class="string">"南文梦"</span>);<br />
+				<span class="keyword">Girl</span> Twogirl = <span class="keyword">new</span> Girl(<span class="string">"朱明静"</span>);<br />
+				<span class="keyword">Girl</span> ThreeGirl = <span class="keyword">new</span> Girl(<span class="string">"吴优"</span>);<br />
+				<!--<span class="keyword">Girl</span> twoGirl = <span class="keyword">new</span> Girl(<span class="string">"南文梦"</span>);<br />-->
+				<!--<span class="keyword">Girl</span> threeGirl= <span class="keyword">new</span> Girl(<span class="string">"朱明静"</span>);<br />-->
+				<span class="comments">//姓名不分先后 。</span><br />
+				<span class="comments">// 2017年9月1日，我们开始了项目 。</span><br />
+				<span class="keyword">var</span> i=oneBoy；<br />
+				<span class="placeholder"/>i.lead(everyOne).for(this.item);<span class="comments">// 大家一起完成这个项目 。</span><br />
+				<span class="comments">// 接下来，让代码来带领大家进入我们的项目。</span><br />
+				<span class="keyword">Item</span> itemName=<span class="keyword">new</span> Item(<span class="string">"梦幻西游手游官网"</span>);<br />
+				<span class="keyword">Division</span> itemDivision=<span class="keyword">new</span> Division();<br />
+				<span class="placeholder"/>itemDivision.itemDirector="王程弘"<span class="comments">//项目总监。</span><br />
+				<span class="placeholder"/>itemDivision.technicalGuidance="王程弘"<span class="comments">//技术指导。</span><br />
+				<span class="comments">//项目实施。</span><br />
+				<span class="placeholder"/>itemDivision.itemImplementation="{<br />
+				<span class="placeholder"/>"人员":["王程弘","张正文","吴优","南文梦","朱明静","王皓"<br><span class="placeholder"/><span class="placeholder"/><br>
+				<span class="placeholder"/>"页面化分":["首页","下载页","新手专区","品牌站","月宫专题" <br><span class="placeholder"/><span class="placeholder"/><br>
+				<span class="placeholder"/>"项目特色":"本项目综合使用了多种前沿技术，包括H5、C3、jQuery、<br><span class="placeholder"/><span class="placeholder"/><br>
+				}"<br>
+				<span class="keyword">String</span> finished="Item finished"<span class="comments">//项目完成。</span><br />
+				<span class="keyword">when</span>(finished){<br>
+				<span class="placeholder"/>i.learn.aLot();<span class="comments">//大家都学到了很多。</span><br>
+				<span class="placeholder"/>now();<br>
+				<span class="placeholder"/>i.deputy(ourTeams).toThinksEveryOne();<span class="comments">//我代表我们的队伍谢谢大家。</span><br>
+				<span class="placeholder"/>i.believe(ourCanBe).moreAndMoreBetter();<span class="comments">//我相信我们会越来越好。</span><br>
+				}<br>
+				</span>
+			</div>
+			<div id="loveHeart">
+				<canvas id="garden"></canvas>
+				<div id="words">
+					<div id="messages">
+
+						<!--<div id="elapseClock"></div>-->
+					</div>
+					<div id="loveu">
+						We are a family forever.<br/>
+						<div class="signature">- 王程弘<br><a href="family.html">Sea My Family</a></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var offsetX = $("#loveHeart").width() / 2;
+		var offsetY = $("#loveHeart").height() / 2 - 55;
+		var together = new Date();
+		together.setFullYear(2017, 1, 6);
+		together.setHours(20);
+		together.setMinutes(0);
+		together.setSeconds(0);
+		together.setMilliseconds(0);
+
+		if (!document.createElement('canvas').getContext) {
+			var msg = document.createElement("div");
+			msg.id = "errorMsg";
+			msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+";
+			document.body.appendChild(msg);
+			$("#code").css("display", "none")
+			$("#copyright").css("position", "absolute");
+			$("#copyright").css("bottom", "10px");
+		    document.execCommand("stop");
+		} else {
+			setTimeout(function () {
+				startHeartAnimation();
+			}, 10000);
+
+			timeElapse(together);
+			setInterval(function () {
+				timeElapse(together);
+			}, 200);
+
+			adjustCodePosition();
+			$("#code").typewriter();
+		}
+	</script>
+</body>
+</html>

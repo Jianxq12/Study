@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //1.hasOwnProperty
+    //对象.hasOwnProperty("属性名")
+    //判断对象自身是否拥有指定的属性
+   var obj = {
+       name : "zhangsan"
+   }
+   console.log(obj.hasOwnProperty("name"));
+
+
+    //2.isPrototypeOf
+    //对象1.isPrototypeOf(对象2)
+    //判断对象1是不是对象2的原型
+   var obj1 = {};
+   var obj2 = {};
+   console.log(obj1.isPrototypeOf(obj2));
+
+
+    //3.propertyIsEnumerable
+    //对象.propertyIsEnumerable("属性名")
+    //判断对象的指定的属性 是否属于对象本身,是否可以被遍历,只有同时满足才返回true
+
+
+    //4.toString  toLocalString
+    // 将对象转换成本地格式的字符串
+    var obj = {};
+    console.log(obj.toString());
+    console.log(obj.toLocaleString());
+
+</script>
+</body>
+</html>

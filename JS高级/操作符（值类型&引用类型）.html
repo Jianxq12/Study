@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+        //当值类型的数据和引用类型的数据进行运算（算数运算，关系运算）的时候，会遵守如下的步骤。
+        
+        //1. 会调用引用类型数据的valueOf方法，获取返回值，尝试和值类型的数据进行运算， 如果可以计算，就得出结果
+        //2. 如果不能计算，就继续调用这个引用类型数据的toString方法，获取返回值，进行计算
+
+    console.log([] == []);//false
+    console.log({} == {});//false
+    console.log([] == ![]);//true
+    console.log([] == 1);//false
+    console.log(function() {
+    }.valueOf());//function() {}
+
+
+    console.log(function() {
+    }.toString());
+
+    console.log([].valueOf());//[]
+    console.log([].toString());//""
+    console.log({}.valueOf());//{}
+    console.log({}.toString());//"[object Object]"
+
+
+    console.log({} + 1);//[object Object]1
+
+        //分析步骤：
+        //1.console.log({}.valueOf() + 1)
+        //2.console.log({}.toString() + 1)
+        //3.console.log("[object Object]" + 1)
+        //4.console.log("[object Object]1")
+
+    console.log([] + 1);//1
+        //分析步骤：
+        //1. console.log([].valueOf() + 1);
+        //2. console.log([].toString() + 1);
+        //3. console.log("" + 1);
+        //4. console.log("1")
+
+    console.log([] == ![]);//true
+        //分析步骤：
+        //1. console.log([] == false)
+        //2. console.log([].valueOf() == false);
+        //3. console.log([].toString() == false);
+        //4. console.log("" == false);
+
+    console.log({} == !{});//false
+        //分析步骤：
+        //1.console.log({} == false);
+        //2.console.log({}.valueOf() == false);
+        //3.console.log({}.toString() == false)
+        //4.console.log("[object Object]" == false)
+        
+</script>
+
+</body>
+</html>

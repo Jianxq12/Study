@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tx</title>
+
+    <style>
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .w {
+            width: 802px;
+            margin: 0 auto;
+        }
+
+        body {
+
+            background: url("images/wrapBg.jpg") no-repeat #EBF1F1;
+        }
+
+        #main {
+
+            height: 1000px;
+            /*background: pink;*/
+            margin-top: 5px;
+        }
+
+        #logo {
+
+            margin-left: 300px;
+            margin-top: 30px;
+        }
+
+        #mybody {
+            width: 802px;
+            height: 202px;
+            background: #eee;
+            box-sizing: border-box;
+            border: 1px solid indianred;
+            border-radius: 10px;
+            overflow: hidden;
+
+        }
+
+        .main-l {
+
+            width: 590px;
+            height: 200px;
+
+        }
+
+        .main-r {
+            width: 210px;
+            height: 200px;
+            background: #ccebf4;
+
+        }
+
+        .fl {
+            float: left;
+        }
+
+        .fr {
+            float: right;
+        }
+
+        #mybody p em {
+
+            margin-left: 30px;
+            margin-top: 5px;
+            color: #777;
+            font: 22px/35px '迷你简隶书';
+
+        }
+
+        textarea {
+            width: 540px;
+            height: 80px;
+            border: 1px solid #222;
+            padding: 2px;
+            margin-left: 30px;
+            font-size: 14px;
+
+        }
+
+        #ul {
+
+            margin-left: 30px;
+            width: 100%;
+            height: 32px;
+        }
+
+        #ul > li {
+
+            list-style: none;
+            font-size: 16px;
+            float: left;
+            margin-left: 30px;
+
+        }
+
+        #numCount {
+            display: inline-block;
+            height: 34px;
+            color: #999;;
+
+        }
+
+        #numCount em {
+            font-size: 26px;
+        }
+
+        #sendBtn {
+            background: url(images/bg1.png) -117px -165px no-repeat;
+            width: 112px;
+            height: 30px;
+            vertical-align: bottom;
+            margin: 0 20px 0 10px;
+        }
+
+        #sendBtn.sendBtnHover {
+            background-position: 0 -195px;
+        }
+
+        /*发布微博的内容*/
+
+        #mycontent {
+
+            margin-top: 20px;
+
+            border: 1px solid indianred;
+            border-radius: 10px;
+            overflow: hidden;
+            background: cyan;
+
+        }
+
+        .cell {
+
+            width: 100%;
+
+            overflow: hidden;
+        }
+
+        .setup-img-left {
+
+            float: left;
+            width: 50px;
+            height: 50px;
+            vertical-align: top;
+            margin: 15px 0 15px 15px;
+            border-radius: 5px;
+        }
+
+        .setup-img-right {
+
+            float: right;
+            width: 50px;
+            height: 50px;
+            vertical-align: top;
+            margin: 15px 15px 15px 0px;
+            border-radius: 5px;
+        }
+
+        .setup-cell-r-right {
+
+            float: right;
+            background: yellow;
+            width: 700px;
+            /*height: 700px;*/
+            margin: 30px 15px 25px 15px;
+            border: 1px solid red;
+            border-radius: 5px;
+            box-sizing: border-box;
+            padding: 10px;
+
+        }
+
+        .setup-cell-r-left {
+            float: left;
+            background: yellow;
+            width: 700px;
+            /*height: 700px;*/
+            margin: 30px 15px 25px 15px;
+            border: 1px solid red;
+            border-radius: 5px;
+            box-sizing: border-box;
+            padding: 10px;
+        }
+
+        .cell .cell-r a {
+            color: blue;
+        }
+
+        .cell .cell-r .cell-top {
+
+            margin-bottom: 20px;
+        }
+
+        /*cell里的图片*/
+        .cell .cell-middle {
+
+            width: 200px;
+            height: 130px;
+        }
+
+        .main-r .photo {
+            width: 200px;
+            height: 190px;
+            margin: 5px;
+        }
+
+        /*自动换行*/
+        div {
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+
+
+    </style>
+
+</head>
+<body>
+<img id="logo" src="images/b3_100901.png" alt="">
+<div id="main" class="w">
+
+    <div id="mybody">
+
+        <div class="main-l fl">
+            <p>亲,说说你在做什么,想什么....</p>
+            <textarea name="text" id="msgText"></textarea>
+            <ul id='ul'>
+                <li><a href="javascript:;">方向:</a></li>
+                <li><a href="javascript:;">朋友</a></li>
+                <li><a href="javascript:;">表情</a></li>
+                <li><label for="file">照片</label></li>
+                <li><a href="javascript:;">视频</a></li>
+
+            </ul>
+
+            <input class='fr' id='sendBtn' type="button">
+            <span class='fr' id='numCount'>您还能输入<em>150</em>字</span>
+        </div>
+        <div class="main-r fr">
+            <img src="images/placeholder.png" alt="" id="j_photo" class="photo">
+        </div>
+
+    </div>
+
+    <div id="mycontent">
+
+        <div class="cell">
+
+            <!--左边的-->
+            <img id='cell-l' class="cell-l setup-img-left" src="images/icon.jpg" alt="">
+            <!--右边的-->
+            <div id='cell-r' class="cell-r  setup-cell-r-right">
+                <div class="cell-top">
+                    <a href="javascript:;"><b>小妹:</b></a>
+                    <span>今天的天气不错,很适合外出旅游,准备约朋友一起出去啦!!今天的天气不错,很适合外出旅游,准备约朋友一起出去啦!!</span>
+                </div>
+                <img class="cell-middle" src="images/bigImg.jpg" alt="">
+                <div class="cell-bottom">
+                    <span>02月17日 09:50</span>
+                    <a class="fr delete" href="javascript:;">删除</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<!-- jquery的引入 和 script部分开始 -->
+<script src="jquery-1.12.4.js"></script>
+<script>
+    $(function () {
+        var $send = $("#sendBtn");
+        var $msg = $("#msgText");
+        var $cont = $("#mycontent");
+        clickSend($send,$cont);
+        setNum($msg);
+        delWb();
+
+    })
+
+    //点击发送函数
+    function clickSend(send,cont) {
+        send.on("click",function () {
+            var txt = $("#msgText").val();
+            if(txt.trim().length == 0){
+                alert("发送内容不得为空");
+            }
+            var  time = getTime();
+
+            var txt = '<div class="cell">' +
+
+
+                    '<img id="cell-l" class="cell-l setup-img-left" src="images/icon.jpg" alt="">' +
+
+                    '<div id="cell-r" class="cell-r  setup-cell-r-right">' +
+                    '<div class="cell-top">' +
+                    '<a href="javascript:;"><b>小妹:</b></a>' +
+                    '<span>' + txt + '</span>' +
+                    '</div>' +
+                    '<img class="cell-middle" src="images/bigImg.jpg" alt="">' +
+                    '<div class="cell-bottom">' +
+                    '<span>' + time + '</span>' +
+                    '<a class="fr delete" href="javascript:;">删除</a>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>';
+
+            cont.append(txt);
+
+        })
+    }
+
+    //获取时间
+    function getTime() {
+        var date = new Date();
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        return addZero(month) + "年" + addZero(day) + "日" + addZero(hours) + ":" + addZero(minutes);
+    }
+
+    //数字格式化
+    function addZero(num) {
+        if(num < 10){
+            num = "0" + num;
+        }
+        return num;
+    }
+    
+    //最大值递减
+    function setNum(msg) {
+        var max = $("em").html();
+        msg.on("keyup",function () {
+            var len = msg.val().length;
+            var dt = max - len;
+            if(dt < 0 ){
+                dt = 0;
+                msg.val($(this).val().slice(0,150));
+            }
+            $("em").html(dt);
+        })
+    }
+    //删除微博   注意动态添加的元素  用事件委托注册
+    function delWb() {
+        $("#mycontent").on("click",".delete",function () {
+            $(this).closest(".cell").remove();
+        })
+    }
+</script>
+
+</body>
+</html>

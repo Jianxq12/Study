@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        @keyframes blink {
+            0%,
+            100% {
+                opacity: 1
+            }
+            50% {
+                opacity: 0
+            }
+        }
+
+        @-webkit-keyframes blink {
+            0%,
+            100% {
+                opacity: 1
+            }
+            50% {
+                opacity: 0
+            }
+        }
+
+        @-moz-keyframes blink {
+            0%,
+            100% {
+                opacity: 1
+            }
+            50% {
+                opacity: 0
+            }
+        }
+
+        .wrap {
+            width: 1000px;
+            text-align: center;
+            margin: 100px auto 0;
+        }
+
+        .wrap h1 {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: 300;
+        }
+
+        .word {
+            font-weight: 700;
+        }
+
+        .typed-cursor {
+            opacity: 1;
+            -webkit-animation: blink .7s infinite;
+            -moz-animation: blink .7s infinite;
+            animation: blink .7s infinite;
+            display: none;
+        }
+
+        .saySection {
+            margin-top: 50px;
+        }
+
+        .saySection input {
+            font-size: 30px;
+        }
+
+        .saySection .txtSay {
+            padding-left: 10px;
+        }
+
+        .saySection .btnSay {
+            display: inline-block;
+            padding: 0 20px;
+            cursor: pointer;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+<div class="wrap">
+    <h1>
+        You want to say ：
+        <span class="word"></span>
+        <span class="typed-cursor">|</span> ！
+    </h1>
+    <div class="saySection">
+        <input type="text" id="inValue" class="txtSay"/>
+        <input type="button" value="Say" id="btnSay" class="btnSay"/>
+    </div>
+</div>
+<script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function(){
+            /*
+                    1-点击按钮 获取输入框的内容
+                    2-将文字一个一个添加到word盒子中
+             */
+            setText('春哥又帅了！');
+
+            //点击按钮 出现打字效果
+            $("#btnSay").click(function () {
+                var txt = $("#inValue").val();
+                setTxt(txt); //调用设置文本的方法
+
+            })
+
+            //设置文字的方法
+            function setTxt(txt) {
+                var str = "";
+                var num = 0;
+                $(".typed-cursor").show();//显示光标
+                var timer = setInterval(function () {
+                    str += txt[num];
+                    $(".word").text(str);
+                    num++;
+                    if(num >= txt.length){
+                        //停止定时器
+                        clearInterval(timer);
+                        //隐藏光标
+                        $(".typed-cursor").hide();
+                    }
+                },500)
+            }
+        })
+   </script>
+
+</body>
+</html>

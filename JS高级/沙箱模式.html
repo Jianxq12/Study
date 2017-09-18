@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //沙箱模式其实就是一个自调用函数
+    //沙箱的作用，就是对代码起到保护，隔离的作用
+    (function (w) {
+        var a = 10;
+        var b = 100;
+        console.log(a,b);
+
+        function Food() {
+
+        }
+
+        //将Food暴露到沙箱外面
+        w.Food = Food;
+    })(window)
+
+
+    var food = new Food();
+
+    //如果在沙箱中使用到的沙箱外部的内容，那么就需要将内容以传参的形式传递到沙箱中进行使用
+        //原因：
+        //1. 可以实现逻辑上的隔离
+        //2. 有利于代码压缩
+
+</script>
+</body>
+</html>

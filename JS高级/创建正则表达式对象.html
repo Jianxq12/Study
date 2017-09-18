@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text">
+<button>检查</button>
+<script>
+    var text = document.getElementsByTagName("input")[0];
+    var btn = document.getElementsByTagName("button")[0];
+
+    btn.onclick = function () {
+        var phonoNumber = text.value;
+        var reg = /^1[34578]\d{9}$/;
+        if(reg.test(phonoNumber)){
+            alert("是一个电话号码");
+        }else {
+         alert("不是电话号码");
+        }
+    }
+
+    //创建正则表达式对象
+    //1.字面量
+//    var str = "abcd";
+//    var reg = /\w+\d$/;
+//    console.log(reg.test(str));
+
+    //2.构造函数
+//    var str = "acefd";
+//    var reg = new RegExp("^a\\w+d$");
+//    console.log(reg.test(str));
+
+</script>
+</body>
+</html>

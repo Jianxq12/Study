@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var str = "张三：1000，李四：5000，王五：8000。";
+    var str1 = str.match(/\d+/g);
+    console.log(str1);
+
+
+    var date1 = "2017-08-30";
+//    var date2 = date1.match(/\d+-\d+-\d+/);
+//    console.log(date2);
+    var date2 = date1.match(/((\d+)-(\d+))-(\d+)/);
+    console.log(date2);
+    console.log(RegExp.$1);
+    console.log(RegExp.$2);
+</script>
+</body>
+</html>

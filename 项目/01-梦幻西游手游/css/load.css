@@ -1,0 +1,42 @@
+/*专题加载页面开始*/
+html,body {
+  height:100%;
+}
+body {
+  background: #000 ;
+}
+.full-bg {
+  width:100%;
+  height:100%;
+}
+.boll-bg {
+  width:300px;
+  height:159px;
+  margin: 0 auto;
+  margin-top:400px;
+  padding-left: 34px;
+  box-sizing: border-box;
+}
+.load {
+  width:320px;
+  padding-top:1px;
+  padding-left:18px;
+  margin:0 auto;
+  margin-top:30px;
+}
+.load-left,.load-right,.load-txt {
+  display: inline-block;
+  width:100px;
+  height: 33px;
+}
+.load-left {
+  background: url("../images/load-left.png");
+}
+.load-right {
+  background: url("../images/load-right.png");
+}
+.load-txt {
+  color: #fff;
+  width: 45px;
+}
+/*专题加载页面结束*/

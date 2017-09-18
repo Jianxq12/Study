@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //1.保护变量
+//    function pm() {
+//        var name = "panming";
+//        var yanzhi = 10;
+//
+//        return{
+//            getYanzhi : function () {
+//                return yanzhi;
+//            },
+//            setYanzhi : function (value) {
+//                if(typeof value != "number" || value < 0){
+//                    value = 10;
+//                }
+//                yanzhi = value;
+//            }
+//        }
+//    }
+//
+//    var p = pm();
+//    p.setYanzhi(7);
+//    p.setYanzhi(-1);
+//    console.log(p.getYanzhi());
+
+
+    //2.给函数提供私有变量
+    function fn() {
+        var count = 0;
+        return{
+            test : function () {
+                count++;
+            },
+            getCount : function () {
+                return count;
+            }
+        }
+    }
+
+    var f = fn();
+    f.test();
+    f.test();
+    f.test();
+    f.test();
+
+    console.log(f.getCount());
+
+</script>
+</body>
+</html>

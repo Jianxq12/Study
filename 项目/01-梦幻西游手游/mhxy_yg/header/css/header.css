@@ -1,0 +1,54 @@
+.top_head {
+  height:55px;
+  background-color: #fbfbfb;
+}
+.top-bar-main{
+  width: 1000px;
+  margin:auto;
+}
+.top_head_left {
+  margin-top:5px;
+}
+.top_head_right ul li {
+  float: left;
+  line-height:53px;
+  text-align: center;
+}
+.anzhuo {
+  width:80px;
+}
+.anzhuo:hover {
+  background-color:#F3F3F3;
+  border-bottom:3px solid #bc2e2e;
+  box-sizing:border-box;
+}
+.mulu {
+  width:110px;
+}
+.chongzhi {
+  width:110px;
+
+}
+.chongzhi:hover {
+  background-color:#F3F3F3;
+  border-bottom:3px solid #bc2e2e;
+  box-sizing:border-box;
+}
+.chongzhi div {
+  width:100%;
+  height:53px;  
+}
+.chognzhi div ul {
+  width:100%;
+}
+.chongzhi div ul li {
+  width:100%;
+  text-align: center;
+  color: #6b6b6b;
+}
+.top_h_a {
+  display: block;
+  width:133px;
+  height:44px;
+  background: url("../images/logo_b5525b7.png") no-repeat;
+}

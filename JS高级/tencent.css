@@ -1,0 +1,149 @@
+/*通用样式开始*/
+*{
+    margin: 0;
+    padding: 0;
+}
+.w{
+    width: 800px;
+    margin: 0 auto;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.clearfix{
+    display: block;
+    content: "";
+    clear: both;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+input,textarea,select,button {
+    outline-style: none;
+}
+/*通用样式结束*/
+
+body{
+    background: url("images/wrapBg.jpg") no-repeat top center;
+    width: 100%;
+    height: 100%;
+}
+
+/*logo开始*/
+.logo{
+    margin: 20px 0;
+}
+/*logo结束*/
+
+/*content开始*/
+.content{
+    padding-left: 50px;
+    /*background-color: skyblue;*/
+    height: 600px;
+}
+
+/*顶部发布区开始*/
+.content_t{
+    border: 1px solid red;
+    background-color: #ccc;
+    height:180px;
+    border-radius: 10px;
+    padding-left: 20px;
+    overflow: hidden;
+
+}
+.content_t_r {
+    width: 200px;
+    height: 180px;
+    padding: 5px;
+    box-sizing: border-box;
+    background-color: deepskyblue;
+}
+.content_t_r img{
+    width: 100%;
+    height: 100%;
+}
+.content_t_l{
+    width: 520px;
+    height: 100%;
+    position: relative;
+}
+.content_t_l p {
+    font-size: 16px;
+    color: #333;
+    margin: 5px 0;
+    font-family: "黑体";
+}
+.content_t_l textarea{
+    width: 100%;
+    height: 80px;
+    border: 1px solid #333;
+}
+.content_t_l ul li{
+    float: left;
+    margin: 0 10px;
+}
+.fabu{
+    margin-top: 5px;
+    position: absolute;
+    bottom: 5px;
+    right: 0;
+}
+.fabu p{
+    display: inline-block;
+}
+.fabu button{
+    background-color: green;
+    width: 100px;
+    padding: 4px;
+    color: #fff;
+}
+.fabu p span{
+    font-size: 20px;
+    font-style: italic;
+}
+/*顶部发布区结束*/
+
+/*底部展示区开始*/
+.content_b{
+    /*border: 1px solid #333;*/
+    /*background-color: dodgerblue;*/
+    margin-top:20px;
+    border-radius: 10px;
+    height: 400px;
+    padding: 10px;
+}
+.content_b #list li{
+    position: relative;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.person_icon{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top:5px;
+}
+.show_txt{
+    width: 625px;
+    margin-left: 70px;
+    padding: 10px;
+    border: 1px solid red;
+    background-color: yellow;
+    border-radius: 5px;
+}
+.peitu{
+    margin: 5px 0;
+}
+
+/*底部展示区结束*/
+
+
+/*content结束*/

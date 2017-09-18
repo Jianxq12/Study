@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    //借用数组方法
+    var fakerArr = {
+        0 : "zhangsan",
+        1 : "lisi",
+        2 : "wangwu",
+        3 : "zhaoliu",
+        length : 4//伪数组必须添加length
+    };
+
+    Array.prototype.push.call(fakerArr,"什么东西");
+
+    console.log(fakerArr);
+
+    //伪数组转成真数组
+    var fakerArr = {
+        0 : "zhangsan",
+        1 : "lisi",
+        2 : "wangwu",
+        3 : "zhaoliu",
+        length : 4
+    };
+    var result = [];
+    result.push.apply(result,fakerArr);
+    console.log(result);
+
+    //数组最大值
+    arr = [11,22,13,26]
+    console.log(Math.max.apply(Math, arr));
+
+
+    //伪数组转为真数组最受欢迎的方法
+    var fakerArr = {
+        0 : "zhangsan",
+        1 : "lisi",
+        2 : "wangwu",
+        3 : "zhaoliu",
+        length : 4
+    };
+
+    console.log(Array.prototype.slice.call(fakerArr));
+</script>
+</body>
+</html>

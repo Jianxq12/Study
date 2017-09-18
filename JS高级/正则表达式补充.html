@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str = "aBc";
+    var reg = /abc/i;
+    console.log(reg.test(str));
+
+
+
+    var str1 = "abc2AbC12aBC45";
+    var reg1 = /abc/gi;
+    console.log(str1.replace(reg1, "000"));
+
+
+
+    var str2 = "+.abc/d";
+    var reg2 = /\+\.abc\/d/;
+    console.log(reg.test(str2));
+
+
+
+    var str3 = "张三：1000，李四：5000，王五：8000。";
+    var reg3 = new RegExp("\\d+","g");
+    var matchs = str3.match(reg3);
+    console.log(matchs);
+</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>五角星评分案例</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .comment {
+            font-size: 40px;
+            color: #ff16cf;
+        }
+
+        .comment li {
+            float: left;
+            font-family:'宋体';
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+        }
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            var wjx_k='☆';
+            var wjx_s='★';
+            var current;
+
+            //1-鼠标移动，前面所有的星变实心
+            $("li").mouseenter(function () {
+                $("li").text(wjx_k);
+                $(this).prevAll().andSelf().text(wjx_s);
+            })
+
+            //2-鼠标离开 全部设置为空心
+            $("li").mouseleave(function () {
+                $("li").text(wjx_k);
+                if(current){
+                    $("li").eq(current).prevAll().andSelf().text(wjx_s);
+                }
+            })
+
+            //3-点击之后，鼠标离开 点击之前的还是实心
+            $("li").click(function () {
+                current = $(this).index();
+            })
+
+        });
+    </script>
+
+
+</head>
+
+<body>
+<ul class="comment">
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+</ul>
+</body>
+
+</html>

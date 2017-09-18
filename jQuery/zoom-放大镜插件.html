@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box,.box2{
+            width:800px;
+            height:400px;
+            border:1px solid #000;
+            margin:100px auto;
+
+        }
+
+        .box{
+            background: url(images/wzj.jpg);
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+<div class="box2"></div>
+
+<script src="jquery-1.12.4.js"></script>
+<script src="jquery.zoom.js"></script>
+    <script>
+        $(function(){
+            $(".box").zoom({
+                on:"click",//点击图片实现放大效果
+                url:"images/wzj.jpg",
+                target:$(".box2"),
+                magnify:1,//设置放大倍数
+                callback:function () {
+                    //图片加载完后执行的函数
+                    alert("1");
+                },
+                onZoomIn:function () {
+                    //放大后执行
+                    alert("2");
+                },
+                onZoomOut:function () {
+                    //还原后执行
+                    alert("3")
+                }
+
+            })
+        })
+   </script>
+
+</body>
+</html>
