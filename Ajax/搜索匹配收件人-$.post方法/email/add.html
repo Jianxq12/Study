@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/info-reg.css" />
+<title>移动办公自动化系统</title>
+<style type='text/css'>
+	select {
+		/*background: rgba(0, 0, 0, 0) url("images/inputbg.png") repeat-x scroll 0 0;*/
+	    border: 1px solid #c5d6e0;
+	    height: 28px;
+	    outline: medium none;
+	    padding: 0 10px;
+	    width: 240px;
+	}
+	textarea {
+		width:800px;
+	}
+	
+	#tip{
+		position:absolute;
+		top: 96px;
+		left:114px;
+		width: 260px;
+		height: auto;
+		border:1px solid #c5d6e0;
+		background:#fff;
+		display:none;
+		z-index:999;
+	}
+	
+</style>
+</head>
+
+<body>
+<div class="title"><h2>信息登记</h2></div>
+<form action="" method="post">
+<div class="main">
+	<p class="short-input ue-clear">
+    	<label>收件人：</label>
+        <input name="name" id='name' type="text" placeholder="收件人名称" autocomplete='off' />
+		<div id='tip'></div>
+    </p>
+    <p class="short-input ue-clear">
+    	<label>主题：</label>
+        <input name="title" type="text" placeholder="邮件主题" />
+    </p>
+    <p class="short-input ue-clear" style="float:left;">
+    	<label>内容：</label>
+    </p>
+	<p style='width:900px; padding-left:0; float:left;'>
+		<textarea name="content" id="content"></textarea>
+	</p>
+	<div style='clear:both;'></div>
+</div>
+<div class="btn ue-clear">
+	<a href="javascript:;" class="confirm" id='btnSubmit'>确定</a>
+    <a href="javascript:;" class="clear" id='btnReset'>清空内容</a>
+</div>
+</form>
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+
+<!-- 需求：在收件人文本框中输入字符，能够在下拉菜单中显示匹配到的用户 -->
+
+<script type="text/javascript">
+//获取收件人文本框对象，绑定键盘弹起事件
+$('#name').keyup(function(){
+	//获取收件人名称
+	var name = $(this).val();
+	//调用$.post发送ajax请求
+	$.post('getUsers.php', {"name":name}, function(msg){
+		//获取下拉菜单对象
+		var tip = $('#tip');
+		tip.empty();
+		// alert(msg);
+		//循环msg数组，取出其中的uname字段
+		for(i =0;i < msg.length;i++){
+			//创建div标签
+			var div = $("<div></div>");
+			//将用户名添加到标签中
+			div.html(msg[i].uname);
+			//绑定鼠标悬浮事件，高亮显示
+			div.mouseover(function(){
+				$(this).css({'background':'skyblue'}).siblings().css({'background':'white'});
+			})
+			// 绑定点击事件
+			div.click(function(){
+				$('#name').val($(this).html());
+				tip.hide();
+			})
+			//将div标签添加到tip对象中
+			tip.append(div);
+		}
+		tip.show();
+
+	},'json');
+})
+
+
+$(".select-title").on("click",function(){
+	$(".select-list").toggle();
+	return false;
+});
+$(".select-list").on("click","li",function(){
+	var txt = $(this).text();
+	$(".select-title").find("span").text(txt);
+});
+
+showRemind('input[type=text], textarea','placeholder');
+</script>
+</html>
