@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+</head>
+
+<!-- 需求：上传图片文件，制作缩略图，并且在页面上显示原图和缩略图 -->
+
+<body>
+<div id="big"></div>
+<div id="small"></div>
+<!-- 创建上传图片的表单 -->
+<form action="" method="post" id="mainForm">
+	<input type="file" name="f">
+	<input type="button" value="上传">
+</form>
+
+<script type="text/javascript">
+//获取上传按钮，绑定点击事件
+	$('[type=button]').click(function(){
+		// 获取表单对象
+		var fm = document.getElementById('mainForm');
+		// 实例化FormData对象
+		var fd = new FormData(fm);
+		// 调用$.ajax方法
+		$.ajax({
+			url:'upimg.php',
+			type:'post',//FormData只能使用post方式
+			data:fd,
+			contentType:false,//DOM形式发送数据使用false
+			processData:false,//DOM形式发送数据使用false
+			dataType:'json',
+			success:function(msg){
+				// alert(msg);
+				// 创建img对象
+				img_big = $("<img/>");
+				img_sma = $("<img/>");
+				// 为img对象设置src属性
+				img_big.attr('src',msg.ori);
+				img_sma.attr('src',msg.sma);
+				// 将img加入到div当中
+				$("#big").append(img_big);
+				$("#small").append(img_sma);
+			}
+		});
+
+	})
+</script>
+</body>
+</html>
