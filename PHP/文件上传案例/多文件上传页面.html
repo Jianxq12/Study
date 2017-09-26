@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- 文件上传时form表单的enctype属性需设置为multipart/form-data -->
+	<form action="upload2.php" method="POST" enctype="multipart/form-data">
+		用户图像：<br>
+		<!-- 多文件上传时，name属性值需为数组形式 -->
+		<input type="file" name="myFile[]"><br>
+		<input type="file" name="myFile[]"><br>
+		<input type="file" name="myFile[]"><br>
+		<input type="submit" value="上传">
+	</form>
+</body>
+</html>
