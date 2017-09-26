@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- 需求：在搜索文本框中，输入用户名，在下方表单中将对应用户信息填入 -->
+	<input type="text" name="n" id="txt">
+	<input type="button" value="搜索" onclick="getUsers()"><br>
+
+	用户id：
+	<input type="text" name="id" id="id"><br>
+	用户名：
+	<input type="text" name="name" id="name"><br>
+	用户密码：
+	<input type="text" name="pwd" id="pwd"><br>
+
+	<script type="text/javascript">
+		function getUsers(){
+			// 获取文本框内容
+			var name = document.getElementById('txt').value;
+			// 创建XMLHttpRequest对象
+			var xhr = new XMLHttpRequest();
+			// 调用open方法准备ajax请求
+			xhr.open('get','getUsers.php?name='+name+'&_='+Math.random());
+			// 编写onreadystatechange事件
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState == 4){
+					// alert(xhr.responseText);
+					var s = xhr.responseText;//json字符串
+					var userinfo = JSON.parse(s);//将json字符串转为json对象
+					document.getElementById('id').value = userinfo.uid;
+					document.getElementById('name').value = userinfo.username;
+					document.getElementById('pwd').value = userinfo.password;
+				}
+			}
+			// 调用send方法发送请求
+			xhr.send(null);
+
+		}
+	</script>
+</body>
+
+</html>
