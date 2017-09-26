@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+</head>
+
+<!-- 跨域实现方式一：
+在$.ajax方法中设置dataType:jsonp  (客户端解决) -->
+
+<body>
+	<script type="text/javascript">
+		$.ajax({
+			url:'http://www.a67.com/jsonp.php',
+			type:'get',//jsonp方式必须使用get方式
+			dataType:'jsonp',//返回值类型必须设置为jsonp
+			jsonp:'fn',//jsonp跨域的传参，是一个随机数
+			success:function(msg){
+				alert(msg.id+" "+msg.name);
+			}
+		})
+	</script>
+</body>
+</html>

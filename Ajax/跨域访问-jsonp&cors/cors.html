@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+</head>
+
+<!-- 跨域实现方式二：
+使用cors策略，Cross-Origin Resource Sharing  跨域资源共享（后台实现方案） -->
+
+<body>
+	<script type="text/javascript">
+		$.ajax({
+			url:'http://www.a67.com/cors.php',
+			type:'post',//类型使用get post均可
+			dataType:'text',//返回值类型就是一般的text
+			success:function(msg){
+				alert(msg);
+			}
+		})
+	</script>
+</body>
+</html>
