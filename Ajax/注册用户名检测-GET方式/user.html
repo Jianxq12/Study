@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form action="" method="POST">
+		用户名：
+		<!-- 用户名文本框绑定失焦事件 -->
+		<input type="text" name="name" id="name" onblur="check()">
+		<div id="d"></div>
+		密码：
+		<input type="password" name="pass"><br>
+		<input type="submit" value="注册">
+	</form>
+
+	<script type="text/javascript">
+	// 创建XMLHttpRequest对象
+		function getXmlHttp(){
+			var xhr = null;
+			try{
+				xhr = new XMLHttpRequest();
+			}catch(e){
+				try{
+				xhr = new ActiveXObject('Microsoft.XMLHTTP');
+				}catch(e){
+				xhr =new  ActiveXObject('Msxml2.XMLHTTP');
+				}
+			}
+			return xhr;
+		}
+
+		function check(){
+			// 获取文本框用户名的值
+			var name = document.getElementById('name').value;
+			// 获取XMLHTTPRequest对象
+			var xhr = getXmlHttp();
+			// 调用open方法准备ajax请求
+			xhr.open('get','checkuser.php?name='+name);
+			// 调用onreadystatechange事件监测结果
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState == 4){
+					var div = document.getElementById('d');
+					// 后台返回结果为1时 用户名可用
+					if(xhr.responseText == 1){
+						div.style.color = 'green';
+						div.innerHTML = '该用户名可用';
+					}else{
+						// 后台返回结果不为1时 用户名被占用
+						div.style.color = 'red';
+						div.innerHTML = '该用户名已被占用';
+					}
+				}
+			}
+			// 调用send方法发送ajax请求
+			xhr.send(null);
+		}
+	</script>
+</body>
+</html>
