@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- 外层div 进度条的整体视觉和位置设置 -->
+	<div style="width:300px;height: 20px;border: 1px solid #CCC">
+	<!-- 内层div  逐渐递增的进度条 -->
+		<div id="jdt" style="height: 20px"></div>
+	</div><br>
+	<form action="" method="post" id="mainForm">
+		选择文件：
+		<input type="file" name="f">
+		<input type="button" value="上传" onclick="upload()">
+	</form>
+	<script type="text/javascript">
+		function upload(){
+			var fm = document.getElementById("mainForm");
+			var fd = new FormData(fm);
+			var xhr = new XMLHttpRequest();
+			// console.log(xhr);
+			xhr.open('post','upfile.php');
+
+			var jdt = document.getElementById('jdt');
+			xhr.upload.onprogress = function(evt){
+				// console.log(evt);
+				// toFixed修正结果，只保留小数点后两位
+				// 计算上传大小的百分比
+				percent = (evt.loaded / evt.total).toFixed(2);
+				jdt.style.width = percent * 300 + 'px';
+				jdt.style.background = 'skyblue';
+			}
+
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState == 4){
+					alert(xhr.responseText);
+				}
+			}
+			xhr.send(fd);
+		}
+	</script>
+</body>
+</html>
