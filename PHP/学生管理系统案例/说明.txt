@@ -1,0 +1,38 @@
+1.数据表说明
+
+student学生表字段：
+学号id
+姓名name  
+年龄age  
+班级编号classid  
+性别sex  
+手机号tel 
+地址address  
+电子图像路径pic_path
+
+class班级表字段：
+班级编号id  
+班级名称classname  
+老师tutor  
+开班时间start_time
+
+admin管理员表字段：
+账号编号id
+用户名user
+密码password
+
+2.处理脚本说明
+
+工具函数封装 function.php  connect.php
+添加学生信息 add.php 
+接收添加数据 insert.php
+首页简要展示 index.php
+修改学生信息 edit.php 
+接收修改信息 update.php
+学生详细信息 detail.php
+删除学生信息 delete.php
+验证是否登录 checklogin.php
+账号信息验证 validate.php
+账号退出处理 exit.php
+MYSQL函数封装 mysql.sql
+admin建表语句 data.sql
