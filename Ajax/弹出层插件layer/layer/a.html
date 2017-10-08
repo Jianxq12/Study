@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+</head>
+<body>
+	<p>弹出层测试文件</p>
+</body>
+<script type="text/javascript">
+
+	//绑定点击事件，关闭弹出层
+	$(document).click(function(){
+		//获取弹出层id
+		var index = parent.layer.getFrameIndex(window.name);
+		//调用layer.close方法，关闭弹出层
+		parent.layer.close(index);
+	})
+</script>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>layer弹出层测试</title>
+	<script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="layer.js"></script>
+</head>
+<body>
+<div id="d">div标签中的内容</div>
+
+	<script type="text/javascript">
+		// (1)type=0，content中填写显示的内容
+		
+		// layer.ready(function(){
+		// 	layer.open({
+		// 		type:0,
+		// 		title:'弹出层测试1',
+		// 		maxmin:true,
+		// 		area:['800px','500px'],
+		// 		content:'第一个弹出层测试'
+		// 	})
+		// })
+
+		// (2)type=1, content=对象，弹出当前页面中的一个块
+		
+		// layer.ready(function(){
+		// 	layer.open({
+		// 		type:1,
+		// 		title:'弹出层测试2',
+		// 		maxmin:true,
+		// 		area:['800px','500px'],
+		// 		content:$('#d')
+		// 	})
+		// })
+
+		// (3)type=2，content=文件地址，将另一个文件弹出
+		
+		layer.ready(function(){
+			layer.open({
+				type:2,
+				title:'弹出层测试3',
+				maxmin:true,
+				area:['800px','500px'],
+				content:'a.html'
+			})
+		})
+
+	</script>
+</body>
+</html>
