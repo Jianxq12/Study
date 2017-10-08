@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ueditor富文本编辑器测试</title>
+	<link rel="stylesheet" type="text/css" href="themes/default/css/umeditor.css">
+	<script type="text/javascript" src="third-party/jquery.min.js"></script>
+	<script type="text/javascript" src="umeditor.config.js"></script>
+	<script type="text/javascript" src="umeditor.min.js"></script>
+	<script type="text/javascript" src="lang/zh-cn/zh-cn.js"></script>
+</head>
+<body>
+
+<!-- 设置承载标签，一般使用两种标签（textarea、script，使用script标签时，必须设置type="text/plain"），必须要设置id属性 -->
+
+	<textarea id="content"></textarea>
+
+
+<script type="text/javascript">
+// 实例化富文本编辑器，getEditor第一个参数就是承载标签的id值
+
+var um = UM.getEditor('content',{
+	//自定义配置项会覆盖配置文件中的配置项
+	initialFrameWidth:600, //初始化编辑器宽度
+    initialFrameHeight:300,  //初始化编辑器高度
+    isShow : true,    //默认显示编辑器
+	initialContent:'请编辑内容',
+	//自定义工具栏
+	toolbar:[
+	            'source | undo redo | bold italic underline strikethrough | superscript subscript | forecolor backcolor | removeformat |',
+	            'insertorderedlist insertunorderedlist | selectall cleardoc paragraph | fontfamily fontsize' ,
+	            '| justifyleft justifycenter justifyright justifyjustify |',
+	            'link unlink | emotion image video  | map',
+	            '| horizontal print preview fullscreen', 'drafts', 'formula'
+	        ],
+	// 自定义字体大小
+	fontsize:[10, 11, 12, 14, 16, 18, 20, 24, 36]
+})
+</script>
+</body>
+</html>
