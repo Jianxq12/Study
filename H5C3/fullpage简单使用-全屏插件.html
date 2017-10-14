@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+	<!-- 插件使用步骤：
+	引包 -->
+	<!-- fullpage的核心css文件 -->
+	<link rel="stylesheet" href="jquery.fullPage.css">
+</head>
+<body>
+	<!-- 插件需要的结构 -->
+	<div id="fullpage">
+		<div class="section">Some section1</div>
+		<div class="section">Some section2</div>
+		<div class="section">Some section3</div>
+		<div class="section">Some section4</div>
+	</div>
+	<!-- 因为FULLPAGE是基于JQ的  所以需要先引用JQ包 -->
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<!-- 缓动库 -->
+	<script type="text/javascript" src="jquery.easing.1.3.js"></script>
+	<!-- fullpage的核心Js文件 -->
+	<script type="text/javascript" src="jquery.fullPage.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			// 初始化fullpage
+			$('#fullpage').fullpage({
+				//是否显示项目导航
+				navigation : true,
+				//滚动速度 毫秒
+				scrollingSpeed:700
+			});
+		});
+	</script>
+</body>
+</html>
