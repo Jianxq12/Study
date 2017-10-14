@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		
+		.box {
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+			margin: 100px auto;
+			position: relative;
+			/* 保留子元素的立体位置 */
+			transform-style:preserve-3d;
+			transition:all 1s;
+		}	
+		.box:hover {
+			transform:rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+		}
+		.box > div {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			left: 0;
+			top: 0;
+			opacity: 0.5;
+		}
+		.box > div:nth-child(1){
+			background-color: red;
+			transform:rotateX(90deg) translateZ(100px);
+		}
+		.box > div:nth-child(2){
+			background-color: green;
+			transform:rotateX(-90deg) translateZ(100px);
+		}
+		.box > div:nth-child(3){
+			background-color: blue;
+			transform:rotateY(-90deg) translateZ(100px);
+		}
+		.box > div:nth-child(4){
+			background-color: yellow;
+			transform:rotateY(90deg) translateZ(100px);
+		}
+		.box > div:nth-child(5){
+			background-color: pink;
+			transform:translateZ(100px);
+		}
+		.box > div:nth-child(6){
+			background-color: purple;
+			transform:rotateX(180deg) translateZ(100px);
+		}
+
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="piece"></div>
+		<div class="piece"></div>
+		<div class="piece"></div>
+		<div class="piece"></div>
+		<div class="piece"></div>
+		<div class="piece"></div>
+	</div>
+</body>
+</html>
