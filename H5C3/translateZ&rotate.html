@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body {
+			perspective:1000px;
+		}
+		.box {
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+			margin:100px auto;
+			transition:transform 1s;
+			background:  url(images/1.jpg) 0 0 no-repeat;
+			-webkit-background-size: 100% 100%;
+			background-size: 100% 100%;
+		}
+
+		/* translateZ代表元素在Z轴上来回移动，这种来回移动涉及到近大远小的关系
+			添加上视距可以比较直观的看到盒子的移动
+			正值表示元素往前走
+			负值表示元素往后退
+
+		如果想要做一个空间动画：需要先rotate  再translate
+		如果想要做一个直线动画：需要先translate 再rotate
+		*/
+	</style>
+</head>
+<body>
+	<button>点我呀！！</button>
+	<div class="box"></div>
+
+	<script type="text/javascript">
+		var box = document.querySelector('.box');
+		var btn = document.querySelector('button');
+
+		btn.onclick = function(){
+			box.style.transform = 'translateZ(500px) rotateX(3600deg)'
+		}
+	</script>
+</body>
+</html>
