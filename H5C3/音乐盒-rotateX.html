@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body {
+			height: 2000px;
+		}
+		.father {
+			width: 300px;
+			height: 300px;
+			border: 1px solid #000;
+			margin: 100px auto;
+			position: relative;
+			border-radius: 50%;
+			/* perspective:100px; */
+		}
+		.son1,.son2 {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			left: 0;
+			top: 0;
+			border-radius: 50%;
+		}
+		.son1 {
+			background:  url(images/musicb.jpg) 0 0 no-repeat;
+			transition:transform 10s;
+		}
+		.son2 {
+			background:  url(images/musict.jpg) 0 0 no-repeat;
+			transform-origin:center bottom;
+			transition:transform 1s;
+		}
+		/* hover小技巧：不要直接hover一个位置会改变的元素
+		建议hover一个不动的元素（找父级） */
+		.father:hover .son2 {
+			transform:rotateX(-180deg);
+		}
+		.father:hover .son1 {
+			transform:rotateZ(360deg);
+		}
+	</style>
+</head>
+<body>
+	<div class="father" id="father">
+		<div class="son1"></div>
+		<div class="son2"></div>
+	</div>
+	<audio src="images/BIRTHDAY.WAV"></audio>
+	<script type="text/javascript">
+
+		/*h5提供两个获取元素的新方式：
+		document.querySelector()  // 只会获取符号条件的第一个元素
+		document.querySelectorAll()//获取满足条件的所有元素 即使只有一个满足，也是一个数组
+		参数：就是css的选择器*/
+
+		var father = document.querySelector('.father');
+		var audio = document.querySelector('audio');
+		father.onmouseenter = function(){
+			// 重新加载
+			audio.load();
+			// 播放
+			audio.play();
+		}
+		father.onmouseleave = function(){
+			// 暂停
+			audio.pause();
+		}
+	</script>
+</body>
+</html>
