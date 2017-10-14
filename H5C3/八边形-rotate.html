@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		.box{
+			width: 800px;
+			height: 800px;
+		}
+		ul{
+			width: 800px;
+			height: 800px;
+			border: 1px solid #000;
+			margin: 100px auto;
+			position: relative;
+			perspective:10000px;
+			transform-style: preserve-3d;
+			transform: rotateX(-15deg) rotateY(0deg) rotateZ(0deg);
+			animation: test 2s 4s infinite;
+
+		}
+		@keyframes test{
+			100%{
+				transform: rotateX(-15deg) rotateY(360deg) rotateZ(360deg);
+			}
+		}
+		li{
+			width: 200px;
+			height: 80px;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%,-50%);
+			background-color: skyblue;
+		}
+		li:nth-child(1){
+			background: url(images/0.png) no-repeat 0 0/100% 100%;
+		}
+		li:nth-child(2){
+			background: url(images/1.png) no-repeat 0 0/100% 100%;
+		}
+		li:nth-child(3){
+			background: url(images/2.png) no-repeat 0 0/100% 100%;
+		}
+		li:nth-child(4){
+			background: url(images/3.png) no-repeat 0 0/100% 100%;
+		}
+		li:nth-child(5){
+			background: url(images/4.png) no-repeat 0 0/100% 100%;
+		}
+		li:nth-child(6){
+			background: url(images/5.png) no-repeat 0 0/100% 100%;
+		}
+		li:nth-child(7){
+			background: url(images/6.png) no-repeat 0 0/100% 100%;
+		}
+		li:nth-child(8){
+			background: url(images/7.png) no-repeat 0 0/100% 100%;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			// 遍历li元素
+			$('ul>li').each(function(index,el){
+				// el是dom对象 转换为JQ对象
+				var _el=$(el);
+				_el.css('transform','translate(-50%,-50%) rotateY('+index*45+'deg) translateZ(241px)');
+			})
+		})
+	</script>
+</body>
+</html>
