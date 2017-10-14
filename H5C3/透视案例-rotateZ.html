@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box {
+			width: 800px;
+			height: 800px;
+			border: 1px solid #000;
+			margin: 100px auto;
+			position: relative;
+			/*透视距离，值越小，效果越强*/
+			perspective:1800px;
+		}
+		.box > img {
+			width: 40%;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform:translate(-50%,-50%) rotateX(60deg) rotate(-15deg);
+			box-shadow: -8px 5px 10px rgba(0,0,0,.5);
+			transition:transform 1s,box-shadow 1s;
+		}
+		.box:hover img {
+			transform: translate(-50%,-50%) rotateX(0deg) rotate(0deg);
+			box-shadow: -100px -100px rgba(0,0,0,0);
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<img src="images/iphone.jpg" alt="">
+	</div>
+</body>
+</html>
