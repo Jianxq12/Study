@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+		}
+		.box{
+			width: 800px;
+			height: 800px;
+			border: 1px solid #000;
+			margin: 100px auto;
+		}
+		ul{
+			width: 800px;
+			height: 800px;
+			position: relative;
+			transform: rotateX(-20deg);
+			transform-style: preserve-3d;
+			perspective: 9000px;
+		}
+		li{
+			width: 200px;
+			height: 80px;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%,-50%) rotateY(0deg) ;
+			background:  url(images/0.png) 0 0 no-repeat;
+			-webkit-background-size: 100% 100%;
+			background-size: 100% 100%;
+		}
+		li:nth-child(2){
+			background-image: url(images/1.png);
+		}
+		li:nth-child(3){
+			background-image: url(images/2.png);
+		}
+		li:nth-child(4){
+			background-image: url(images/3.png);
+		}
+		li:nth-child(5){
+			background-image: url(images/4.png);
+		}
+		li:nth-child(6){
+			background-image: url(images/5.png);
+		}
+		li:nth-child(7){
+			background-image: url(images/6.png);
+		}
+		li:nth-child(8){
+			background-image: url(images/7.png);
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul class="box_wrap">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		// 遍历所有的LI,动态去添加rotateY的角度,每一个当前的LI的角度应该是自己的下标*45度
+		var li = $('li');
+
+		li.each(function(i, el) {
+			// 动态添加角度
+			$(el).css('transform','translate(-50%,-50%) rotateY('+i*45+'deg) translateZ(241px)');
+		});
+
+
+		var startX,startY,x,y,centerX = 0,centerY = 0,tempX = 0, tempY = 0;
+		
+		// 首先 让元素可以被拖拽
+		$('.box').mousedown(function(event) {
+			// 阻止默认行为
+			event.preventDefault();
+			// 记录按下的鼠标落点
+			startX = event.pageX;
+			startY = event.pageY;
+			// 最好是绑定给document,防止拖拽的速度过快
+			$(document).mousemove(function(event) {
+				// 实时获取移动时候的鼠标落点
+				var moveX = event.pageX;
+				var moveY = event.pageY;
+				// 获取移动的距离
+				x = moveX - startX;
+				y = moveY - startY;
+				
+				$('.box_wrap').css({'transform':'rotateX('+(centerY + y)+'deg) rotateY('+(centerX  + x)+'deg)'});
+
+				// 这样写是不对的，当下一次拖拽的时候永远都是从0 0的位置开始拖拽
+				// 拖拽
+				//$('.box_wrap').css({'transform':'rotateX(-20deg) translate('+(centerX+x)+'px,'+(centerY+y)+'px)'}) 
+				
+				/*tempX = (centerX + x); 
+                tempY = (centerY + y); 
+				$('.box_wrap').css('transform','rotateX('+ tempY/10+'deg) rotateY('+tempX/3+'deg)');*/
+			});	
+
+			$(document).mouseup(function(){
+				// 将上一次拖拽过来的值赋值给centerX以便下一次基于这个值在去拖拽
+				// 同时需要将mousemove和mouseup解绑，move不解绑的话鼠标在document上面移动的时候会触发，up不解绑的话你只要以后UP一下就会加上上一次的dx和dy值  这样会有问题，会让下一次的值增大
+				centerY = (centerY + y);
+				centerX = (centerX + x);
+				/*centerX = tempX;
+                centerY = tempY;*/
+				$(document).off('mouseup');
+				$(document).off('mousemove');
+			})
+
+		});
+
+
+
+	})
+	</script>
+</body>
+</html>
