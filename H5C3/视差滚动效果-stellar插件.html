@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		html,body{
+			height: 100%;
+		}
+		.content{
+			width: 100%;
+			height: 100%;
+		}
+		.content2{
+			background: url(images/2.jpg) 0 0/100% 100% no-repeat;
+			/*背景图像相对于窗体固定*/
+			background-attachment: fixed;
+		}
+		.content4{
+			background: url(images/4.jpg) 0 0/100% 100% no-repeat;
+			background-attachment: fixed;
+		}
+		/*.yezi{
+			position: fixed;
+			top: 50px;
+			right: 10px;
+		}*/
+	</style>
+</head>
+<body>
+	<!-- data-stellar-ratio 元素针对页面滚动的速度比率 -->
+	<!-- <img src="images/big-01.png" alt="" class="yezi" data-stellar-ratio="2"> -->
+	<div class="content content1">111</div>
+	<!-- data-stellar-background-ratio 设置元素背景的滚动速率 -->
+	<div class="content content2" data-stellar-background-ratio="5"></div>
+	<div class="content content3">333</div>
+	<div class="content content4" data-stellar-background-ratio="0.5"></div>
+
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<!-- 引入视差滚动插件stellar -->
+	<script type="text/javascript" src="jquery.stellar.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$.stellar({
+				// 设置视差效果方向
+				horizontalScrolling:false,
+				// load或者resize事件触发时是否刷新页面
+				responsive:true
+			})
+		})
+	</script>
+</body>
+</html>
