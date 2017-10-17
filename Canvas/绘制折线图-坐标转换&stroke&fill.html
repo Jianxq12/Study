@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    canvas {
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+<canvas width="600" height="400" id='cas'></canvas>
+
+<script>
+  // 获取元素
+  var cas = document.getElementById( "cas" );
+  // 获取绘图上下文
+  var ctx = cas.getContext( '2d' );
+  
+  // 声明 padding
+  var padding = 40;
+  
+  // 绘制箭头
+  var arrowHeight = 20;
+  var arrowWidth = 6;
+  
+  // 1. 绘制坐标轴
+  paintXY();
+  
+  // 2. 在坐标轴绘制很多个点
+  // 原点坐标
+  var x0 = padding;
+  var y0 = cas.height - padding;
+  
+  var maxWidth = cas.width - padding * 2 - arrowHeight; // 最大宽度
+  var maxHeight =  cas.height - padding * 2 - arrowHeight; // 最大高度
+  
+  var pointArr = [ [10, 20], [15, 30], [20, 150], [25, 90], [30, 80], [35, 20], [40, 70],[45, 120], [50, 60], [55, 100] ];
+  
+  // 存放真实坐标
+  var pointRealArr = [];
+  
+  // 求 pointArr 最大值
+  // 将所有的 x 全部取出, 组成一个新的数组, [....]
+  //  pointArr.map(function( v ){ return v[0] })
+  
+  // 高级用法-1  Math.max(1,2,3)
+  var maxX = Math.max.apply( null, pointArr.map(function( v ){ return v[0] }) );
+  
+  // 普通用法
+  var maxY = pointArr[0][1];
+  for( var i = 0; i < pointArr.length; i++ ) {
+    if ( maxY < pointArr[i][1] ) {
+      maxY = pointArr[i][1]
+    }
+  }
+  
+  pointArr.forEach(function( value, index ) {
+    // 未转换前的 tempX, tempY
+    var tempX = parseInt( value[0] / maxX * maxWidth );
+    var tempY = parseInt( value[1] / maxY * maxHeight );
+    
+    // 坐标转换, 真实的点坐标
+    var x = x0 + tempX;
+    var y = y0 - tempY;
+  
+    // 真实坐标点 放入新数组
+    pointRealArr.push( [ x, y ] );
+    
+    // 已知坐标点为 x,y, 画点
+    var pointWidth = 8;
+    
+    ctx.beginPath();
+    ctx.fillStyle = "red";
+    ctx.moveTo(x-pointWidth/2, y-pointWidth/2);
+    ctx.lineTo(x+pointWidth/2, y-pointWidth/2);
+    ctx.lineTo(x+pointWidth/2, y+pointWidth/2);
+    ctx.lineTo(x-pointWidth/2, y+pointWidth/2);
+    ctx.closePath();
+    ctx.fill();
+  });
+  
+  // 3. 连线优化
+  ctx.beginPath();
+  ctx.strokeStyle = "red";
+  pointRealArr.forEach(function( v, i ) {
+    ctx[ ["moveTo", "lineTo"][ i === 0 ? 0 : 1 ] ](v[0], v[1]);
+  })
+  ctx.stroke();
+  
+  // 连线 常规写法
+//  console.log( pointRealArr );
+//  ctx.beginPath();
+//  ctx.strokeStyle = "red";
+//  for ( var i = 0; i < pointRealArr.length; i++ ) {
+//    // 第一个moveTo
+//    // 后面的lineTo
+//    if( i === 0 ) {
+//      ctx.moveTo( pointRealArr[i][0], pointRealArr[i][1])
+//    } else {
+//      ctx.lineTo( pointRealArr[i][0], pointRealArr[i][1])
+//    }
+//  }
+//  ctx.stroke();
+  
+  
+  function paintXY() {
+    // 画坐标轴
+    ctx.moveTo(padding, padding);
+    ctx.lineTo(padding, cas.height - padding);
+    ctx.lineTo(cas.width - padding, cas.height - padding );
+    ctx.stroke();
+    
+    // 1. y 轴箭头 已知 y轴顶端坐标 (padding,padding)
+    ctx.beginPath();
+    ctx.moveTo( padding, padding );
+    ctx.lineTo( padding-arrowWidth, padding + arrowHeight);
+    ctx.lineTo( padding, padding + arrowHeight / 2);
+    ctx.lineTo( padding+arrowWidth, padding + arrowHeight);
+    ctx.closePath();
+    ctx.fill();
+    
+    // 2. 绘制 x 轴箭头 已知x轴顶端坐标 (cas.width-padding, cas.height-padding)
+    ctx.beginPath();
+    ctx.moveTo(cas.width - padding, cas.height - padding);
+    ctx.lineTo(cas.width - padding - arrowHeight, cas.height - padding - arrowWidth);
+    ctx.lineTo(cas.width - padding - arrowHeight / 2, cas.height - padding);
+    ctx.lineTo(cas.width - padding - arrowHeight, cas.height - padding + arrowWidth);
+    ctx.closePath();
+    ctx.fill();
+  }
+
+</script>
+</body>
+</html>
