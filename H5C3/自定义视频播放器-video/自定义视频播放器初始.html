@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- 引入bootstrap的的专用字体图标 -->
+	<link rel="stylesheet" href="library/css/font-awesome.min.css">
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+		}
+		.box{
+			width: 800px;
+			height: 500px;
+			border: 1px solid #000;
+			margin: 100px auto;
+			border-radius: 5px;
+			box-shadow: 0 0 10px 2px;
+		}
+		.video_wrap{
+			width: 80%;
+			height: 100%;
+			float: left;
+		}
+		.video_list{
+			width: 20%;
+			height: 100%;
+			float: right;
+			border-left: 1px solid #ccc;
+			box-sizing: border-box;
+		}
+		.video_wrap video{
+			width: 100%;
+			height: 85%;
+			background-color: #000;
+		}
+		.controls_wrap{
+			line-height: 34px;
+			font-size: 0;
+			margin-top: 10px;
+			padding: 5px 0 5px 5px;
+		}
+		.controls_wrap i{
+			font-size: 36px;
+			text-align: center;
+			color: #f40;
+			cursor: pointer;
+		}
+		.controls_wrap i:nth-child(2){
+			font-size: 16px;
+			color: #000;
+			width: 10%;
+		}
+		.controls_wrap i,.controls_wrap input{
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.controls_wrap i{
+			width: 5%;
+		}
+		.controls_wrap .progress{
+			background-color: #fff;
+			width: 80%;
+			margin: 0;
+			outline: none;
+		}
+		.controls_wrap .sound{
+			font-size: 12px;
+			position: relative;
+			height: 30px;
+			line-height: 30px;
+		}
+		.controls_wrap .sound:hover input{
+			visibility: visible;
+			opacity: 1;
+		}
+		.controls_wrap .sound input{
+			position: absolute;
+			transform: rotate(-90deg);
+			left: 5px;
+			top: 0px;
+			transform-origin:left top;
+			width: 80px;
+			visibility: hidden;
+			transition: all 1s;
+			opacity: 0;
+		}
+		.video_list{
+			background-color: #666;
+		}
+		.video_list li{
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			color: #fff;
+			font-size: 14px;
+			letter-spacing: 5px;
+			cursor: pointer;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+		.test{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<span class="icon-ambulance"></span>
+	<div class="box">
+		<div class="video_wrap">
+			<video src="movies/movie.mp4" autoplay></video>
+			<div class='controls_wrap'>
+				<i class="play icon-pause"></i>
+				<i class="full icon-fullscreen"></i>
+				<input class="progress" type="range" value="0" min="0" max="100">
+				<i class="sound icon-volume-up">
+					<input class="volume_progress" type="range" value="100">
+				</i>
+			</div>
+		</div>
+		<div class="video_list">
+			<ul>
+				<li data-src="movies/mov_bbb.ogg">兔子哥</li>
+				<li data-src="movies/movie.mp4">灰姑娘</li>
+				<li data-src="movies/movie02.mp4">万合天宜</li>
+				<li data-src="movies/movie04.ogg">囧人合集</li>
+			</ul>
+		</div>
+	</div>
+</body>
+
+</html>

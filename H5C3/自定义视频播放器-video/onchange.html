@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" value="hehe">
+
+	<script type="text/javascript">
+	var input = document.querySelector('input');
+
+	// onchange事件是当值发生改变并且失去焦点的时候触发  没有兼容问题
+
+	input.onchange = function(){
+		console.log('我的值被改变了');
+	}
+
+	// 在输入的触发 输入一次就触发一次  有兼容问题
+	input.oninput = function(){
+		console.log('输入了');
+	}
+
+	</script>
+</body>
+</html>
