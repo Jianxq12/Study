@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<button data-color="red">点我变成红色</button>
+	<button data-color="green">点我变成绿色</button>
+	<button data-color="blue">点我变成蓝色</button>
+	
+	<script type="text/javascript">
+
+	// 需求：
+	// 在点击的时候换皮肤，并且当下一次登入这个网站的时候，直接显示上一次点击的皮肤
+
+	var btns = document.querySelectorAll('button');
+
+	// var colorArr = ['red','green','blue'];
+	// 然后在遍历的时候添加index属性，在点击的时候找到自己身上的index值，用这个index值去匹配数组的下标
+	
+	for(var i = 0; i < btns.length; i++){
+		btns[i].onclick = function(){
+			// 获取到当前元素身上的颜色
+			var color = this.dataset['color'];
+			document.body.style.backgroundColor = color;
+			// 将颜色存储到localStorage里面去
+			localStorage.setItem('color',color);
+		}
+	}
+
+	// 先判断是否有这个color
+	if(localStorage.getItem('color')){
+		// 将获取的颜色直接给body
+		document.body.style.backgroundColor = localStorage.getItem('color');
+	}
+
+	</script>
+
+</body>
+</html>
