@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    canvas {
+      border: 1px solid #000;
+      /*width: 600px;*/
+    }
+  </style>
+</head>
+<body>
+
+<!-- 默认 300 * 150-->
+<!-- 第一种方式：html属性 -->
+<!--<canvas id='cas' width="600" height="400"></canvas>-->
+
+<canvas id='cas1'></canvas>
+
+<canvas id="cas2"></canvas>
+
+<script>
+  // 给 canvas 设置宽高
+  // 1. 直接给标签属性width 和 height 进行设置
+  // 2. 直接通过 js dom对象的属性 dom.width  dom.height 来进行设置 宽高
+  // 比如: 设置高度 400, 就是说明 canvas画布在垂直方向上有 400个像素点
+  
+  // 注意: 不推荐使用 css style 样式来进行设置 canvas 宽高,
+  //       css style 来进行设置, 不会改变像素点的多少, 只是对 canvas 进行了拉伸变形
+  
+  var cas1 = document.getElementById("cas1");
+  // 获取绘图上下对象
+  var ctx1 = cas1.getContext('2d');
+  // 直接 设置 width height 本质就是在设置 canvas 画布的像素点
+  // 比如 cas1.width = 400, 横向 400个像素点
+  // 第二种方式：dom对象属性
+  cas1.width = 600;
+  cas1.height = 400;
+  ctx1.moveTo( 100, 100 );
+  ctx1.lineTo( 200, 100 );
+  // 上面只是绘制路径
+  // 需要 stroke() 来进行绘制
+  ctx1.stroke();
+  
+
+  var cas2 = document.getElementById("cas2");
+  // 注意：不要使用下面这种css样式来设置宽高
+  cas2.style.width = "600px";
+  cas2.style.height = "400px";
+  
+  var ctx2 = cas2.getContext('2d');
+  ctx2.moveTo( 100, 100 );
+  ctx2.lineTo( 200, 100 );
+  ctx2.stroke();
+  
+  
+</script>
+
+</body>
+</html>
