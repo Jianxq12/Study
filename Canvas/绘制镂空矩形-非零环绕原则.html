@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    canvas {
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+<canvas width="600" height="400" id='cas'></canvas>
+
+<script>
+  // 获取元素
+  var cas = document.getElementById( "cas" );
+  // 获取绘图上下文
+  var ctx = cas.getContext( '2d' );
+  
+  // 绘制镂空矩形
+  // 里面顺时针, 外面逆时针就可以实现
+  
+  // 外部方形 逆时针
+  ctx.moveTo( 100, 100 )
+  ctx.lineTo( 100, 300 )
+  ctx.lineTo( 300, 300 )
+  ctx.lineTo( 300, 100 )
+  ctx.closePath();
+  
+  // 内部方形 顺时针
+  ctx.moveTo( 150, 150 );
+  ctx.lineTo( 250, 150 );
+  ctx.lineTo( 250, 250 );
+  ctx.lineTo( 150, 250 );
+  ctx.closePath();
+
+  ctx.fill();
+  
+
+//  “非零环绕规则”是这么来判断有自我交叉情况的路径的：对于路径中的任意给定区域，
+// 从该区域内部画一条足够长的线段，使此线段的终点完全落在路径范围之外。
+
+// 接下来，将计数器初始化为0，
+// 然后，每当这条线段与路径上的直线或曲线相交时，
+// 就改变计数器的值。如果是与路径的顺时针部分相交，则加1，
+// 如果是与路径的逆时针部分相交，则减1。若计数器的最终值不是0，那么此区域就在路径里面，
+// 在调用fill()方法时，浏览器就会对其进行填充。
+// 如果最终值是0，那么此区域就不在路径内部，浏览器也就不会对其进行填充了
+</script>
+</body>
+</html>
