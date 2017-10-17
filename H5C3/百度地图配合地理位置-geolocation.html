@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+	body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+	</style>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=你的密钥"></script>
+	<title>地图展示</title>
+</head>
+<body>
+	<div id="allmap"></div>
+</body>
+</html>
+<script type="text/javascript">
+	navigator.geolocation.getCurrentPosition(function(pos){
+		/*console.log('获取地理位置成功');
+		在成功的回调函数里面接受一个pos对象，这个对象存放的是当前用户的地理位置（经度+纬度）*/
+		alert(pos);
+		// 纬度
+		var lat = pos.coords.latitude;
+		// 经度
+		var longs = pos.coords.longitude;
+
+		console.log('当前的位置为经度：' + longs + '纬度为：' + lat);
+
+		// 百度地图API功能
+		var map = new BMap.Map("allmap");    // 创建Map实例
+		map.centerAndZoom(new BMap.Point(longs, lat), 11);  // 初始化地图,设置中心点坐标和地图级别
+		map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+		map.setCurrentCity("北京");          // 设置地图显示的城市 此项必须设置
+		map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+
+	},function(error){
+		alert('fail');
+		/*在失败的回调函数里面接受一个error对象，这个对象里面存放的就是错误的信息*/
+		console.log('获取地理位置失败')
+		console.log(error);
+	},{
+		// 超时设置 单位是ms
+		//timeout : 5000 
+	})
+</script>
