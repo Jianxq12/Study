@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<input type="file" name="" id="">
+	<button>点击我读取本地文件</button>
+	<script type="text/javascript">
+
+	var files = document.querySelector('input[type="file"]');
+	var button = document.querySelector('button');
+
+	button.onclick = function(){
+
+		// 需求：读取用户上传到input：file里面的文件 呈递到页面上
+		
+		// (1) 获取用户上传到file控件里面的文件
+		// files.value 获取的仅仅是当前图片的路径，而我们需要的是一个真正的文件
+		// console.dir(files);
+		// files.files[0] 就是FileList对象
+		var fileData = files.files[0];
+
+		// console.log(fileData);
+		
+		// (2)解析图片文件
+		// 得到读取文件的实例对象
+		var fr = new FileReader();
+
+		// (3)解析图片
+		// 这个方法会将图片解析成base64的字符串 
+		// 参数：图片文件
+		fr.readAsDataURL(fileData);
+
+		//因为读取是一个异步操作，所以有一个事件专门监听
+		fr.onload = function(){
+
+			// 将读取结果放到了fr这个实例对象下面的result属性下面
+			var data = fr.result;
+
+			// 创建图片标签，将图片标签追加到body里面去
+			var img = document.createElement('img');
+			img.src = data;
+			document.body.appendChild(img);
+
+		}
+	}
+
+
+	</script>
+</body>
+</html>
