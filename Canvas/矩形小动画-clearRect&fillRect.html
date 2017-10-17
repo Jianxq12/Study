@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    canvas {
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+<canvas width="1000" height="400" id='cas'></canvas>
+
+<script>
+  // 获取元素
+  var cas = document.getElementById( "cas" );
+  // 获取绘图上下文
+  var ctx = cas.getContext( '2d' );
+  
+  // 100,100 => 500,100
+  ctx.fillRect( 100, 100, 200, 100 );
+  
+  var start = 100;
+  var end = 500;
+  var step = 2;
+  
+  var timer = setInterval(function() {
+    // 3. 如果抵达目标值, 清除定时器
+    if ( start >= end ) {
+      clearInterval( timer );
+    }
+    
+    // 1. 做动画, 要擦除整个画布
+    ctx.clearRect( 0, 0, cas.width, cas.height );
+  
+    start += step;
+    
+    // 2. 重新绘制
+    ctx.fillRect( start, 100, 200, 100 );
+  
+  }, 15);
+
+</script>
+</body>
+</html>
