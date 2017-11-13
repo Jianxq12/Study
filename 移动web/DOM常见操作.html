@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+
+  //DOM的操作有哪些？
+    //1. 获取元素
+    //  document.getElementById()
+    //  document.getElementsByTagName()
+    //  document.getElementsByClassName()
+    //  document.querySelector()
+    //  document.querySelectorAll()
+
+    // $()
+
+    // 节点相关的获取元素方法（兄弟姐妹相关）
+    // js: parentNode    jq:  parent()
+    // js: childNodes  children   firstChild  firstElementChild lastChild lastElementChild   jq: children("选择器")  find("选择器")
+
+    // js: nextSibling nextElementSibling previousSibling previousElementSibling
+    // jq: siblings()  prev()  prevAll() next()  nextAll()
+    //eq()  closest()
+
+    //2. 注册事件
+      //js中注册事件
+        //1. on+事件名  div.onclick = function(){}  事件会覆盖  onclick = null;
+        //2. addEventListener(type, handler, useCapture)   removeElementListener
+              //div.addEventListener("click", function(){}, false);//冒泡
+        //3. attachEvent("on"+type, handler );//ie只支持冒泡   detachEvent
+
+      //jq注册事件
+        //click()  mouseenter()
+        //bind()  unbind()
+        //delegate()  undelegate()  注册委托事件
+        //on("click" , function(){})  off()
+        //on("click", "selector", function(){})
+        //trigger("click")   click()  触发事件
+
+    //3. 修改样式
+        //js中：
+            // style.xxxx   设置样式
+            // window.getComputedStyle(element):获取计算后的样式
+
+        //jq中：
+          //css(name,value)   css(name)
+
+        //特殊样式：
+          //offsetLeft offsetTop offsetWidth offsetHeight offsetParent
+          //clientWidth clientHeight   用来获取可视区的宽度和高度
+          //  window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth || 0;
+          //scrollTop scrollLeft  获取页面的滚动距离
+          //window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+
+
+        //jq
+          // offset():获取距离body的距离  positon()：获取的最近的有定位的父元素的距离
+          // scrollTop()  scrollLeft()
+          // $(window).width()  $(window).height()
+          //width() /innerWidth() /outerWidth(false)/outerWidth(true)
+
+
+
+    //4. 修改属性
+        //js中操作属性
+          // box.id  box.title  :操作的是dom对象的属性
+          // box.getAttribute("class")  box.setAttribute() box.removeAttribute():这个操作的是标签的属性。
+
+        //jquery操作属性：
+
+          //prop()  ：用来操作checked disabled selected
+          //attr()  ：用来操作其他属性。
+
+
+        // val()
+        // html()
+        // text()
+
+
+
+        //动画相关
+            //animate  show/hide/toggle   slideDown/slideUP/slideToggle
+            //fadeIn/fadeOut/fadeToggle
+
+            //animate(prop, duration, timingFucntion, callback);
+            //.animate({left:500}, 500, "linear/swing", callback);
+
+
+
+        //each 遍历
+        //noconfict
+
+    //事件流 : 什么是事件流？
+      //事件有三个阶段：捕获  目标  冒泡
+</script>
+
+</body>
+</html>

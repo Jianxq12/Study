@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+    .container {
+      width: 400px;
+      height: 200px;
+      border: 1px dotted red;
+      margin: 100px auto;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container" id='container'>
+  <canvas id="cas"></canvas>
+</div>
+<script>
+  var cas = document.getElementById('cas');
+  var ctx = cas.getContext('2d');
+  var container = document.getElementById("container");
+
+  cas.width = 400;
+  cas.height = 200;
+  
+  // 奖品设置
+  var prizesArr = [
+    { name: '诺基亚珍藏版', color: 'rgba(0, 0, 0, 1)' },
+    { name: '天呐! iPhoneX', color: 'rgba(0, 0, 0, .9)' },
+    { name: 'iPhoneX山寨版', color: 'rgba(0, 255, 0, 1)' },
+    { name: '谢谢惠顾', color: 'rgba(255, 0, 0, 1)' },
+    { name: '骑皮皮虾一次', color: 'rgba(255, 100, 66, 1)' }
+  ];
+  
+  // 1. 随机生成奖品
+  // parseInt(Math.random() * 5) ==> 0,1,2,3,4
+  var prizeNum = parseInt(Math.random() * prizesArr.length);
+  var prize = prizesArr[prizeNum];
+  
+  // 绘制文字
+  ctx.font = "40px 微软雅黑";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillStyle = prize.color;
+  ctx.fillText(prize.name, cas.width / 2, cas.height / 2 );
+  
+  
+  // 绘制完成奖品信息后, 将画布转换成base64编码的字符串
+  // 并且设置为当前画布的背景
+  var base64Str = cas.toDataURL( 'image/png', 1 );
+  cas.style.backgroundImage = 'url('+ base64Str + ')';
+  
+  // 2. 绘制遮罩层
+  ctx.fillStyle = "silver";
+  ctx.fillRect( 0, 0, cas.width, cas.height );
+  
+  // ctx.globalCompositeOperation  
+  // 默认 source-over 重叠的部分, 后面将其覆盖
+  // destination-out  设置重叠的部分会被清除 
+  ctx.globalCompositeOperation = "destination-out";
+  
+  var flag = false;
+  // 鼠标按下
+  cas.addEventListener('mousedown', function() {
+    flag = true;
+    ctx.globalCompositeOperation = "destination-out";
+  })
+  
+  // 鼠标弹起
+  cas.addEventListener('mousemove', function( e ) {
+    // flag 为 false的时候, 表示鼠标没按下
+    if ( !flag ) return;
+    // 绘制小圆, 坐标参照当前鼠标的位置
+    // 获取鼠标在盒子中的位置
+    var mouseX = e.pageX - container.offsetLeft;
+    var mouseY = e.pageY - container.offsetTop;
+    
+    ctx.beginPath();
+    ctx.arc( mouseX, mouseY, 20, 0, 2*Math.PI );
+    ctx.fill();
+    
+
+    // -------------------------------------------------------------------
+    // canvas中的getImageData()方法
+    // 能够获取到当前画布中所有像素点的信息
+    // imgData是个数组: 每四个值表示1小组, 分别对应一个像素点的rgba
+    var imgData = ctx.getImageData(0, 0, cas.width, cas.height);
+    var pixles = imgData.data;
+    
+    // 已经擦除的像素点数组
+    var transPixs = [];
+    
+    for( var i = 0; i < pixles.length; i+= 4 ) {
+      var alpha = pixles[ i + 3 ];
+      // alpha === 0 说明 画布中该像素点透明
+      if ( alpha === 0 ) {
+        transPixs.push( i );
+      }
+    }
+    var percent = ( transPixs.length / (pixles.length / 4) * 100).toFixed(2);
+    if ( percent > 30 ) {
+      // 擦除面积超过30% 则清除画布
+      ctx.clearRect( 0, 0, cas.width, cas.height );
+    };
+
+    // ----------------------------------------------------------------
+    
+  })
+  
+  // 鼠标弹起
+  cas.addEventListener('mouseup', function() {
+    flag = false;
+    ctx.globalCompositeOperation = "source-over";
+  })
+  
+  
+
+</script>
+</body>
+
+</html>

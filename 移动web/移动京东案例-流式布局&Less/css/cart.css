@@ -1,0 +1,226 @@
+@charset "UTF-8";
+.jd_container {
+  width: 100%;
+  max-width: 640px;
+  min-width: 320px;
+  margin: 0 auto;
+}
+.jd_header {
+  width: 100%;
+  height: 44px;
+  background: linear-gradient(#ffffff, #cccccc);
+  position: relative;
+}
+.jd_header .icon_back,
+.jd_header .icon_menu {
+  width: 44px;
+  height: 44px;
+  position: absolute;
+  top: 0;
+  padding: 12px;
+  background-clip: content-box;
+  background-origin: content-box;
+}
+.jd_header .icon_back {
+  left: 0;
+  background-position: -20px 0;
+}
+.jd_header .icon_menu {
+  right: 0;
+  background-position: -60px 0;
+}
+.jd_header .title {
+  margin: 0 44px;
+  height: 44px;
+}
+.jd_header .title h3 {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 44px;
+  font-size: 18px;
+}
+.jd_tips {
+  height: 34px;
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+  text-align: center;
+  line-height: 34px;
+  background-color: #fff;
+}
+.jd_tips p {
+  display: inline-block;
+  padding-left: 20px;
+  position: relative;
+}
+.jd_tips p::after {
+  content: '';
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  top: 8px;
+  left: 0;
+  background: url("../images/safe_icon.png") 0 0 no-repeat;
+  background-size: 18px;
+}
+.jd_goods {
+  margin-top: 10px;
+  background-color: #fff;
+}
+.jd_checkbox {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background-position: -180px -90px;
+}
+.jd_checkbox.checked {
+  background-position: -180px -69px;
+}
+.goods_title {
+  overflow: hidden;
+  height: 34px;
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+  padding-left: 32px;
+  line-height: 32px;
+  position: relative;
+}
+.goods_title .self {
+  padding-left: 20px;
+  position: relative;
+}
+.goods_title .self:before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 4px;
+  width: 14px;
+  height: 14px;
+  background: url("../images/jd-sprites.png") 0 0 no-repeat;
+  background-size: 140px;
+}
+.goods_title .free {
+  padding-right: 10px;
+  color: #f16868;
+}
+.goods_content {
+  height: 100px;
+  border-bottom: 1px solid #cccccc;
+  padding-left: 32px;
+  position: relative;
+}
+.goods_content .pic {
+  width: 80px;
+  height: 100px;
+  float: left;
+  margin-right: 10px;
+}
+.goods_content .pic img {
+  width: 80px;
+  height: 80px;
+  margin-top: 10px;
+}
+.goods_content .info {
+  height: 100px;
+  overflow: hidden;
+  padding-top: 10px;
+  position: relative;
+}
+.goods_content .info_bottom {
+  height: 34px;
+  width: 100%;
+  position: absolute;
+  bottom: 5px;
+}
+.goods_content .info_bottom .num_box {
+  height: 34px;
+  width: 120px;
+  border: 1px solid #cccccc;
+  float: left;
+}
+.goods_content .info_bottom .num_box span {
+  height: 32px;
+  float: left;
+  width: 33.33%;
+  line-height: 32px;
+  text-align: center;
+  font-size: 16px;
+}
+.goods_content .info_bottom .num_box input {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-left: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  text-align: center;
+}
+.goods_content .info_bottom .rubbish {
+  width: 20px;
+  height: 22px;
+  float: right;
+  margin-right: 10px;
+  margin-top: 10px;
+  position: relative;
+}
+.goods_content .info_bottom .rubbish_up {
+  width: 18px;
+  height: 4px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url("../images/delete_up.png");
+  background-size: cover;
+}
+.goods_content .info_bottom .rubbish_down {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  top: 2px;
+  left: 0;
+  background: url("../images/delete_down.png");
+  background-size: cover;
+}
+.jd_mask {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: none;
+}
+.jd_mask .content {
+  width: 300px;
+  height: 150px;
+  border-radius: 5px;
+  background-color: #fff;
+  margin: 200px auto;
+  padding: 10px;
+}
+.jd_mask .content .info {
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  font-size: 16px;
+  border-bottom: 1px solid #cccccc;
+}
+.jd_mask .content .cancel,
+.jd_mask .content .confirm {
+  width: 120px;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.jd_mask .content .cancel {
+  background-color: #fff;
+  color: #cccccc;
+}
+.jd_mask .content .confirm {
+  background-color: #f16868;
+  color: #fff;
+}

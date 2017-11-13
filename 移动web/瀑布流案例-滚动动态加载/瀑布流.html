@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .item {
+      padding: 5px;
+      border: 1px solid red;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: all 1s;
+    }
+
+    .item img {
+      width: 192px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<div class="waterfall">
+  <div class="item"><img src="images/P_000.jpg" alt=""></div>
+  <div class="item"><img src="images/P_001.jpg" alt=""></div>
+  <div class="item"><img src="images/P_002.jpg" alt=""></div>
+  <div class="item"><img src="images/P_003.jpg" alt=""></div>
+  <div class="item"><img src="images/P_004.jpg" alt=""></div>
+  <div class="item"><img src="images/P_005.jpg" alt=""></div>
+  <div class="item"><img src="images/P_006.jpg" alt=""></div>
+  <div class="item"><img src="images/P_007.jpg" alt=""></div>
+  <div class="item"><img src="images/P_008.jpg" alt=""></div>
+  <div class="item"><img src="images/P_009.jpg" alt=""></div>
+  <div class="item"><img src="images/P_010.jpg" alt=""></div>
+  <div class="item"><img src="images/P_011.jpg" alt=""></div>
+  <div class="item"><img src="images/P_012.jpg" alt=""></div>
+  <div class="item"><img src="images/P_013.jpg" alt=""></div>
+  <div class="item"><img src="images/P_014.jpg" alt=""></div>
+  <div class="item"><img src="images/P_015.jpg" alt=""></div>
+  <div class="item"><img src="images/P_016.jpg" alt=""></div>
+  <div class="item"><img src="images/P_017.jpg" alt=""></div>
+  <div class="item"><img src="images/P_018.jpg" alt=""></div>
+  <div class="item"><img src="images/P_019.jpg" alt=""></div>
+  <div class="item"><img src="images/P_020.jpg" alt=""></div>
+</div>
+
+<script>
+
+  //等待图片加载
+  window.onload = function () {
+
+    var waterfall = document.querySelector(".waterfall");
+    var items = waterfall.children;//即时更新的  21个
+    // var items = document.querySelectorAll(".item");//只会找当前页面中有item类的元素，只能21个，不会动态的更新
+
+    function render() {
+      //1. 获取窗口的宽度
+      var pageWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth || 0;
+      //2. 获取盒子的大小
+      var itemWidth = items[0].offsetWidth;
+      var gap = 10;
+
+      //3. 确定多少列
+      var cols = parseInt(pageWidth / (itemWidth + gap));
+
+
+      //摆放第一行
+      //定义一个数组，用于存放每一列的高度
+      var arr = [];
+      for (var i = 0; i < cols; i++) {
+        items[i].style.top = 0;//设置top
+        items[i].style.left = i * (itemWidth + gap) + "px";
+        //存高度
+        arr.push(items[i].offsetHeight);
+      }
+
+      //摆放其他的盒子
+      for(var i = cols; i < items.length; i++){
+
+        //1. 找到最小的盒子所在的列，找数组的最小值
+        var min = arr[0];
+        var index = 0;
+        for(var j = 0; j < arr.length; j++){
+          if(min > arr[j]){
+            min = arr[j];
+            index = j;
+          }
+        }
+        // console.log(min);
+        // console.log(index);
+
+
+        //2. 设置这个盒子left值  最小的列 * 盒子的大小
+        items[i].style.left = index * (itemWidth + gap) + "px";
+
+        //3. 设置这个盒子的top，  值就是数组的最小的值
+        items[i].style.top = min + gap + "px";
+
+        //4. 在最小列上加上了新增加的这个盒子的高度一级一个间隙的高度。
+        arr[index] = min + gap + items[i].offsetHeight;
+      }
+    }
+
+    render();
+
+
+    //给窗口注册resize事件
+    window.onresize = function () {
+      render();
+    }
+
+
+    window.onscroll = function () {
+      //判断什么时候需要加载图片，当最后一张图片的头部出现了，就需要加载图片。
+      var offsetTop = items[items.length-1].offsetTop;
+      var scrollTop = window.pageYOffset;
+      var pageHeight = window.innerHeight;
+
+      if(scrollTop + pageHeight >= offsetTop){
+
+        //需要发送ajax请求数据
+        var datas = [
+          "images/P_000.jpg",
+          "images/P_001.jpg",
+          "images/P_002.jpg",
+          "images/P_003.jpg",
+          "images/P_004.jpg",
+          "images/P_005.jpg",
+          "images/P_006.jpg",
+          "images/P_007.jpg",
+          "images/P_008.jpg",
+          "images/P_009.jpg",
+          "images/P_010.jpg",
+          "images/P_011.jpg",
+          "images/P_012.jpg",
+          "images/P_013.jpg",
+          "images/P_014.jpg",
+          "images/P_015.jpg",
+          "images/P_016.jpg",
+          "images/P_017.jpg",
+          "images/P_018.jpg",
+          "images/P_019.jpg",
+          "images/P_020.jpg",
+        ];
+
+        //动态的添加到waterfall这个box上面
+        for(var i = 0; i < datas.length; i++){
+
+          var div = document.createElement("div");
+          div.className = "item";
+          div.innerHTML = '<img src="'+datas[i]+'" alt="">';
+          waterfall.appendChild(div);
+
+        }
+
+          render();
+        
+      }
+
+    }
+  }
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/bijia.css">
+    <title>商品详情页</title>
+</head>
+<body>
+<div class="container">
+    <!--顶部-->
+    <div class="mmb_header">
+        <div class="header_logo">
+            <a href="#">
+                <img src="images/header_logo.png" alt="">
+            </a>
+        </div>
+        <div class="header_app">
+            <a href="#">
+                <img src="images/header_app.png" alt="">
+            </a>
+        </div>
+    </div>
+
+    <!--主体-->
+    <div class="mmb_main">
+        <div class="search_box">
+            <input type="search" placeholder="请输入你想比价的商品">
+            <input type="button" value="搜索">
+        </div>
+
+        <div class="product_bijia">
+            <div class="product_bijia_nav">
+                <!--挖个坑-->
+            </div>
+
+            <div class="product_bijia_content">
+                <!--挖个坑-->
+            </div>
+
+
+            <ul class="clearfix about">
+                <li class="current"><a href="#">比价购买</a></li>
+                <li><a href="#">产品参数</a></li>
+                <li><a href="#">评价（2322）</a></li>
+            </ul>
+
+            <div class="amount clearfix">
+                <!--<span class="amount_l">京东商城</span>-->
+                <!--<div class="amount_r">-->
+                    <!--<span>&yen;1999.00</span>&nbsp;&nbsp;-->
+                    <!--<a href="#">去购买</a>-->
+                <!--</div>-->
+                 <!--挖个坑-->
+            </div>
+
+
+            <div class="other">
+                * 实际价格以各网站列出的实时售价为准，我们提供的价格可能有数小时至数日的延迟。
+            </div>
+
+            <div class="comment_title">
+                网友评价
+            </div>
+
+            <div class="comment_list">
+                <ul>
+                    <!--挖个坑-->
+
+                </ul>
+
+            </div>
+
+            <div class="morecmt">
+                <a href="#">查看更多评价</a>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <!--底部-->
+    <div class="mmb_footer">
+        <div class="footer_t clearfix">
+            <a href="#">登录</a>
+            <a href="#">注册</a>
+            <a href="#">返回顶部</a>
+        </div>
+        <div class="footer_b">
+            <p>
+                <a href="#">手机APP下载</a>
+                <a href="#">慢慢买手机版</a>
+                -- 掌上比价平台
+            </p>
+            <p>m.manmanbuy.com</p>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="tpl">
+    {{each result v i}}
+    <a href="index.html">首页</a> >
+    <a href="productlist.html?categoryid={{v.categoryId}}&category={{category}}&pageid=1">{{category}}</a> >
+    <a href="#">{{v.productName.split(' ')[0]}}</a> >
+    <a href="#" class="select">筛选</a>
+    {{/each}}
+</script>
+
+<script type="text/html" id="tpl2">
+    {{each result v i}}
+    <p class="info">{{v.productName}}</p>
+    <div class="picture">{{#v.productImg}}</div>
+    <!--<div class="collect"><a href="#">收藏</a></div>-->
+    {{/each}}
+</script>
+
+<script type="text/html" id="tpl3">
+    {{each result v i}}
+    <li>
+        <div class="user clearfix">
+            <span class="username">{{v.comName}}</span>
+            <span class="time">{{v.comTime}}</span>
+
+        </div>
+        <div class="from clearfix">
+            <span>{{v.comFrom}}</span>
+        </div>
+        <div class="info">
+            {{v.comContent}}
+        </div>
+    </li>
+    {{/each}}
+</script>
+
+<script type="text/html" id="tpl4">
+    {{each result v i}}
+        {{#v.bjShop}}
+    {{/each}}
+</script>
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/artTemplate/template-web.js"></script>
+<script src="js/baseurl.js"></script>
+<script src="js/common.js"></script>
+<script src="js/bijia.js"></script>
+</body>
+</html>

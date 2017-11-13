@@ -1,0 +1,401 @@
+@charset "UTF-8";
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+[hidden],
+template {
+  display: none;
+}
+a {
+  background-color: transparent;
+}
+a:active,
+a:hover {
+  outline: 0;
+}
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+b,
+strong {
+  font-weight: bold;
+}
+dfn {
+  font-style: italic;
+}
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+mark {
+  background: #ff0;
+  color: #000;
+}
+small {
+  font-size: 80%;
+}
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+img {
+  border: 0;
+}
+svg:not(:root) {
+  overflow: hidden;
+}
+figure {
+  margin: 1em 40px;
+}
+hr {
+  box-sizing: content-box;
+  height: 0;
+}
+pre {
+  overflow: auto;
+}
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+button {
+  overflow: visible;
+}
+button,
+select {
+  text-transform: none;
+}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+input {
+  line-height: normal;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+input[type="search"] {
+  -webkit-appearance: textfield;
+  box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+legend {
+  border: 0;
+  padding: 0;
+}
+textarea {
+  overflow: auto;
+}
+optgroup {
+  font-weight: bold;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td,
+th {
+  padding: 0;
+}
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-size: 14px;
+  font-family: 'Microsoft YaHei', sans-seri;
+  background-color: #f5f5f5;
+}
+a {
+  color: #333;
+  text-decoration: none;
+}
+ul,
+ol {
+  list-style: none;
+}
+input[type="text"],
+input[type="search"],
+textarea {
+  border: none;
+  outline: none;
+  resize: none;
+  -webkit-appearance: none;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.clearfix::before,
+.clearfix::after {
+  content: "";
+  display: block;
+  visibility: hidden;
+  height: 0;
+  line-height: 0;
+  clear: both;
+}
+img {
+  display: block;
+  width: 100%;
+}
+@media (min-width: 320px) {
+  html {
+    font-size: 21.33px;
+  }
+}
+@media (min-width: 360px) {
+  html {
+    font-size: 24px;
+  }
+}
+@media (min-width: 375px) {
+  html {
+    font-size: 25px;
+  }
+}
+@media (min-width: 384px) {
+  html {
+    font-size: 25.6px;
+  }
+}
+@media (min-width: 400px) {
+  html {
+    font-size: 26.67px;
+  }
+}
+@media (min-width: 414px) {
+  html {
+    font-size: 27.6px;
+  }
+}
+@media (min-width: 424px) {
+  html {
+    font-size: 28.27px;
+  }
+}
+@media (min-width: 480px) {
+  html {
+    font-size: 32px;
+  }
+}
+@media (min-width: 540px) {
+  html {
+    font-size: 36px;
+  }
+}
+@media (min-width: 720px) {
+  html {
+    font-size: 48px;
+  }
+}
+@media (min-width: 750px) {
+  html {
+    font-size: 50px;
+  }
+}
+.sn_container {
+  width: 100%;
+  max-width: 750px;
+  min-width: 320px;
+  height: 1000px;
+  background-color: pink;
+  margin: 0 auto;
+  padding-top: 1.8rem;
+}
+.sn_header {
+  height: 1.8rem;
+  width: 100%;
+  max-width: 750px;
+  background-color: #fabc09;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+}
+.sn_header .category,
+.sn_header .cart {
+  width: 1.8rem;
+  height: 1.8rem;
+  position: absolute;
+  top: 0;
+}
+.sn_header .category {
+  left: 0;
+  background: url("../images/icon_category.png") no-repeat center center;
+  background-size: 0.88rem 1.4rem;
+}
+.sn_header .cart {
+  right: 0;
+  background: url("../images/icon_cart.png") no-repeat center center;
+  background-size: 1.26rem 1.36rem;
+}
+.sn_header .search {
+  height: 1.8rem;
+  margin: 0 1.8rem;
+  position: relative;
+}
+.sn_header .search::after {
+  content: '';
+  width: 1rem;
+  height: 1.2rem;
+  background: url("../images/icon_search.png") no-repeat center center;
+  background-size: 0.54rem 0.56rem;
+  position: absolute;
+  top: 0.32rem;
+  left: 0;
+}
+.sn_header .search input {
+  width: 100%;
+  height: 1.2rem;
+  margin-top: 0.3rem;
+  border-radius: 0.2rem;
+  background-color: rgba(255, 255, 255, 0.4);
+  padding-left: 1rem;
+  font-size: 0.48rem;
+}
+.sn_nav {
+  background-color: #fff;
+}
+.sn_nav li {
+  float: left;
+  width: 20%;
+  padding-top: 0.4rem;
+}
+.sn_nav img {
+  width: 1.6rem;
+  height: 1.6rem;
+  margin: 0 auto;
+}
+.sn_nav p {
+  text-align: center;
+  height: 1rem;
+  line-height: 1rem;
+  font-size: 0.48rem;
+}
+.sn_footer {
+  height: 2rem;
+  width: 100%;
+  max-width: 750px;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  z-index: 999;
+}
+.sn_footer li {
+  width: 20%;
+  float: left;
+  padding: 0.2rem;
+}
+.sn_footer img {
+  width: 1rem;
+  height: 1rem;
+  margin: 0 auto;
+}
+.sn_footer p {
+  text-align: center;
+  font-size: 0.4rem;
+  line-height: 0.6rem;
+}
+.sn_banner .swiper-container-horizontal > .swiper-pagination-bullets,
+.sn_banner .swiper-pagination-custom,
+.sn_banner .swiper-pagination-fraction {
+  bottom: 0.2rem;
+  width: auto;
+  left: auto;
+  right: 0.2rem;
+}
+.sn_banner .swiper-pagination-bullet {
+  width: 0.24rem;
+  height: 0.24rem;
+  background-color: #fff;
+  border-radius: 50%;
+  opacity: 1;
+}
+.sn_banner .swiper-pagination-bullet-active {
+  background-color: #fabc09;
+}

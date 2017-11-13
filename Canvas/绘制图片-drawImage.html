@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    canvas {
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+<canvas width="600" height="400" id='cas'></canvas>
+
+<script>
+  // 获取元素
+  var cas = document.getElementById( "cas" );
+  // 获取绘图上下文
+  var ctx = cas.getContext( '2d' );
+  
+  // 剪裁图片, 将剪裁的图片绘制到画布中
+  // 9个参数
+  // 参数1 图片对象
+  // 参数2,3 裁剪图片时的 imgX,imgY坐标
+  // 参数4,5 裁剪图片的宽高
+  // 参数6,7 绘制到画布中x,y
+  // 参数8,9 绘制到画布中 图片的 大小
+  // ctx.drawImage(imgObj, imgX, imgY, sWidth, sHeight, x, y, w, h )
+
+  var img = new Image();
+  img.src = "01.jpg";
+  img.onload = function() {
+    ctx.drawImage( img, 135, 13, 160, 170, 100, 100, 160, 170 );
+  };
+  
+  
+
+</script>
+</body>
+</html>

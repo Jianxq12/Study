@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <!-- 1. 引包 -->
+  <script src="echarts.min.js"></script>
+</head>
+<body>
+
+<!-- 2. 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+<!-- 用于将来存放 Echarts 动态生成的 canvas -->
+<div id="myBox" style="width: 600px;height:400px;"></div>
+
+<script>
+  // 3. 基于准备好的dom，初始化echarts实例
+  var myChart = echarts.init(document.getElementById('myBox'));
+  
+  // 标题, x轴, y轴, 数据
+  
+  // 4. 配置数据
+  var option = {
+    // 标题
+    title: {
+      text: "黑马前端平均身高和体重"
+    },
+    // 提示框
+    tooltip : {
+      trigger: 'axis' //坐标轴触发
+    },
+    // 图例
+    legend: {
+      data: [ "身高", "体重" ]
+    },
+    // x轴
+    xAxis: {
+      data: [ "黑马10期", "黑马11期", "黑马12期", "黑马13期", "黑马14期" ]
+    },
+    // y轴
+    yAxis: {
+      // y轴里面的 data, 最好通过数据动态生成
+//      data: [ 10, 20, 30, 40 ]
+    },
+    // 数据, 可能有多组数据对比
+    series: [
+      {
+        name: "身高",
+        type: "line",  // type: bar 柱状图, line 折线图, pie 饼图
+        data: [ 150, 130, 180, 120, 250 ]
+      },
+      {
+        name: "体重",
+        type: "line",
+        data: [ 380, 450, 100, 20, 125 ]
+      }
+    ]
+  };
+  
+  // 5. 通过 setOption方法, 根据 option 生成图标
+  myChart.setOption( option );
+  
+  
+</script>
+
+
+</body>
+</html>

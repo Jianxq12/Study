@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="lib/swiper/css/swiper.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/couponproduct.css">
+    <title>省钱控</title>
+</head>
+<body>
+<div class="container">
+    <!--顶部-->
+    <div class="mmb_header" id="head">
+        <div class="header_back">
+            <a href="javascript:history.go(-1);">
+            </a>
+        </div>
+        <h4>白菜价-淘宝内部券</h4>
+        <div class="header_app">
+            <a href="#">
+                <img src="images/header_app.png" alt="">
+            </a>
+        </div>
+    </div>
+
+    <!--主体-->
+    <div class="mmb_main">
+
+        <div class="product_list">
+            <p class="text">--点餐前出示手机中的优惠券，即可享受优惠--</p>
+            <div class="moneyctrl_content">
+                <ul class="clearfix">
+
+                    <!--挖个坑-->
+                </ul>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <!--底部-->
+    <div class="mmb_footer">
+        <div class="footer_t clearfix">
+            <a href="#">登录</a>
+            <a href="#">注册</a>
+            <a href="#">返回顶部</a>
+        </div>
+        <div class="footer_b">
+            <p>
+                <a href="#">手机APP下载</a>
+                <a href="#">慢慢买手机版</a>
+                -- 掌上比价平台
+            </p>
+            <p>m.manmanbuy.com</p>
+        </div>
+    </div>
+
+    <div class="mask">
+
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="images/kfc-5ikfc-108_pc27.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="images/kfc-5ikfc-108_pc27.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="images/kfc-5ikfc-108_pc27.jpg" alt=""></div>
+            </div>
+
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+
+
+        </div>
+        <div class="close">关闭 ×</div>
+    </div>
+
+</div>
+
+<script type="text/html" id="tpl">
+    {{each result v i}}
+    <li >
+        <a href="javascript:;">
+            <div class="pic">
+                {{#v.couponProductImg}}
+            </div>
+            <div class="info">
+                <p class="info_t">{{#v.couponProductName}}</p>
+                <p class="price">{{v.couponProductPrice}}</p>
+                <p class="endtime">{{v.couponProductTime}}</p>
+                <img src="images/1.svg" alt="" class="arrow">
+
+            </div>
+        </a>
+    </li>
+    {{/each}}
+
+</script>
+
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/artTemplate/template-web.js"></script>
+<script src="lib/swiper/js/swiper.jquery.js"></script>
+<script src="js/baseurl.js"></script>
+<script src="js/common.js"></script>
+<script src="js/couponproduct.js"></script>
+</body>
+</html>

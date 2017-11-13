@@ -1,0 +1,27 @@
+// 公共模块引入
+@import "px2rem";     // 导入换算 less
+
+/* 用法：
+    使用例子 1：高度量出来 88px =>  height: 88*@rem;
+    使用例子 2：字体大小 14px   =>  .font-size(14);
+*/
+
+.fb-header {
+    height: 88*@rem;
+    line-height: 88*@rem;
+    // 大标题等可以通过 rem 设置字体大小
+    font-size: 0.48rem;
+    background-color: pink;
+    text-align: center;
+    color: white;
+    border-bottom: 1px solid green;
+}
+
+.fb-section {
+    line-height: 88*@rem;
+    background-color: lightblue;
+    color: black;
+    // 商品内容介绍等 建议 使用函数，根据 dpr 使用对应的 px 字体大小
+    // 要设字体大小为 16px 就 .font-size(16)
+    .font-size(16);
+}

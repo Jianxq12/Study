@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/brandTitle.css">
+    <title>品牌大全</title>
+</head>
+<body>
+<div class="container">
+    <!--顶部-->
+    <div class="mmb_header">
+        <div class="header_logo">
+            <a href="#">
+                <img src="images/header_logo.png" alt="">
+            </a>
+        </div>
+        <div class="header_app">
+            <a href="#">
+                <img src="images/header_app.png" alt="">
+            </a>
+        </div>
+    </div>
+
+    <!--主体-->
+    <div class="mmb_main">
+        <div class="search_box">
+            <input type="search" placeholder="请输入你想比价的商品">
+            <input type="button" value="搜索">
+        </div>
+
+        <div class="product_list_title">
+            <a href="index.html">首页</a> >
+            <a href="category.html">全部分类</a> >
+        </div>
+
+        <div class="brand_title">
+            热门品牌排行
+        </div>
+
+        <div class="brand_list">
+            <ul>
+                <!--挖个坑-->
+
+            </ul>
+        </div>
+
+
+
+    </div>
+
+    <!--底部-->
+    <div class="mmb_footer">
+        <div class="footer_t clearfix">
+            <a href="#">登录</a>
+            <a href="#">注册</a>
+            <a href="#">返回顶部</a>
+        </div>
+        <div class="footer_b">
+            <p>
+                <a href="#">手机APP下载</a>
+                <a href="#">慢慢买手机版</a>
+                -- 掌上比价平台
+            </p>
+            <p>m.manmanbuy.com</p>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="tpl">
+    {{each result v i}}
+    <li>
+        <a href="brand.html?brandtitleid={{v.brandTitleId}}" class="brand_list_title">{{v.brandTitle}}</a>
+
+    </li>
+    {{/each}}
+</script>
+
+
+
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/artTemplate/template-web.js"></script>
+<script src="js/baseurl.js"></script>
+<script src="js/brandTitle.js"></script>
+</body>
+</html>

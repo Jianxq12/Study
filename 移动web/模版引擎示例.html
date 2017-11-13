@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    table {
+      width: 500px;
+      border: 1px solid #000;
+      border-collapse: collapse;
+    }
+    
+    thead td {
+      font-weight: 700;
+    }
+    
+    td {
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+<!--1. 引包-->
+<!--2. 准备模版-->
+<!--3. 准备数据-->
+<!--4. 绑定数据与模版，输出一个html字符串-->
+<!--5. 渲染html字符串-->
+<!--6. 更改模版-->
+<table>
+  <thead>
+  <tr>
+    <td>姓名</td>
+    <td>年龄</td>
+    <td>描述</td>
+    <td>爱好</td>
+  </tr>
+  </thead>
+  <tbody>
+  <!--挖个坑-->
+  </tbody>
+</table>
+
+<!--1. 引包-->
+<script src="artTemplate/template-web.js"></script>
+<!--2. 模板 script标签，记得指定type="text/html"-->
+<script type="text/html" id="tpl">
+  {{each datas v}}
+  <tr>
+    <td>{{v.username}}</td>
+    <td>{{v.age}}</td>
+    <td>{{v.desc}}</td>
+    <td>{{v.hobby}}</td>
+  </tr>
+  {{/each}}
+</script>
+<script>
+  //3. 数据
+  var datas = [
+    {"username":"Jianxq0",age:20,desc:"学习0",hobby:"敲代码0"},
+    {"username":"Jianxq1",age:20,desc:"学习1",hobby:"敲代码1"},
+    {"username":"Jianxq2",age:20,desc:"学习2",hobby:"敲代码2"},
+    {"username":"Jianxq3",age:20,desc:"学习3",hobby:"敲代码3"},
+    {"username":"Jianxq4",age:20,desc:"学习4",hobby:"敲代码4"}
+  ];
+  
+  //4. 绑定 参数1：模版的id 参数2：数据, 对象
+  //返回值：组合出来的数据，模版中可以获取这个对象的所有的属性
+  var html = template("tpl", {datas:datas});
+
+  // 渲染数据
+  document.querySelector("tbody").innerHTML = html;
+  
+  
+  
+  //node vue angluar react
+  
+</script>
+
+</body>
+</html>

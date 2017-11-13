@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+  <style>
+    div {
+      width: 4rem;
+      height: 4rem;
+      font-size: 0.8rem;
+      background-color: pink;
+    }
+
+  </style>
+</head>
+<script>
+
+// rem配合js实现自适应布局
+  window.onresize = function () {
+
+    var pageWidth = window.innerWidth || document.documentElement.clientWidth;
+
+    if(pageWidth < 320){
+      pageWidth = 320;
+    }
+
+    if(pageWidth > 640){
+      pageWidth = 640;
+    }
+
+    document.documentElement.style.fontSize = pageWidth/16 + "px";
+
+  }
+
+</script>
+<body>
+
+
+<div>呵呵</div>
+
+
+
+</body>
+</html>

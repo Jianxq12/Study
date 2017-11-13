@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    canvas {
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+<canvas width="600" height="400" id='cas'></canvas>
+
+<script>
+  // 获取元素
+  var cas = document.getElementById( "cas" );
+  // 获取绘图上下文
+  var ctx = cas.getContext( '2d' );
+  
+  // 角度转换成弧度
+  function toRadian( angle ) {
+    return angle / 180 * Math.PI ;
+  }
+
+  // 获取元素
+  var cas = document.getElementById( "cas" );
+  // 获取绘图上下文
+  var ctx = cas.getContext( '2d' );
+  // 每次转 3度
+  var step = 3;
+  var startAngle = 0;
+  
+  setInterval(function() {
+    // 直接通过默认状态的坐标轴, 来清除画布
+    ctx.clearRect( 0, 0, cas.width, cas.height );
+    
+    ctx.save();// 保存默认状态
+    
+    // 1. 平移坐标轴
+    ctx.translate( cas.width / 2, cas.height / 2 );
+    
+    // 2. 旋转坐标轴
+    ctx.rotate( toRadian( startAngle += step ) );
+
+    ctx.strokeRect( -50, -50, 100, 100 );
+    
+    ctx.restore(); // 恢复默认状态
+    
+  },15)
+
+</script>
+</body>
+</html>

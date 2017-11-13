@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<button>按钮</button>
+<script src="jquery-1.12.4.js"></script>
+<script>
+
+  var button = document.querySelector("button");
+  button.onclick = function () {
+  
+    $.ajax({
+      type:"get",
+      url:"http://www.api.com/data.php",
+      data:{},
+      dataType:"jsonp",
+      success:function (data) {
+        console.log(data);
+      }
+    })
+
+  }
+  
+  //发送请求获取数据
+  function jsonp (url, fn){
+    //创建script标签,指定src属性
+    var script = document.createElement("script");
+    var fnName = "fn"+new Date().valueOf();
+    //fn是传过来的一个函数，把这个函数暴露给全局变量
+    //fn1508923821932  window.fn1508923821932
+    window[fnName] = fn;
+    script.src = url + "?callback="+fnName;
+    document.body.appendChild(script);
+  
+  }
+  
+
+  //1. jsonp和ajax没有关系，ajax受到同源策略的影响,jsonp就是用来做跨域
+  //2. jsonp的原理是通过script标签去获取数据，script标签不受同源策略的影响。
+  //3. jsonp的使用需要后台的配合。
+  //4. jsonp只支持get请求，不支持post，因为script就是get请求。
+  //5. 缺点：
+    //1. jsonp操作比较麻烦，需要封装，使用jquery封装好的。
+    //2. 只支持get请求，不支持post
+  
+  //如果想要发送post请求
+    //cors xmlhttprequest2.0推出
+    //既可以发送get请求，也可以发送post，也需要服务器配合。
+  
+</script>
+</body>
+</html>

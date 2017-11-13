@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    canvas {
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+<canvas width="600" height="400" id='cas'></canvas>
+
+<br>
+
+<input type="button" value="向上↑" id='up'>
+<input type="button" value="向下↓" id='down'>
+<input type="button" value="向左←" id='left'>
+<input type="button" value="向右→" id='right'>
+<input type="button" value="暂停" id='stop'>
+
+<script>
+  // 获取元素
+  var cas = document.getElementById( "cas" );
+  // 获取绘图上下文
+  var ctx = cas.getContext( '2d' );
+  
+  // 帧动画, 一帧一帧切换的动画
+  
+  // 绘制第一帧
+  // 1. 创建图片对象
+  var img = new Image();
+  img.src = "img/02.png";
+  
+  // 方向
+  // 0 往下走, 1 往左走, 2 往右走, 3 往上走
+  var direct = 0;
+  // 第一帧
+  var frameIndex = 0;
+  
+  var timer = null;
+  
+  var x = 100;
+  var y = 100;
+  
+  var imgW;
+  var imgH
+  
+  // 2. 等待图片加载完成绘制
+  img.onload = function() {
+    // 图片剪切绘制, 需要剪切的宽高
+    imgW = img.width / 4;
+    imgH = img.height / 4;
+    move();
+  }
+  // 将动画封装成一个函数
+  // 先清定时器, 再开定时器
+  function move() {
+    clearInterval( timer );
+    timer = setInterval( function() {
+      if ( frameIndex > 3 ) { // 4
+        frameIndex = 0;
+      }
+      // 绘制之前要清除画布
+      ctx.clearRect( 0, 0, cas.width, cas.height );
+      // 0 往下走, 1 往左走, 2 往右走, 3 往上走
+      // 根据方向判断怎么走
+      switch( direct ) {
+        case 0: y+=10; break;
+        case 1: x-=10; break;
+        case 2: x+=10; break;
+        case 3: y-=10; break;
+        default: break;
+      }
+      ctx.drawImage( img, frameIndex * imgW, direct * imgH, imgW, imgH, x, y, imgW, imgH );
+      frameIndex++;
+    }, 80);
+  }
+  
+  // 按不同的按钮, 改变 direct 就可以改变方向
+  // 0 往下走, 1 往左走, 2 往右走, 3 往上走
+  document.getElementById("up").addEventListener('click', function() {
+    direct = 3;
+    move();
+  });
+  document.getElementById("down").addEventListener('click', function() {
+    direct = 0;
+    move();
+  });
+  document.getElementById("left").addEventListener('click', function() {
+    direct = 1;
+    move();
+  });
+  document.getElementById("right").addEventListener('click', function() {
+    direct = 2;
+    move();
+  });
+  document.getElementById("stop").addEventListener('click', function() {
+    clearInterval( timer );
+  });
+  
+  
+  
+  
+  
+  
+
+</script>
+</body>
+</html>

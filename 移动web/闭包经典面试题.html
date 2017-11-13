@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<ul>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+  <li>4</li>
+  <li>5</li>
+  <li>6</li>
+  <li>7</li>
+  <li>8</li>
+  <li>9</li>
+  <li>10</li>
+</ul>
+<script>
+
+  //1. 点击对应元素打印下标
+
+  //方法1：自定义属性
+//    var lis = document.querySelectorAll("li");
+//    for(var i = 0; i < lis.length; i++) {
+//      lis[i].index =i;
+//      lis[i].onclick = function () {
+//        console.log(this.index);
+//      }
+//    }
+
+
+  //方法2：let
+//    var lis = document.querySelectorAll("li");
+//    //let是es6，支持块级作用域
+//    for(let i = 0; i < lis.length; i++) {
+////      lis[i].index =i;
+//      lis[i].onclick = function () {
+//        console.log(i);
+//      }
+//    }
+
+
+  //方法3：使用forEach
+//      var lis = document.querySelectorAll("li");
+//      lis.forEach(function (e, i) {
+//        lis[i].onclick = function () {
+//          console.log(i);
+//        }
+//      })
+
+
+  //方法4：使用闭包
+//  var lis = document.querySelectorAll("li");
+//  for (var i = 0; i < lis.length; i++) {
+//    (function (i) {
+//      lis[i].onclick = function () {
+//        console.log(i);
+//      }
+//    })(i);
+//  }
+
+  //方法5：使用闭包
+//  var lis = document.querySelectorAll("li");
+//    for (var i = 0; i < lis.length; i++) {
+//      lis[i].onclick = (function (i) {
+//        return function () {
+//          console.log(i);
+//        }
+//      })(i);
+//    }
+
+
+
+// 2. 使用settimeout打印1，2，3，4，5，6，7
+    for(var i = 0; i < 10; i++){
+        setTimeout((function (i) {
+          return function(){
+            console.log(i);
+            console.log(new Date());
+          }
+        })(i), i*1000);
+    }
+</script>
+
+</body>
+</html>

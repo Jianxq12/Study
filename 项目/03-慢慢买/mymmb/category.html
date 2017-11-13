@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/category.css">
+    <title>比价搜索页</title>
+</head>
+<body>
+<div class="container">
+    <!--顶部-->
+    <div class="mmb_header">
+        <div class="header_logo">
+            <a href="#">
+                <img src="images/header_logo.png" alt="">
+            </a>
+        </div>
+        <div class="header_app">
+            <a href="#">
+                <img src="images/header_app.png" alt="">
+            </a>
+        </div>
+    </div>
+
+    <!--主体-->
+    <div class="mmb_main">
+        <div class="search_box">
+            <input type="search" placeholder="请输入你想比价的商品">
+            <input type="button" value="搜索">
+        </div>
+
+        <div class="category">
+            <ul>
+                <!--挖个坑-->
+
+
+            </ul>
+        </div>
+
+
+
+    </div>
+
+    <!--底部-->
+    <div class="mmb_footer">
+        <div class="footer_t clearfix">
+            <a href="#">登录</a>
+            <a href="#">注册</a>
+            <a href="#">返回顶部</a>
+        </div>
+        <div class="footer_b">
+            <p>
+                <a href="#">手机APP下载</a>
+                <a href="#">慢慢买手机版</a>
+                -- 掌上比价平台
+            </p>
+            <p>m.manmanbuy.com</p>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="tpl">
+    {{each result v i}}
+    <li>
+        <a href="#" class="category_title" data-id={{v.titleId}}>{{v.title}}</a>
+        <ul class="category_content clearfix hide">
+            <!--挖个坑-->
+
+        </ul>
+    </li>
+    {{/each}}
+</script>
+
+<script type="text/html" id="tpl2">
+    {{each result v i}}
+    <li><a href="productlist.html?categoryid={{v.categoryId}}&category={{v.category}}&pageid=1">{{v.category}}</a></li>
+    {{/each}}
+</script>
+
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/artTemplate/template-web.js"></script>
+<script src="js/baseurl.js"></script>
+<script src="js/category.js"></script>
+</body>
+</html>

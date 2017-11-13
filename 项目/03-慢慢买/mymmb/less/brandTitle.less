@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+@import "variable";
+
+body{
+  background-color: #fff;
+}
+.product_list_title{
+  height: 38rem/40;
+  line-height:38rem/40;
+  border-top:1px solid @border_color;
+  border-bottom:1px solid @border_color;
+  background: linear-gradient(#fff,#ebebeb);
+  font-size: 14rem/40;
+  padding:0 10rem/40;
+
+}
+
+.brand_title{
+  height: 40rem/40;
+  margin: 10rem/40 5rem/40;
+  border: 1px solid #ccc;
+  font-size: 16rem/40;
+  color: #874604;
+  background-color: #eee;
+  line-height:40rem/40;
+  padding-left:10rem/40;
+}
+
+.brand_list{
+  width: 100%;
+  //height: 320px;
+  background-color: #ededed;
+  border: 1px solid @border_color;
+  border-radius: 5rem/40;
+
+  > ul > li > a {
+
+    width: 100%;
+    height: 40rem/40;
+    line-height: 40rem/40;
+    display: block;
+    font-size: 16rem/40;
+    font-weight: 700;
+    padding: 0 20rem/40;
+    border-bottom: 1px solid @border_color;
+
+    background: url(../images/arrow1.gif) right center no-repeat;
+  }
+}

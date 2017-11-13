@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/baicaijia.css">
+    <title>省钱控</title>
+</head>
+<body>
+<div class="container">
+    <!--顶部-->
+    <div class="mmb_header" id="head">
+        <div class="header_back">
+            <a href="javascript:history.go(-1);">
+            </a>
+        </div>
+        <h4>白菜价-淘宝内部券</h4>
+        <div class="header_app">
+            <a href="#">
+                <img src="images/header_app.png" alt="">
+            </a>
+        </div>
+    </div>
+
+    <!--主体-->
+    <div class="mmb_main">
+        <div class="bcj_head">
+            <div class="bcj_title">
+                <ul class="clearfix">
+
+                    <!--挖个坑-->
+                </ul>
+            </div>
+            <div class="bcj_search">
+                <img src="images/icon_bar.png" alt="">
+            </div>
+        </div>
+
+        <div class="product_list">
+            <div class="moneyctrl_content">
+                <ul class="clearfix">
+                    <!--挖个坑-->
+
+                    <!--"<a href="http://shop.m.taobao.com/shop/coupon.htm?activityId=27a14c9fc6bb4a48b917d567fcf8f664&amp;sellerId=2246833798" target="_blank">点此领15元优惠券</a>"-->
+
+                    <!--"<i>券后</i><em>¥</em>19.0<del>¥29</del>"-->
+                </ul>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <!--底部-->
+    <div class="mmb_footer">
+        <div class="footer_t clearfix">
+            <a href="#">登录</a>
+            <a href="#">注册</a>
+            <a href="#">返回顶部</a>
+        </div>
+        <div class="footer_b">
+            <p>
+                <a href="#">手机APP下载</a>
+                <a href="#">慢慢买手机版</a>
+                -- 掌上比价平台
+            </p>
+            <p>m.manmanbuy.com</p>
+        </div>
+    </div>
+
+    <div class="toTop">
+        <a href="#head"></a>
+    </div>
+</div>
+
+<script type="text/html" id="tpl">
+
+    {{each result v i}}
+    <li>
+        <a href="#" data-titleid="{{v.titleId}}">{{v.title}}</a>
+    </li>
+    {{/each}}
+</script>
+
+<script type="text/html" id="tpl2">
+    {{each result v i}}
+    <li >
+        <a href="javascript:;">
+            <div class="pic">
+                {{#v.productImg}}
+            </div>
+            <div class="info">
+                <p class="info_t">{{#v.productName}}</p>
+                <p class="price">{{#v.productPrice}}</p>
+
+                {{#v.productCouponRemain}}
+
+                <div class="youhui clearfix">
+                    {{#v.productCoupon}}
+                    {{#v.productHref}}
+                </div>
+            </div>
+        </a>
+    </li>
+    {{/each}}
+
+</script>
+
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/artTemplate/template-web.js"></script>
+<script src="js/baseurl.js"></script>
+<script src="js/common.js"></script>
+<script src="js/iscroll.js"></script>
+<script src="js/baicaijia.js"></script>
+</body>
+</html>

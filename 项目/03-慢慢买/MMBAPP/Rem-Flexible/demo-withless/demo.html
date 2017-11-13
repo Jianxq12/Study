@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- ------------一定不能加vp,插件会自动检测手机生成对应的vp-------------- -->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <!-- ------------一定不能加vp,插件会自动检测手机生成对应的vp-------------- -->
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- flexible CSS 初始化 -->
+    <script src="lib/flexible/flexible_css.js"></script>
+    <!-- flexible 适配插件 -->
+    <script src="lib/flexible/flexible.js"></script>
+	
+	<!-- 自己的 CSS 初始化 -->
+	<link rel="stylesheet" href="css/base.css">
+	<!-- 自己页面的 css -->
+    <link rel="stylesheet" href="css/demo.css">
+    
+</head>
+<body>
+    <header class="fb-header">Rem布局</header>
+    <section class="fb-section">
+        听说 Rem 这个单位很牛，相对于根字体大小来玩的。所以可以通过动态设置根字体大小来实现适配，淘宝flexible更牛逼，还加上了 dpr 的分析，根据dpr 识别高分屏，先按照dpr的值把viewport放大，在大的尺寸中进行布局，然后再通过动态设置initial-scale来进行缩放 回来。设配更加精准了，厉害了有木有.
+    </section>
+</body>
+</html>

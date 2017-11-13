@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    canvas {
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+<canvas width="600" height="400" id='cas'></canvas>
+
+<script>
+  // 获取元素
+  var cas = document.getElementById( "cas" );
+  // 获取绘图上下文
+  var ctx = cas.getContext( '2d' );
+  
+  // 角度转换成弧度
+  function toRadian( angle ) {
+    return angle / 180 * Math.PI ;
+  }
+  
+  // 后台给的数据
+  var data = [
+    {
+      'percent': 0.1, // 所占比重
+      'color': 'orange', // 绘制的颜色
+      'title': '社会招生' // 绘制的文字
+    }, {
+      'percent': 0.1,
+      'color': 'pink',
+      'title': '公务员'
+    }, {
+      'percent': 0.1,
+      'color': 'gray',
+      'title': '公开课'
+    }, {
+      'percent': 0.1,
+      'color': 'green',
+      'title': '前端'
+    }, {
+      'percent': 0.2,
+      'color': 'red',
+      'title': '应届生'
+    }, {
+      'percent': 0.3,
+      'color': 'blue',
+      'title': '程序员'
+    }, {
+      'percent': 0.1,
+      'color': '#abc',
+      'title': '老司机'
+    }
+  ];
+  
+  // 圆心
+  var x0 = cas.width / 2;
+  var y0 = cas.height / 2;
+  var r = 150;
+  var step = 0; // step需要动态根据数据来进行计算
+  var startAngle = -90;
+  
+  // 遍历数据, 进行绘制饼形图
+  data.forEach(function( value, index ) {
+    // 画的角度,需要动态计算
+    step = value.percent * 360;
+    // 颜色也要动态设置
+    ctx.fillStyle = value.color;
+    ctx.beginPath();
+    // 1. 移动到圆心
+    ctx.moveTo( x0, y0 );
+    // 2. 画弧
+    ctx.arc( x0, y0, r, toRadian(startAngle), toRadian(startAngle+step) );
+    // 3. fill
+    ctx.fill();
+    
+    
+    
+    // 画线
+    // 圆上任意点的 坐标 A( x0+ r*cos(a), y0 + r*sin(a) )
+    // 线的角度
+    var lineAngle = startAngle + step / 2;
+    // js Math.cos(弧度)
+    // 点的 x, y坐标都有了
+    // 为了让线长一点, 可以把半径放大一点
+    var lineX = x0 + r * 1.2 * Math.cos( toRadian( lineAngle ) );
+    var lineY = y0 + r * 1.2 * Math.sin( toRadian( lineAngle ) );
+    ctx.strokeStyle = value.color;
+    ctx.beginPath();
+    ctx.moveTo( x0, y0 );
+    ctx.lineTo( lineX, lineY );
+    
+    // 分左右方向来画线
+    // 只需判断 lineX 和 x0　的大小
+    if ( lineX > x0 ) {
+      // 在右半边
+      ctx.lineTo( lineX + 100, lineY );
+    } else {
+      ctx.lineTo( lineX - 100, lineY );
+    }
+    
+    ctx.stroke();
+    
+    
+    // 绘制文字 ctx.strokeText(text,x,y)  ctx.fillText(text,x,y)
+  
+    ctx.font = "20px 微软雅黑";
+    // 判断左右
+    if ( lineX > x0 ) {
+      // 在右半边
+      ctx.textAlign = "left";
+      ctx.fillText( value.title, lineX + 20, lineY - 8 );
+    } else {
+      // 以点为中心, 右对齐
+      ctx.textAlign = "right";
+      ctx.fillText( value.title, lineX - 20, lineY - 8 );
+    }
+    
+    startAngle += step;
+  })
+
+</script>
+</body>
+</html>

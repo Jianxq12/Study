@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/index.css">
+	<title>首页</title>
+</head>
+<body>
+<div class="container">
+    <!--顶部-->
+	<div class="mmb_header">
+        <div class="header_logo">
+            <a href="#">
+                <img src="images/header_logo.png" alt="">
+            </a>
+        </div>
+        <div class="header_app">
+            <a href="#">
+                <img src="images/header_app.png" alt="">
+            </a>
+        </div>
+	</div>
+
+    <!--主体-->
+    <div class="mmb_main">
+        <div class="search_box">
+            <input type="search" placeholder="请输入你想比价的商品">
+            <input type="button" value="搜索">
+        </div>
+
+        <div class="menu">
+            <ul class="clearfix menu_list">
+                <!--挖个坑-->
+            </ul>
+        </div>
+
+        <div class="product">
+            <div class="product_title">
+                <span>超值折扣推荐</span>
+            </div>
+            <div class="product_content">
+                <ul class="product_list">
+                    <!--挖个坑-->
+                </ul>
+                <div class="more">
+                    <a href="moneyctrl.html">更多优惠信息 »</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="rand">
+            <span>品牌排行</span>
+        </div>
+    </div>
+
+    <!--底部-->
+    <div class="mmb_footer">
+        <div class="footer_t clearfix">
+            <a href="#">登录</a>
+            <a href="#">注册</a>
+            <a href="#">返回顶部</a>
+        </div>
+        <div class="footer_b">
+            <p>
+                <a href="#">手机APP下载</a>
+                <a href="#">慢慢买手机版</a>
+                -- 掌上比价平台
+            </p>
+            <p>m.manmanbuy.com</p>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="tpl">
+    {{each result v i}}
+    {{if i< result.length-4}}
+    <!--<li class="item"><a href="{{v.titlehref}}"><img src={{v.img.split('src="')[1].split('"')[0]}}><p>{{v.name}}</p></a></li>-->
+    <li class="item"><a href="{{v.titlehref}}">{{#v.img}}<p>{{v.name}}</p></a></li>
+    {{else}}
+    <!--<li class="item hide"><a href="{{v.titlehref}}"><img src={{v.img.split('src="')[1].split('"')[0]}}><p>{{v.name}}</p></a></li>-->
+    <li class="item hide"><a href="{{v.titlehref}}">{{#v.img}}<p>{{v.name}}</p></a></li>
+    {{/if}}
+    {{/each}}
+</script>
+
+<script type="text/html" id="tpl2">
+    {{each result v i}}
+    <li>
+        <a href="moneyproduct.html?productid={{v.productId}}">
+            <div class="pic">
+                <!--<img src={{v.productImgSm.split('imgurl=')[1].split('"')[0]}}>-->
+                {{#v.productImgSm}}
+            </div>
+            <div class="info">
+                <p class="info_t">{{v.productName}}<span>{{v.productPinkage}}</span></p>
+                <p class="info_b clearfix">
+                    <span class="time">{{v.productFrom}} | {{v.productTime}}</span>
+                    <span class="comment icon_comment">{{v.productComCount}}</span>
+                </p>
+            </div>
+        </a>
+    </li>
+    {{/each}}
+</script>
+
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/artTemplate/template-web.js"></script>
+<script src="js/baseurl.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

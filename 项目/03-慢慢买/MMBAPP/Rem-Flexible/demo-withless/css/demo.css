@@ -1,0 +1,27 @@
+/* 用法：
+    使用例子 1：高度量出来 88px =>  height: 88*@rem;
+    使用例子 2：字体大小 14px   =>  .font-size(14);
+*/
+.fb-header {
+  height: 1.173304rem;
+  line-height: 1.173304rem;
+  font-size: 0.48rem;
+  background-color: pink;
+  text-align: center;
+  color: white;
+  border-bottom: 1px solid green;
+}
+.fb-section {
+  line-height: 1.173304rem;
+  background-color: lightblue;
+  color: black;
+}
+[data-dpr='1'] .fb-section {
+  font-size: 16px;
+}
+[data-dpr='2'] .fb-section {
+  font-size: 32px;
+}
+[data-dpr="3"] .fb-section {
+  font-size: 48px;
+}

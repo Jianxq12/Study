@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Title</title>
+  <style>
+
+
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- 
+  zepto定制：
+  
+  安装Nodejs环境->下载zepto.js->解压缩->cmd命令行进入解压缩后的目录->执行npm install命令->编辑make文件的41行,添加自定义模块并保存->然后执行命令 npm run-script dist->查看目录dist即构建好的zepto.js 
+  -->
+<div></div>
+
+<script src="zepto.min.js"></script>
+<script>
+
+  $(function () {
+
+  //    $("div").on("click", function () {
+  //      console.log("呵呵");
+  //    });
+  //
+  //
+  //    //轻触事件（点击事件）
+  //    $("div").on("tap", function () {
+  //      console.log("哈哈");
+  //    })
+
+    $("div").on("swipeLeft", function () {
+      console.log("左滑");
+    })
+
+    $("div").on("swipeRight", function () {
+      console.log("右滑");
+    })
+
+    $("div").on("swipeUp", function () {
+      console.log("上滑");
+    })
+
+    $("div").on("swipeDown", function () {
+      console.log("下滑");
+    })
+
+
+  });
+
+</script>
+
+</body>
+</html>
