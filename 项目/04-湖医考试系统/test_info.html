@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Table</title>
+        <link rel="stylesheet" href="plugins/layui/css/layui.css" media="all" />
+        <link rel="stylesheet" href="css/global.css" media="all">
+        <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/table.css" />
+        <style type="text/css">
+            .layui-form-item .layui-input-inline{
+                width: 16%;
+            }
+            .layui-form-label{
+                width:50px; 
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="admin-main">
+
+            <blockquote class="layui-elem-quote">
+                <a href="#"  id="add">
+                    <h3 style="font-size: 16px;font-weight: 700;letter-spacing: 1px;">湖北医药学院考试安排管理系统</h3>
+                </a>
+                
+            </blockquote>
+            <fieldset class="layui-elem-field">
+                <legend>全校考试信息</legend>
+
+                <div class="layui-field-box layui-form" style=" border: 1px solid #DDDDDD;border-top: none;">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">院系</label>
+                    <div class="layui-input-inline" >
+                      <select name="quiz1">
+                        <option value="">请选择院系</option>
+                        <option value="前端">前端</option>
+                        <option value="大数据">大数据</option>
+                      </select>
+                    </div>
+                    <label class="layui-form-label">班级</label>
+                    <div class="layui-input-inline">
+                      <select name="quiz2">
+                        <option value="">请选择班级</option>
+                        <option value="前端14期">前端14期</option>
+                        <option value="大数据1期">大数据1期</option>
+                      </select>
+                    </div>
+                    <label class="layui-form-label">课程</label>
+                    <div class="layui-input-inline">
+                      <select name="quiz3">
+                        <option value="">请选择课程</option>
+                        <option value="移动开发">移动开发</option>
+                        <option value="PHP">PHP</option>
+                      </select>
+                    </div>
+                    <label class="layui-form-label">教室</label>
+                    <div class="layui-input-inline">
+                      <select name="quiz3">
+                        <option value="">请选择教室</option>
+                        <option value="212">212</option>
+                        <option value="234">234</option>
+                      </select>
+                    </div>
+                  </div>
+                    <table class="layui-table admin-table">
+                        <thead>
+                            <tr>
+                                <th>院系</th>
+                                <th>班级</th>
+                                <th>课程</th>
+                                <th>监考老师</th>
+                                <th>结课时间</th>
+                                <th>考试时间</th>
+                                <th>考试地点</th>
+                                <th>考试人数</th>
+                            </tr>
+                        </thead>
+                        <tbody id="content">
+                        <tr>
+                            <td>前端</td>
+                            <td>前端14</td>
+                            <td>移动开发</td>
+                            <td>宫老师</td>
+                            <td>2017-12-12</td>
+                            <td>2017-11-11</td>
+                            <td>212</td>
+                            <td>85</td>
+                           
+                        </tr>
+                       
+                        </tbody>
+                    </table>
+                </div>
+            </fieldset>
+            <div class="admin-table-page">
+                <div id="paged" class="page">
+                </div>
+            </div>
+        </div>
+        
+        <script type="text/javascript" src="plugins/layui/layui.js"></script>
+        <script>
+            layui.config({
+                base: 'js/'
+            });
+
+            layui.use(['paging', 'form'], function() {
+                var $ = layui.jquery,
+                    paging = layui.paging(),
+                    layerTips = parent.layer === undefined ? layui.layer : parent.layer, //获取父窗口的layer对象
+                    layer = layui.layer, //获取当前窗口的layer对象
+                    form = layui.form();
+
+                paging.init({
+                    openWait: true,
+                    url: 'datas/laytpl_laypage_data.json?v=' + new Date().getTime(), //地址
+                    elem: '#content', //内容容器
+                    params: { //发送到服务端的参数
+                    },
+                    type: 'GET',
+                    tempElem: '#tpl', //模块容器
+                    pageConfig: { //分页参数配置
+                        elem: '#paged', //分页容器
+                        pageSize: 3 //分页大小
+                    },
+                    success: function() { //渲染成功的回调
+                        //alert('渲染成功');
+                    },
+                    fail: function(msg) { //获取数据失败的回调
+                        //alert('获取数据失败')
+                    },
+                    complate: function() { //完成的回调
+                        //alert('处理完成');
+                    },
+                });
+               
+
+               
+
+               
+                
+            });
+        </script>
+    </body>
+
+</html>

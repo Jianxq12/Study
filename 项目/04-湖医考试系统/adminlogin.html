@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>登录</title>
+		<link rel="stylesheet" href="plugins/layui/css/layui.css" media="all" />
+		<link rel="stylesheet" href="css/adminlogin.css" />
+	</head>
+
+	<body class="beg-login-bg">
+		<div class="beg-login-box">
+			<header>
+				<h1>超级管理员登录</h1>
+			</header>
+			<div class="beg-login-main">
+				<form action="index.html" class="layui-form" method="post"><input name="__RequestVerificationToken" type="hidden" value="fkfh8D89BFqTdrE2iiSdG_L781RSRtdWOH411poVUWhxzA5MzI8es07g6KPYQh9Log-xf84pIR2RIAEkOokZL3Ee3UKmX0Jc8bW8jOdhqo81" />
+				  <div class="baoguo">
+					<p>用户名 ：</p>
+					<div class="layui-form-item">
+
+						<label class="beg-login-icon">
+                        <i class="layui-icon">&#xe612;</i>
+                    </label>
+						<input type="text" name="userName" lay-verify="userName" autocomplete="off" placeholder="请输入用户名" class="layui-input">
+					</div>
+				  </div>
+				  <div class="baoguo">
+					  <p>密&emsp;码 ：</p>
+					<div class="layui-form-item">
+						<label class="beg-login-icon">
+                        <i class="layui-icon">&#xe642;</i>
+                    </label>
+						<input type="password" name="password" lay-verify="password" autocomplete="off" placeholder="请输入密码" class="layui-input">
+					</div>
+				  </div>
+				  <div class="baoguo">
+					  <p>验证码 ：</p>
+					<div class="layui-input-inline layui-form-item1">
+						<input type="number" name="code" class="layui-input" lay-verify="code" placeholder="请输入验证码" maxlength="4"/>
+						<img src="" onclick="getImage()" title="单击刷新验证码" id="img_rand_code" alt="">
+					</div>
+				  </div>
+					<div class=" layui-form-item2">
+						<button class="layui-btn layui-btn-primary" lay-submit lay-filter="login">
+							<i class="layui-icon">&#xe650;</i> 登录
+						</button>
+					</div>
+					<div class="layui-form-item3">
+						<div class="beg-pull-left beg-login-remember">
+							<label>记住帐号？</label>
+							<input type="checkbox" name="rememberMe" value="true" lay-skin="switch" checked title="记住帐号">
+						</div>
+						<a href="javascript:;" class="fr">忘记密码？</a>
+
+					</div>
+
+					<!--<div class="beg-pull-right layui-form-item">-->
+						<!--<button class="layui-btn layui-btn-primary" lay-submit lay-filter="login">-->
+							<!--<i class="layui-icon">&#xe650;</i> 登录-->
+						<!--</button>-->
+					<!--</div>-->
+				</form>
+			</div>
+			<footer class="layui-footer">
+				<a href="www.hypocrisy.xin">
+				湖北医药学院考试安排管理系统 © www.hypocrisy.xin</a>
+			</footer>
+		</div>
+		<script type="text/javascript" src="plugins/layui/layui.js"></script>
+		<script>
+//			layui.use(['layer', 'form'], function() {
+//				var layer = layui.layer,
+//					$ = layui.jquery,
+//					form = layui.form();
+//
+//				form.on('submit(login)',function(data){
+//
+//					location.href='index.html';
+//					return false;
+//				});
+//			});
+layui.use(['form', 'layer'], function () {
+	var $ = layui.jquery,form = layui.form(),layer = layui.layer;
+	// 验证
+	form.verify({
+		userName: function (value) {
+			if (value == "") {
+				return "请输入用户名";
+			}
+		},
+		password: function (value) {
+			if (value == "") {
+				return "请输入密码";
+			}
+		},
+		code: function (value) {
+			if (value == "") {
+				return "请输入验证码";
+			}
+		}
+	});
+	// 提交监听
+	form.on('submit(sub)', function (data) {
+		layer.alert(JSON.stringify(data.field), {
+			title: '最终的提交信息'
+		});
+//		location.href='index.html';
+		return false;
+	})
+})
+
+//刷新验证码
+function getImage() {
+  $("#img_rand_code").attr("src", "" + Date());
+//	alert("123");
+}
+
+
+		</script>
+	</body>
+
+</html>
