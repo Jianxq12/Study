@@ -1,0 +1,20 @@
+{
+  "name": "01-sms",
+  "version": "1.0.0",
+  "description": "技术栈 1. express - web 开发框架 2. Node.js - 内置模块  3. mongodb - 数据库驱动器 4. body-parser   5. ejs  -  模板引擎 6. 模块化 ....",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.6.0",
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "mongodb": "^2.2.33"
+  }
+}

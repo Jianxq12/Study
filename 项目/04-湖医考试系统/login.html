@@ -45,7 +45,7 @@
 					  <p>验证码 ：</p>
 					<div class="layui-input-inline layui-form-item1">
 						<input type="number" name="code" class="layui-input" lay-verify="code" placeholder="请输入验证码" maxlength="4"/>
-						<img src="" onclick="getImage()" title="单击刷新验证码" id="img_rand_code" alt="">
+						<img src="verify.php" onclick="change(this)" title="单击刷新验证码" id="img_rand_code" alt="">
 					</div>
 				  </div>
 				 <div class=" layui-form-item2">
@@ -118,10 +118,14 @@ layui.use(['form', 'layer'], function () {
 })
 
 //刷新验证码
-function getImage() {
-  $("#img_rand_code").attr("src", "" + Date());
-//	alert("123");
-}
+// function getImage() {
+//   $("#img_rand_code").attr("src", "" + Date());
+// //	alert("123");
+// }
+
+ function change(img_obj){
+	  img_obj.src = "verify.php?"+Math.random();
+  }
 
 
 		</script>
