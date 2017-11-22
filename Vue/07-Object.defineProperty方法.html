@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj = {};
+
+        // obj.name = ""
+        // obj["name"]
+
+        //Object.defineProperty
+        Object.defineProperty(obj, "name", {
+            // writable: true,
+            // configurable: true,
+            // enumerable: true,
+            // value: "zhangzhichao",
+            
+            get: function(){
+                //get方法会在别人获取当前对象的这个属性值的时候被调用
+                //获取到的值，其实就是get方法的返回值
+                console.log("你获取了我的属性")
+                return this._name;
+            },
+            set: function(value){
+                //set方法会在别人为当前对象的这个属性赋值（使用=）的时候被调用
+                //value这个形参接收到的内容，就是赋值的时候=右边的内容
+                console.log("你给我的属性赋值了")
+                console.log(value);
+                this._name = value;
+            }
+        })
+
+        // console.log(obj);
+
+
+    
+    </script>
+</body>
+</html>

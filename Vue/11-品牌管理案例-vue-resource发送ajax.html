@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .list {
+            border: 1px solid #000;
+        }
+
+        .list td,
+        th {
+            border: 1px solid #000;
+            width: 150px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <table>
+                <tr>
+                    <td>请输入品牌名称</td>
+                    <td>
+                        <input type="text" v-model="brandName" @keyup.left-ctrl="add">
+                    </td>
+                    <td>
+                        <button @click="add">添加</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>请输入搜索关键字</td>
+                    <td>
+                        <input type="text" v-model="keyword">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <table class="list">
+                <tr>
+                    <th>id</th>
+                    <th>品牌名称</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+                </tr>
+                <tr v-for="(item, index) in search" :key="index">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.ctime}}</td>
+                    <td>
+                        <button @click="del(item.id)">删除</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/vue-resource/dist/vue-resource.js"></script>
+    <script>
+
+        //vue-resource在被引入页面之后
+        //可以通过以下两种方式来获取 发送ajax请求的工具
+        //Vue.http
+        //在vue实例中通过 this.$http
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                brandName: "",
+                brands: [],
+                keyword: ""
+            },
+            created(){
+                this.getData();
+            },
+            methods: {
+                getData(){
+                    //当vue实例创建好之后，需要向后台发送请求，获取品牌的列表数据
+                    //并赋值给this.brands
+
+                    //1. 发送ajax请求
+                    // Vue.http.get
+                    this.$http
+                        .get("http://vue.studyit.io/api/getprodlist")
+                        .then(function(res){
+                            if(res.body.status == 0){
+                                this.brands = res.body.message;
+                            }
+                        })
+                },
+                add(){
+                    if(this.brandName.trim()){
+                        this.$http
+                            .post("http://vue.studyit.io/api/addproduct", {
+                                //使用vue-resource发送post请求的时候
+                                //参数需要是一个对象，对象中的属性名就是参数名
+                                //属性值就是参数值
+                                name: this.brandName
+                            }, {
+                                //如果发送的数据格式是个对象
+                                //那么需要在设置对象中加上如下的属性
+                                //将参数的对象以application/x-www-form-urlencoded （表单数据的格式）发送给后台
+                                emulateJSON: true
+                            })
+                            .then(function(res){
+                                if(res.body.status == 0){
+                                    //如果后台返回添加成功
+                                    //那么就重新从数据库中获取所有的列表数据进行展示
+                                    this.getData();
+                                    this.brandName = "";
+                                }
+                            })
+                    }
+                },
+                del(id){
+                    this.$http
+                            .get("http://vue.studyit.io/api/delproduct/" + id)
+                            .then(function(res){
+                                if(res.body.status == 0){
+                                    this.getData();
+                                }
+                            })
+                }
+            },
+            computed: {
+                search(){
+                    var that = this;
+                    return this.brands.filter(function(v, i){
+                        return v.name.indexOf(that.keyword) != -1;
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

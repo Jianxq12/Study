@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <span>十四组：</span>
+
+    <ul>
+
+      <!-- <li v-for="cor in courses">
+        {{cor}}
+      </li> -->
+
+      <!-- <li v-for="(cor,ind) in courses">
+        {{ind}}=>{{cor}}
+      </li> -->
+
+      <!-- <li v-for="(cor,ind) in courses" v-bind:key="ind">
+        {{ind}}->{{cor}}
+      </li> -->
+
+      <!-- <li v-for="i in 'Jianxq'">
+        {{i}}
+      </li> -->
+
+      <!-- <li v-for="i in 10">
+        {{i}}
+      </li> -->
+
+      <li v-for="(item,key,index) in person">
+        {{index}}--{{key}}: {{item}}
+      </li>
+    </ul>
+  </div>
+  <script src="./node_modules/vue/dist/vue.js"></script>
+
+  <script>
+    var vm = new Vue({
+      el:'#app',
+      data:{
+        courses:[
+          '优优',
+          '小阿狸',
+          '皓哥',
+          '正文',
+          '锦途'
+        ],
+        person:{
+          name:'jianxq',
+          age:20
+        }
+      }
+    })
+  </script>
+</body>
+</html>

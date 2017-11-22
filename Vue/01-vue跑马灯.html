@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        <p>{{message}}</p>
+        <button v-on:click="start">启动</button>
+        <button v-on:click="stop">停止</button>
+    </div>
+
+    <script src="./node_modules/vue/dist/vue.js"></script>
+
+    <script>
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                message: "小阿狸有点傻",
+                timer: 0
+            },
+            methods: {
+                start: function(){
+                    //在vm对象的methods中，如果想要访问数据，那么直接使用this就可以访问到
+
+                    var that = this;
+                    clearInterval(this.timer);
+                    this.timer = setInterval(function(){
+                        that.message = that.message.slice(1) + that.message.slice(0, 1);
+                    }, 200)
+                },
+                stop: function(){
+                    clearInterval(this.timer);
+                }   
+            }
+        })
+    </script>
+</body>
+</html>

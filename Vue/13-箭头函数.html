@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        var test = function(a, b){
+            return a + b;
+        }
+
+        var test = (a, b) => {
+            return a + b;
+        }
+
+        //箭头函数的语法
+        // (形参列表) => { 函数体 }
+
+        //简写： 
+        //1. 如果只有一个参数
+            //可以省略参数的小括号
+        // var test = a => {
+        //     console.log(a);
+        // }
+
+        // //2. 如果函数体中只有一个语句
+        //     //可以省略大括号
+        // var test = a => console.log(a);
+
+        
+        // //3. 如果函数体中只有一个语句，并且这个语句是个返回语句
+        //     //可以省略大括号和return关键字
+        //     //返回值就是后面的表达式的值
+        // var test = (a, b) => a + b;
+
+
+        // setTimeout(_=>console.log("1"), 1000);
+
+
+        //注意： 在箭头函数中，没有自己的this，没有自己的arguments
+
+        //几乎只要是能用到var that=this的地方，都可以使用箭头函数进行优化
+
+        // var test = () => {
+        //     console.log(arguments)
+        // };
+        
+        // test();
+
+
+       
+
+        // var obj = {
+        //     sayHello(c, d){
+        //         //this
+        //         var sayHi = (a, b) => {
+        //             console.log(arguments);
+        //         }
+        //         sayHi(1, 2);
+        //     }
+        // }
+
+        // obj.sayHello(3, 4);
+    </script>   
+</body>
+</html>

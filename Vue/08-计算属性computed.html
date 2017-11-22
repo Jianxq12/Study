@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="num1">
+        +
+        <input type="text" v-model="num2">
+        <!-- <button @click="calc">=</button> -->
+        =
+        <span>{{result}}</span>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                num1: 0,
+                num2: 0,
+                // result: 0
+            },
+            methods: {
+                // calc(){
+                //     this.result = parseInt(this.num1) + parseInt(this.num2);
+                // }
+                // result: function(){
+                //     console.log("methods被调用了")
+                //     return parseInt(this.num1) + parseInt(this.num2);
+                // }
+            },
+            computed: {
+                result: function(){
+                    console.log("computed被调用了")
+                    return parseInt(this.num1) + parseInt(this.num2);
+                }
+            }
+        })
+
+        //methods和comupted的区别
+        //1. methods使用在这种场景下的时候，必须加上()  可以传递参数
+        //2. computed不需要加()   computed不能传参
+
+        //3. methods中一般做的都是一些业务逻辑（发送ajax请求...）
+        //4. computed只是可以帮你返回一个值，把计算的逻辑封装起来
+    </script>
+</body>
+
+</html>

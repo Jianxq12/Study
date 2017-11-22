@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    table{
+      border:  1px solid #000;
+    }
+    td,th{
+      border: 1px solid #000;
+      width: 150px;
+      text-align: center
+    }
+    .blue{
+      background-color: skyblue;
+    }
+    .cyan{
+      background-color: cyan;
+    }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+
+    <table>
+      <tr>
+        <th>姓名</th>
+        <th>年龄</th>
+      </tr>
+
+      <!-- <tr v-for="(item,index) in teachers" :key="index" :class="index%2==0?'blue':'cyan'">
+        <td>{{item.name}}</td>
+        <td>{{item.age}}</td>
+      </tr> -->
+
+      <!-- <tr v-for="(item,index) in teachers" :key="index" :class="{blue:index%2==0,cyan:index%2==1}">
+        <td>{{item.name}}</td>
+        <td>{{item.age}}</td>
+      </tr> -->
+
+      <tr v-for="(item,index) in teachers" :key="index" :class="{blue:item.age>18,cyan:item.age<=18}">
+        <td>{{item.name}}</td>
+        <td>{{item.age}}</td>
+      </tr>
+    </table>
+  </div>
+  <script src="./node_modules/vue/dist/vue.js"></script>
+
+  <script>
+    var vm = new Vue({
+      el:'#app',
+      data:{
+        teachers:[
+          {name:'姜伟',age:25},
+          {name:'蒋鹏',age:12},
+          {name:'胡清流',age:NaN},
+          {name:'潘明',age:23},
+          {name:'许好亚',age:18},
+          {name:'宫再娟',age:10}
+        ]
+      }
+
+    })
+  </script>
+</body>
+</html>

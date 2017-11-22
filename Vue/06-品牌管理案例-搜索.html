@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .list {
+            border: 1px solid #000;
+        }
+
+        .list td,
+        th {
+            border: 1px solid #000;
+            width: 150px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <table>
+                <tr>
+                    <td>请输入品牌名称</td>
+                    <td>
+                        <input type="text" v-model="brandName" @keyup.left-ctrl="add">
+                    </td>
+                    <td>
+                        <button @click="add">添加</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>请输入搜索关键字</td>
+                    <td>
+                        <input type="text" v-model="keyword">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <table class="list">
+                <tr>
+                    <th>id</th>
+                    <th>品牌名称</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+                </tr>
+                <tr v-for="(item, index) in search()" :key="index">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.ctime}}</td>
+                    <td>
+                        <button @click="del(item.id)">删除</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+
+        Vue.config.keyCodes['left-ctrl'] = 17;
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                brands: [
+                    { "id": 0, "name": "法拉利", "ctime": "11/20/2017, 5:06:20 PM" },
+                    { "id": 1, "name": "劳斯莱斯", "ctime": "11/20/2017, 5:06:25 PM" },
+                    { "id": 2, "name": "迈凯伦", "ctime": "11/20/2017, 5:06:49 PM" },
+                    { "id": 3, "name": "迈巴赫", "ctime": "11/20/2017, 5:06:54 PM" },
+                    { "id": 4, "name": "五菱宏光", "ctime": "11/20/2017, 5:07:03 PM" },
+                    { "id": 5, "name": "宝骏360", "ctime": "11/20/2017, 5:07:12 PM" }, { "id": 6, "name": "二手奥拓", "ctime": "11/20/2017, 5:07:22 PM" }],
+                brandName: "",
+                keyword: ""
+            },
+            methods: {
+                // keyboardAdd(e){
+                //     console.log(e.keyCode)
+                //     // if(e.keyCode == 13){
+                //     //     this.add();
+                //     // }
+                // },
+                add() {
+                    var brand = {
+                        id: this.brands.length > 0 ? this.brands[this.brands.length - 1].id + 1 : 0,
+                        name: this.brandName,
+                        ctime: new Date().toLocaleString()
+                    }
+
+                    this.brands.push(brand);
+
+                    this.brandName = "";
+                },
+                del(id) {
+                    // alert(id);
+                    // 根据传入的id，在数组中找到相应的元素，删除之
+                    var temp = this.brands.filter(function(v){
+                        return v.id == id;
+                    })
+
+                    //判断是否找到了对应的元素 如果找到了
+                    if(temp.length > 0){
+                        //temp[0]表示的就是找到的元素
+                        //通过数组的indexOf方法找到这个元素在数组中对应的下标
+                        var index = this.brands.indexOf(temp[0]);
+                        //根据下标删除对应的这个元素
+                        this.brands.splice(index, 1);
+                    }
+                },
+                search(){
+
+                    //在vm中，任意数据发生改变的时候，
+                    //页面中的所有的指令，都会被vue重新执行一次进行求值操作
+                    
+                    //搜索功能的原理
+                    //1. 在页面中用户输入了搜索关键词
+                    //2. this.keyword就发生了改变
+                    //3. vue重新执行页面中的指令 v-for="(item,index) in search()"
+                    //4. search方法就被调用了一次，在search方法中，会使用用户当前输入的keyword，对数组进行过滤，将过滤结果返回
+                    //5. 最终在页面上进行遍历的，其实就是最终过滤出来的结果
+
+                    var that = this;
+                    var searchResult = this.brands.filter(function(v, i){
+                        return v.name.indexOf(that.keyword) != -1;
+                    })
+                    return searchResult;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

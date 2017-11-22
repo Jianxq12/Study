@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        firstName <input type="text" v-model="firstName">
+        <br>
+        lastName <input type="text" v-model="lastName">
+        <br>
+        fullName <input type="text" v-model="fullName">
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                firstName: "",
+                lastName:""
+            },
+            computed: {
+                // 如果计算属性只是一个函数，那么这个函数就是get函数
+                // fullName: function(){
+
+                // },
+                //如果要使用计算属性进行双向数据绑定，那么就必须用下面的形式
+                //为计算属性设置get和set方法
+                fullName: {
+                    get: function(){
+                        return this.firstName + "·" + this.lastName
+                    },
+                    set: function(value){
+                        var temp = value.split("·");
+                        this.firstName = temp[0];
+                        this.lastName = temp[1];
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

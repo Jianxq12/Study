@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        {{msg}}
+    </div>
+
+
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                msg: "123"
+            },
+            beforeCreate(){
+                alert("马上要去初始化数据了");
+                //在beforeCreate钩子中是无法进行数据操作的
+                //因为这个钩子是在数据初始化完成之前调用的
+            },
+            created(){
+                alert("数据初始化完成了");
+                this.msg = "我偷偷修改了数据";
+                //由于created是在数据初始化完成之后被调用的
+                //所以，在这个钩子中，就可以访问数据了
+
+                //created是第一个在数据初始化完成之后被调用的钩子
+                //他是最早可以访问数据的钩子！
+                
+                //一般情况下，我们发送ajax请求，都会在这个created钩子中进行
+            },
+            beforeMount(){
+
+                // console.log(document.getElementById("app").innerHTML)
+
+                alert('我马上要把dom元素创建出来挂载到页面上去了');
+
+                //这个钩子是在dom被创建出来并挂载的页面之前进行调用的
+                //此时页面中的元素还只是之前我们自己写好的模板，并没有数据被渲染上去
+            },
+            mounted(){
+                
+                alert("我已经把元素挂载到页面上去了")
+            },
+            beforeUpdate(){
+                alert("有数据改变了！我马上要去创建虚拟DOM去更新页面内容了")
+            },
+            updated(){
+                // console.log(document.getElementById("app").innerHTML)
+                alert("我已经将页面内容更新完成了")
+            },
+            beforeDestroy(){
+                alert("我即将死去！请缅怀我")
+            },
+            destroyed(){
+                alert("我已死，多烧纸")
+            }
+        })
+
+        //生命周期的大致过程
+        //1. 调用 new Vue()创建一个Vue实例
+        //2. 首先初始化生命周期
+        //3. 初始化了数据
+            // 我们自己写的数据是在data里面的，但是最终在页面中使用的数据，其实是vue实例中的数据，
+            //在初始化数据的时候，vue将data中所有的数据，通过Object.defineProperty方法全部挂载到了Vue实例上，我们才可以在页面中使用这些数据
+        //4. 判断在创建对象的时候，传递进去参数中是否有el参数，如果有，就继续判断是否，有template参数，如果没有
+        //5. 把我们在el中指定的元素，作为模板
+        //6. 使用上一步创建出来的模板，将数据渲染进去，产生真实的DOM元素，这个DOM对象其实就是 vm.$el,  将创建出来的DOM对象，替换回el参数对应的元素所在的位置
+        //7. 此时页面已经展示完毕，进入一个循环阶段
+            //在这个循环阶段中，Vue会不间断的监视数据的变化，如果有数据发生变化，则创建虚拟DOM，在虚拟DOM应用数据的变换，将虚拟DOM和页面中的DOM树进行对比，找出差异之后，将有差异的部分进行更新
+        //8. 如果有人调用vm.$destroy方法，这个Vue实例将会被销毁
+        //9. 在销毁的过程中，会释放所有的资源，比如：监视器、事件、子组件。。
+        //10. Vue实例被销毁
+    </script>
+</body>
+
+</html>

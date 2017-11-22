@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .blue{
+      color: skyblue
+    }
+    .bgColor{
+      background-color: yellow
+    }
+    .size{
+      width: 200px; 
+      height: 200px;
+    }
+    .bigger{
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+
+    <!-- <input type="text" v-model='classes'> -->
+
+    <!-- <input type="checkbox" v-model='classes.blue'>颜色
+    <input type="checkbox" v-model='classes.bgColor'>背景
+    <input type="checkbox" v-model='classes.size'>大小
+    <input type="checkbox" v-model='classes.bigger'>字体 -->
+
+
+    <!-- <div :class='classes'>hello Jianxq</div> -->
+    <!-- <div :class="'blue'">hello Jianxq</div> -->
+    <!-- <div :class="{size:true,bgColor:true}">hello Jianxq</div> -->
+    <!-- <div :class="['blue','bigger']">hello Jianxq</div> -->
+    <div :class="['blue','bigger',{bgColor:true}]">hello Jianxq</div>
+  </div>
+  <script src="./node_modules/vue/dist/vue.js"></script>
+
+  <script>
+    var vm = new Vue({
+      el:'#app',
+      data:{
+        // classes:'blue bgColor size bigger'
+        // classes:{
+        //   blue:true,
+        //   bgColor:true,
+        //   size:false,
+        //   bigger:true
+        // }
+        // classes:['blue','bgColor','size','bigger']
+        // classes:[
+        //   'blue',{bgColor:true},['size']
+        // ]
+      }
+    })
+  </script>
+</body>
+</html>

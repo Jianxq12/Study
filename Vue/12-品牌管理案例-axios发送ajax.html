@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .list {
+            border: 1px solid #000;
+        }
+
+        .list td,
+        th {
+            border: 1px solid #000;
+            width: 150px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <table>
+                <tr>
+                    <td>请输入品牌名称</td>
+                    <td>
+                        <input type="text" v-model="brandName" @keyup.left-ctrl="add">
+                    </td>
+                    <td>
+                        <button @click="add">添加</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>请输入搜索关键字</td>
+                    <td>
+                        <input type="text" v-model="keyword">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <table class="list">
+                <tr>
+                    <th>id</th>
+                    <th>品牌名称</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+                </tr>
+                <tr v-for="(item, index) in search" :key="index">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.ctime}}</td>
+                    <td>
+                        <button @click="del(item.id)">删除</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/axios/dist/axios.js"></script>
+    
+    <script>
+
+        //vue-resource在被引入页面之后
+        //可以通过以下两种方式来获取 发送ajax请求的工具
+        //Vue.http
+        //在vue实例中通过 this.$http
+
+
+        axios.interceptors.request.use(function (config) {
+            // Do something before request is sent
+            // console.log("拦截器方法被调用了")
+            // console.log(config);
+            if(typeof config.data == "object"){
+                var str = "";
+                for(var k in config.data){
+                    str += k + "=" + config.data[k] + "&"
+                }
+                config.data = str;
+            }
+            
+            return config;
+        });
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                brandName: "",
+                brands: [],
+                keyword: ""
+            },
+            created(){
+                this.getData();
+            },
+            methods: {
+                getData(){
+                    // var that = this;
+                    axios({
+                        url: "http://vue.studyit.io/api/getprodlist",
+                        method: "get"
+                    }).then(res => {
+                        if(res.data.status == 0){
+                            this.brands = res.data.message;
+                        }
+                    })
+                },
+                add(){
+                    if(this.brandName.trim()){
+                        var that = this;
+                        axios({
+                            url: "http://vue.studyit.io/api/addproduct",
+                            method: "post",
+                            data: {name: this.brandName}
+                        }).then(function(res){
+                            if(res.data.status == 0){
+                                that.getData();
+                            }
+                        })
+                    }
+                },
+                del(id){
+                    var that = this;
+                    axios({
+                        url: "http://vue.studyit.io/api/delproduct/" + id,
+                        method: "get"
+                    }).then(function(res){
+                        if(res.data.status == 0){
+                            that.getData();
+                        }
+                    })
+                }
+            },
+            computed: {
+                search(){
+                    var that = this;
+                    return this.brands.filter(function(v, i){
+                        return v.name.indexOf(that.keyword) != -1;
+                    })
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>
