@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <mycomp :msgfromfather='msg'></mycomp>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+
+        //问题： 子组件和父组件是相对独立的，子组件想要获取父组件中的内容，是不能直接去获取的！
+
+        //解决方案： 父组件给子组件传递数据分为两步：
+            //1. 父组件中使用子组件的时候，在子组件的标签中，通过属性将数据传递给子组件
+            //2. 子组件需要在子组件对象中新增一个props属性，这是一个数组，里面放的就是父组件传递的属性的名称
+            //3. 在子组件中，就可以像使用正常的数据一样去使用在props中书写的内容了！！！
+
+        //注意： 父组件传递给子组件的数据，是单向， 父组件中修改，子组件会变化，但是子组件不能修改（修改会报错！！），就算能修改，父组件中也不会变化
+
+        Vue.component("mycomp", {
+            template: "<div>{{msgfromfather}} </div>",
+            data(){
+                return {
+                    msg: "这是子组件中的内容"
+                }
+            },
+            props: ["msgfromfather"]
+        })
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                msg: "这是父组件中的内容"
+            }
+        })
+
+
+
+
+
+        // function test(num){
+        //     return num * num;
+        // }
+
+        // test(10);
+
+        // test(100);
+    </script>
+</body>
+
+</html>

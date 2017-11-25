@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #login,#register{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <a href="#/home" id="btn-home">首页</a>
+    <a href="#/login" id="btn-login">登录</a>
+    <a href="#/register" id="btn-register">注册</a>
+
+    <div id="home">
+        <h2>首页</h2>
+        这是一个价值2000万的项目
+        <br>
+    </div>
+
+    <div id="login">
+        <h2>登录</h2>
+        <table>
+            <tr>
+                <td>用户名</td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>密码</td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><button>登录</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="register">
+        <h2>注册</h2>
+        <table>
+            <tr>
+                <td>用户名</td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>密码</td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>确认密码</td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><button>注册</button></td>
+            </tr>
+        </table>
+    </div>
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+    <script>
+
+        $(function(){
+            showContentByHash();
+        })
+
+        window.onhashchange = function(){
+            showContentByHash();
+        }
+
+
+        function showContentByHash(){
+            switch(location.hash){
+                case "#/home": 
+                    $("#home").show().siblings("div").hide();
+                    break;
+                case "#/login":
+                    $("#login").show().siblings("div").hide();
+                    break;
+                case "#/register":
+                    $("#register").show().siblings("div").hide();
+                    break;                
+            }
+        }
+
+        // $("#btn-login").click(function(){
+        //     $("#login").show().siblings("div").hide();
+        //     return false;
+        // })
+
+        // $("#btn-register").click(function(){
+        //     $("#register").show().siblings("div").hide();
+        //     return false;
+        // })
+
+        // $("#btn-home").click(function(){
+        //     $("#home").show().siblings("div").hide();
+        //     return false;
+        // })
+    </script>
+</body>
+</html>

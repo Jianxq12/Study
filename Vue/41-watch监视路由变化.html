@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+        <router-view></router-view>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/vue-router/dist/vue-router.js"></script>
+    <script>
+        
+        var home = {
+            template: "<h1>用户访问的id为{{id}}</h1>",
+            data(){
+                return {
+                    id: 0
+                }
+            },
+            created(){
+                this.id = this.$route.params.id;
+            },
+            watch:{
+                $route: function(nV, oV){
+                    this.id = this.$route.params.id;
+                }
+            }
+        }
+
+        var router = new VueRouter({
+            routes: [
+                {
+                    path: "/home/:id",
+                    component: home
+                }
+            ]
+        });
+
+        var vm = new Vue({
+            router,
+            el: "#app",
+            data: {
+            },
+            watch: {
+                $route: function(){
+                   //路由变化的时候，是可以知道的,而且可以做一些事情的
+
+                    // console.log(this.$route)
+
+                    // //权限管理的例子
+                    // var isGuanliyuan = false;
+                    // // if(!isGuanliyuan && this.$route.path=="/home"){
+                    // //     this.$router.push("/")
+                    // // }
+
+                    // //登录的例子
+                    // if(!isLogin && this.$route.path !="/login"){
+                    //     this.$router.push("/login")
+                    // }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

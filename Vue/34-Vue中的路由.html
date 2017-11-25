@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 4. 给路由匹配到的组件指定显示位置 -->
+        <router-view></router-view>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/vue-router/dist/vue-router.js"></script>
+    <script>
+
+        //路由？ 根据不同的url地址，对应不同的内容
+
+        //vue官方提供了一个路由插件，可以非常方便的实现路由功能 vue-router
+
+        //路由在vue中的效果：根据hash地址不同，展示不同的组件
+
+        //1. 创建组件的构造对象
+        var login = {
+            template: "<h1>登录</h1>"
+        }
+
+        var register = {
+            template: "<h1>注册</h1>"
+        }
+
+        //2. 将组件和hash地址一一对应
+
+        //创建路由对象
+        var router = new VueRouter({
+            //routes可以理解为路由表
+            //里面存储的就是地址和组件的对应关系
+            routes: [
+                //每一个对应关系就是一个对象
+                {
+                    //路径地址
+                    path: "/login",
+                    component: login
+                },
+                {
+                    path: "/register",
+                    component: register
+                }
+            ]
+        })
+
+
+        //3. 将路由对象和vue实例进行关联
+        var vm = new Vue({
+            router: router,
+            el: "#app",
+            data: {
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        .fade-enter{
+            /* opacity: 0; */
+            margin-left: -200px;
+        }
+
+        .fade-enter-to,.fade-leave{
+            /* opacity: 1; */
+            margin-left:0px;
+        }
+
+        .fade-leave-to{
+            /* opacity: 0; */
+            margin-left: 200px;
+        }
+
+        .fade-enter-active,.fade-leave-active{
+            transition: all 1s linear;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        
+        <button @click="isShow = !isShow">切换显示div</button>
+
+        <transition name="fade">
+            <div class="box" v-if="isShow"></div>
+        </transition>
+
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+
+        //在vue中实现过渡效果（动画）
+        //自定义类样式的方式：
+        //可以通过transition标签，将要显示动画效果的元素进行包裹
+        //指定6个类样式， v-enter v-enter-to v-enter-active
+                    //  v-leave v-leave-to v-leave-active
+        //如果不给transition标签指定name属性，那么vue会自动查找以v-开头的类样式
+        //如果指定 name属性，那么vue会找以name属性的值开头类样式
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                isShow: false
+            }
+        })
+    </script>
+</body>
+
+</html>

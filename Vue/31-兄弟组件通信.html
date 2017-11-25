@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <bigbrother></bigbrother>
+        <youngbrother></youngbrother>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+
+        // $on  $emit
+        //$on是用来注册事件的  $emit是用来触发事件的
+
+        //$on注册的事件，只能在当前实例中被$emit触发
+
+
+        //新建一个vue实例，这个实例可以用来注册事件以及触发事件
+        //从而达到兄弟组件之间的通信效果
+        var messageHub = new Vue();
+
+
+        Vue.component("bigbrother", {
+            template: "<h1>哥哥组件</h1>",
+            created(){
+                messageHub.$on("listenDdMsg", this.getMsgFromDd)
+            },
+            methods: {
+                getMsgFromDd(msg){
+                    console.log("我家兄弟来信了， 弟弟说:" + msg);
+                }
+            }   
+        })
+
+        Vue.component("youngbrother", {
+            template: "<div><h1>弟弟组件</h1><button @click='btnClick'>发送消息给哥哥</button></div>",
+            methods: {
+                btnClick(){
+                    messageHub.$emit("listenDdMsg", "我要结婚了，你快来上份子钱！！")
+                }
+            }
+        })
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+            }
+        })
+    </script>
+</body>
+
+</html>

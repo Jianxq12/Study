@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <router-view></router-view>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/vue-router/dist/vue-router.js"></script>
+    <script>
+        //如果在路由中，是通过 ?key=value的形式进行参数传递的
+        //那么可以在this.$route.query对象获取到参数中传递的内容
+        //会将参数字符串解析成一个对象
+
+        var login = {
+            template: "<h1>登录 获取到的id为{{id}}</h1>",
+            data(){
+                return {
+                    id: 0
+                }
+            },
+            created(){
+                //在组件实例中，可以通过 this.$route 获取所有路由相关的信息，包括传递进来的参数
+                console.log(this.$route);
+                this.id = this.$route.query.id;
+            }
+        }
+
+        var register = {
+            template: "<h1>注册</h1>"
+        }
+
+        var router = new VueRouter({
+            routes: [
+                {
+                    path: "/login",
+                    component: login
+                },
+                {
+                    path: "/register",
+                    component: register
+                }
+            ]
+        })
+
+        var vm = new Vue({
+            router: router,
+            el: "#app",
+            data: {
+            }
+        })
+    </script>
+</body>
+
+</html>

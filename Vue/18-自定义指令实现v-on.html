@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <button v-myon:click.stop="btnClick">按钮</button>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+
+        Vue.directive("myon", {
+            bind(el, binding){
+                //给元素注册事件
+                //1. 注册什么事件  binding.arg
+                //2. 注册的事件有没有什么要求 binding.modifiers
+                //3. 注册的事件的处理函数是谁 binding.value
+                el.addEventListener(binding.arg, function(e){
+                    binding.value();
+                    if(binding.modifiers.stop){
+                        e.stopPropagation();
+                    }
+                });
+            }
+        })
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+            },
+            methods: {
+                btnClick(){
+                    alert("点击事件触发了！")
+                }
+            }
+        })
+
+
+
+        // function test(){
+        //     console.log(1);
+        // }
+
+        // var test1 = function(){
+        //     test();
+
+        // }
+
+        // test1();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 如果在一个元素中添加了ref属性
+        那么在元素所在的Vue实例中的$refs属性中，会以这个ref属性的值作为属性名，将元素的DOM对象存储起来 -->
+        <button ref="btn">按钮</button>
+
+
+        <!-- 如果在一个组件标签中添加了ref属性
+        那么在元素所在的Vue实例中的$refs属性中，会以这个ref属性的值作为属性名，将组件实例对象存储起来  组件中的所有的内容，都可以直接访问了 -->
+        <mycomp ref="son"></mycomp>
+
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+
+
+        Vue.component("mycomp", {
+            template: "<h1>组件</h1>",
+            data(){
+                return {
+                    msg: "这是子组件中的内容"
+                }
+            },
+            methods: {
+                btnClick(){
+                }
+            },
+            props: ["msgfromfather"]
+        })
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                msg: "这是父组件中的内容"
+            }
+        })
+
+
+
+
+    </script>
+</body>
+
+</html>

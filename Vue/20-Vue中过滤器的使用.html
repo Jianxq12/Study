@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        {{time | dateformat("YYYY-MM-DD HH:mm:ss")}}
+    </div>
+
+    <div id="app1">
+            {{time | dateformat("YYYY-MM-DD HH:mm:ss")}}
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/moment/moment.js"></script>
+    <script>
+
+        //1. 全局注册
+        Vue.filter("dateformat", function(value, pattern){
+            console.log("全局的")
+            return moment(value).format(pattern)
+        })
+
+        //2. 局部注册
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                time: new Date()
+            },
+            directives:{
+
+            },
+            filters:{
+                dateformat: function(value, pattern){
+                    console.log("局部的")
+                    return moment(value).format(pattern)
+                }
+            }
+        })
+
+
+        // var vm1 = new Vue({
+        //     el: "#app1",
+        //     data: {
+        //         time: new Date()
+        //     },
+        //     directives:{
+
+        //     },
+           
+        // })
+    </script>
+</body>
+
+</html>

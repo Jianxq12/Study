@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .router-link-active{
+            font-size: 20px;
+            color: red;
+            background: black;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="btnClick">跳转到列表页</button>
+        <router-view></router-view>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/vue-router/dist/vue-router.min.js"></script>
+    <script>
+
+        var router = new VueRouter({
+            routes:[
+                {
+                    name: "home",
+                    path: "/home/asdf/adsf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf",
+                    component: {
+                        template: "<h1>首页</h1>"
+                    }
+                },
+                {
+                    name: "list",
+                    path: "/list",
+                    component: {
+                        template: "<h1>列表页</h1>"
+                    }
+                },
+                {
+                    path: "/",
+                    redirect: "/home"
+                }
+            ]
+        })
+
+        router.beforeEach((to, from, next) => {
+            console.log("路由要跳转了！！！");
+        })
+
+        var vm = new Vue({
+            router,
+            el: "#app",
+            data: {
+            },
+            methods: {
+                btnClick(){
+                    alert("保存数据成功了跳转页面吧");
+                    this.$router.push("/list?id="+ 1);
+                    // this.$router.push({path: "/list"});
+                    // this.$router.push({name: "list", query: {id: 1}});
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <router-view></router-view>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/vue-router/dist/vue-router.js"></script>
+    <script>
+
+        var login = {
+            template: "<h1>登录 获取到的id为{{id}}</h1>",
+            data(){
+                return {
+                    id: 0
+                }
+            },
+            created(){
+                //在组件实例中，我们可以通过 this.$route 获取所有路由相关的信息，包括传递进来的参数
+                console.log(this.$route);
+                this.id = this.$route.params.name;
+            }
+        }
+
+        var register = {
+            template: "<h1>注册</h1>"
+        }
+
+        var router = new VueRouter({
+            routes: [
+                {
+                    //在路由路径中，可以通过:的形式来声明参数
+                    //类似于一个占位符，当用户传递参数的时候
+                    //比如路由路径是 /login/:id   那么用户访问的时候  /login/13
+                    //在获取路由参数的时候，需要通过this.$route.params.id来获取这个id参数
+
+                    //如果在参数后面加问号，表示这个参数可有可无
+                    path: "/login/:name?",
+                    component: login
+                },
+                {
+                    path: "/register",
+                    component: register
+                }
+            ]
+        })
+
+        var vm = new Vue({
+            router: router,
+            el: "#app",
+            data: {
+            }
+        })
+
+
+        //在router中传递和获取参数，一共有两种方式
+        //1. 通过 ?key=value这种形式传参  通过 this.$route.query来获取
+        //2. 通过 /路径/:参数 这种形式传参， 通过this.$route.params来获取
+    </script>
+</body>
+
+</html>

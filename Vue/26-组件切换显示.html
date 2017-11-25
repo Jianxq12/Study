@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 250px;
+        }
+
+        .comp-enter{
+            margin-left: -200px;
+        }
+
+        .comp-enter-to,.comp-leave{
+            margin-left: 0;
+        }
+
+        .comp-leave-to{
+            margin-left: 200px;
+        }
+
+        .comp-enter-active,.comp-leave-active{
+            transition: all .3s linear;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <a href="" @click.prevent="isLoginShow=true;isRegisterShow=false">登录</a>
+        <a href="" @click.prevent="isRegisterShow=true;isLoginShow=false">注册</a>
+
+        <login v-if="isLoginShow"></login>
+        <register  v-if="isRegisterShow"></register> -->
+
+        
+        <!-- component标签可以认为是一个组件的占位符，可以通过is属性来指定具体要让哪个组件显示在这里 -->
+       
+        
+        <!-- <a href="" @click.prevent="currComp='login'">登录</a>
+        <a href="" @click.prevent="currComp='register'">注册</a> -->
+
+
+        <a href="#/login">登录</a>
+        <a href="#/register">注册</a>
+
+        <transition name="comp" mode="out-in">
+            <component :is="currComp"></component>
+        </transition>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script type="text/template" id="login-tpl">
+        <div class="box">
+            <h2>登录</h2>
+            <table>
+                <tr>
+                    <td>用户名</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>密码</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td><button>登录</button></td>
+                </tr>
+            </table>
+        </div>
+    </script>
+    <script type="text/template" id="register-tpl">
+        <div class="box">
+            <h2>注册</h2>
+            <table>
+                <tr>
+                    <td>用户名</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>密码</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>确认密码</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td><button>注册</button></td>
+                </tr>
+            </table>
+        </div>
+    </script>
+    <script>
+
+        Vue.component("login", {
+            template: "#login-tpl"
+        })
+
+        Vue.component("register", {
+            template: "#register-tpl"
+        })
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                // isLoginShow: false,
+                // isRegisterShow: false
+                currComp: "login"
+            },
+            created(){
+                this.changeCompByHash();
+                window.onhashchange = _ => {
+                    this.changeCompByHash();
+                }
+            },
+            methods: {
+                changeCompByHash(){
+                    switch(location.hash){
+                        case "#/register":
+                            this.currComp = "register"
+                            break;
+                        // case "#/login":
+                        default:
+                            this.currComp = "login"     
+                    }
+                }
+            }
+        })
+
+        
+    </script>
+</body>
+
+</html>

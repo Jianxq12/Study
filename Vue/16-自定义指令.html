@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <div id="app">
+        <input type="text" v-focus>
+    </div> -->
+
+    <div id="app1">
+        <input type="text" v-focus>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        //指令： 指的就是在html标签中，加入一些预定义好的属性，实现相应的功能
+
+        //指令的基本用法：
+            //  指令名:参数.修饰符="表达式"
+
+       // 有的情况下，需要对普通 DOM 元素进行底层操作，这时候就会用到自定义指令
+        
+        //1. 全局注册
+            //语法： Vue.directive("指令名（不带v-）", {这个对象中包含指令相关的内容})
+
+            Vue.directive("focus", {
+                bind(el){
+                    //每个钩子函数都可以接收到el参数，这个参数就是指令所在的元素的DOM对象
+                    //可以在钩子函数中通过el对元素进行任何想要的操作
+
+                    el.value = "我在指令钩子函数中改了文本框的内容"
+                    // console.log(el);
+                    //只调用一次，指令第一次绑定到元素时调用
+                },
+                inserted(el){
+                    //被绑定元素插入父节点时调用
+                    el.focus();
+                },
+                update(el){
+                    //当指令绑定的数据发生变化的时候，DOM更新之前调用
+                },
+                componentUpdated(el){
+                    //当指令绑定的数据发生变化的时候，DOM更新之后调用                    
+                },
+                unbind(el){
+                    //当指令从元素上解绑的时候调用
+                }   
+            })
+
+
+            //注册自定义指令的时候，有个简写的模式
+            //因为一般在开发中，最常用的就是bind和update两个钩子
+            //所以注册指令可以简写为如下形式
+            // Vue.directive("指令名", function(el, binding){
+            //     //这个函数，就是为bind，和update统一设置的一个函数
+            // })
+
+        //2. 局部注册
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+            },
+            // directives: {
+            //     "指令名称": {
+            //         bind(){}
+            //     }
+            // }
+        })
+
+
+        var vm1 = new Vue({
+            el: "#app1",
+            data: {
+                
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>

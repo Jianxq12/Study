@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+        <router-view></router-view>
+
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/vue-router/dist/vue-router.js"></script>
+
+    
+    <script>
+
+        var account = {
+            template: "<div><h1>Account</h1><router-view></router-view></div>"
+        }
+
+        var login = {
+            template: "<h2>登录</h2>"
+        }
+
+        var register = {
+            template: "<h2>注册</h2>"
+        }
+
+        var router = new VueRouter({
+            routes: [
+                {
+                    path: "/account",
+                    component: account,
+                    children: [
+                        {
+                            //嵌套路由中的path不能以/开头
+                            path: "login",
+                            component: login
+                        },
+                        {
+                            path: "register",
+                            component: register
+                        }
+                    ]
+                }
+            ]
+        })
+
+        var vm = new Vue({
+            router: router,
+            el: "#app",
+            data: {
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <span>{{msg}}</span>
+
+        <!-- 父组件中声明一个函数，用来接收子组件传递的数据
+        只要子组件要传送数据过来，调用这个函数就行了
+        但是，父子组件之间完全独立，子组件无法直接调用这个函数
+        所以，父组件将自己的函数，以事件的方式注册给子组件
+        子组件想要调用这个父组件中的函数的时候，只需要触发事件即可！ -->
+        <mycomp @sendmsg="getMsgFromSon"></mycomp>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+
+        //要从子组件中传递数据给父组件：
+        
+        //1. 在父组件中声明一个函数，用来接收传递的数据
+        //2. 将父组件中的声明的函数，以事件的形式绑定给子组件
+        //3. 在子组件中，如果要发送数据给父组件，调用$emit方法触发绑定好的事件即可
+
+        Vue.component("mycomp", {
+            template: "<div>子组件<button @click='sendMsgToDad'>发送消息给父组件</button></div>",
+            data(){
+                return {
+                    msg: "这是子组件中的内容"
+                }
+            },
+            methods: {
+                sendMsgToDad(){
+                    //需要从子组件中发送数据给父组件！！
+                    //在这里，需要做的事情，就是触发父组件给我们注册的事件
+                    //$emit方法可以用来触发事件
+                        //this.$emit("事件名称", 要传递的数据)
+
+                    //注意$emit只能传递一个参数，如果有多份数据，那就将多份数据用对象传递即可
+                    this.$emit("sendmsg", "我没钱了，你给我打点钱吧！");
+                }
+            }
+        })
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                msg: ""
+            },
+            methods: {
+                getMsgFromSon(msg){
+                    console.log("我儿子来信了！！！儿子说:" + msg);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

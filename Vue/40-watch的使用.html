@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="person.money">
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                msg: "hello Jianxq",
+                person: {
+                    name: "Jianxq",
+                    money: 100
+                }
+            },
+            watch: {
+                //在watch中可以监视当前vue实例中的任意一个数据
+                //当数据发生变化的时候，vue会自动调用这个函数
+                msg: function(newValue, oldValue){
+                    //监视只能做监视操作，也就是改动之后，可以收到通知
+                    //但是修改的操作是不能阻止的
+
+                    console.log(newValue, oldValue);
+                },
+                
+                //深度监视： 监视一个对象，对象中任意内容发生变化的时候，都会得到通知
+                person: {
+                    handler: function(nV, oV){
+                        console.log("有人动我钱，我跟你拼了！");
+                    },
+                    deep: true,
+                    //当监视生效的时候，直接执行一次函数
+                    immediate: true
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

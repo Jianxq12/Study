@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+        //1. 使用别人提供好的Promise的方式进行回调函数的书写
+
+        // axios({
+
+        // }).then(function(){
+
+        // })
+
+
+        //2. 封装Promise的方式给别人使用
+
+
+        // setTimeout(function(){
+        //     console.log("我去打水")
+        //     setTimeout(function(){
+        //         console.log("水拿回来了")
+        //         setTimeout(function(){
+
+        //         }, 600000)
+        //     }, 1000)
+        // }, 1000)
+
+
+        //Promise本身，其实就是一个对象，这个对象中包含一个异步操作
+
+        //Promise对象有三种状态：
+        //1. pendding: 挂起，也就意味着Promise对象中的异步操作还在执行
+        //2. resolved: 成功  意味着Promise对象中的异步操作已经完毕，并且成功了
+        //3. rejected: 失败  意味着Promise对象中的异步操作已经完毕，但是失败了
+
+
+        var isSuccess = Boolean(Math.round(Math.random()));
+
+        var p = new Promise(function(resolve, reject){
+            //resolve和reject是两个函数
+            //分别可以将当前Promise对象的状态改变为 已成功 或 已失败
+
+            //这个函数中，可以进行异步操作，比如ajax请求之类的
+            //在请求成功之后，需要将当前的Promise对象标记为已成功
+            //在请求失败之后，需要将当前的Promise对象标记为已失败
+
+            if(isSuccess){
+                var data = {status: 0, message: "这是请求回来的数据"};
+                resolve(data)
+            }else{
+                reject();
+            }
+        })
+
+
+        p.then(function(data){
+            //成功之后，会调用的函数
+            console.log("异步操作成功了，成功的回调被调用了", data)
+        }, function(){
+            //失败之后，会调用的函数
+            console.log("异步操作失败了，失败的回调被调用了")
+        })
+
+        p.then(function(data){
+            //成功之后，会调用的函数
+            console.log("异步操作成功了，成功的回调被调用了", data)
+        }).catch(function(){
+            //失败之后，会调用的函数
+            console.log("异步操作失败了，失败的回调被调用了")
+        })
+
+
+
+
+
+        function timeout(time){
+            var p = new Promise(function(resolve, reject){
+                setTimeout(function(){
+                    resolve();
+                }, time);
+            });
+            return p;
+        }
+
+
+        timeout(3000).then(function(){
+            console.log("3s后这个代码执行了")
+        })
+    
+
+
+        
+        // function ajax(url, callback){
+        //     var xhr = new XMLHttpRequest();
+        //     xhr.open("get", url);
+        //     xhr.send(null);
+        //     xhr.onreadystatechange = function(){
+        //         if(xhr.readyState == 4 && xhr.status == 200){
+        //             callback()
+        //         }
+        //     }
+        // }
+
+
+        // ajax("xxx.com", function(){
+        //     //业务逻辑  获取数据 模板渲染  将渲染结果展示到页面
+        // })
+
+        // ajax("xxx.com", function(){
+        //     //别的功能
+        // })
+
+
+        // function ajax(url){
+        //     return new Promise(function(resolve, reject){
+        //         var xhr = new XMLHttpRequest();
+        //         xhr.open("get", url);
+        //         xhr.send(null);
+        //         xhr.onreadystatechange = function(){
+        //             if(xhr.readyState == 4 && xhr.status == 200){
+        //                 resolve(JSON.parse(xhr.responseText));
+        //             }
+        //         }
+        //     })
+        // }
+
+        // ajax("").then(function(data){
+
+        // }).catch(function(){
+
+        // })
+
+    </script>
+</body>
+</html>

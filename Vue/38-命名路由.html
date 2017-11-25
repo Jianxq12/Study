@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .router-link-active{
+            font-size: 20px;
+            color: red;
+            background: black;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <a href="#/home">首页</a>
+        <a href="#/list">列表页</a> -->
+
+        <!-- router-link可以生成a标签，但是和直接写a标签不一样的是，他会自动给和当前页面地址匹配的a标签加上router-link-active类样式 -->
+
+        <!-- <router-link to="/home">首页</router-link>
+        <router-link to="/list">列表页</router-link> -->
+
+        <!-- <router-link :to="{name: 'home'}">首页</router-link> -->
+        <!-- <router-link :to="{name: 'list', params: {id: 123}}">列表页</router-link> -->
+
+        <router-view></router-view>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/vue-router/dist/vue-router.min.js"></script>
+    <script>
+
+        var router = new VueRouter({
+            routes:[
+                {
+                    name: "home",
+                    path: "/home/asdf/adsf/asdf/asdf/asdf/asdf/asdf/asdf/asdf/asdf",
+                    component: {
+                        template: "<h1>首页</h1>"
+                    }
+                },
+                {
+                    name: "list",
+                    path: "/list/:id",
+                    component: {
+                        template: "<h1>列表页</h1>"
+                    }
+                }
+            ]
+        })
+
+        var vm = new Vue({
+            router,
+            el: "#app",
+            data: {
+            }
+        })
+    </script>
+</body>
+
+</html>

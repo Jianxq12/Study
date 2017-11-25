@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <my-component></my-component>
+        <my-component></my-component>
+        <my-component></my-component>
+        <my-component></my-component>
+        <my-component></my-component>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+
+    <script type="text/template" id="tpl">
+        <div><h1>{{msg}}</h1><h1>hello 你能看见我</h1></div>
+    </script>
+
+
+    <script>
+        //1. 全局注册
+        Vue.component("my-component", {
+            //template用来设置组件的html模板，模板中可以直接书写html代码
+            //但是一定要注意，模板中必须包含一个根元素
+            // template: "<div><h1>{{msg}}</h1><h1>hello 你能看见我</h1></div>",
+
+            //template还可以是一个id选择器，指向模板字符串所在的元素
+            template: "#tpl",
+
+            //data就是模板中的数据提供者M层， 但是一定要注意，这个data是一个函数
+            //函数中返回的对象，才是真实的数据对象
+
+            //data之所以要用函数，就是因为如果是个对象，那么每个组件实例都会以引用的方式调用这个对象,引用的方式调用对象，会导致，一个组件实例修改了数据，那么另外一个组件也会受到影响
+            //用函数，可以以避免这个问题
+            //因为如果用函数的话，每次在创建组件实例的时候，都会调用这个函数，这个函数中会重新创建一个对象交给组件实例来使用，那么就意味着，每个组件实例都有自己的数据对象，互不影响
+            data: function(){
+                return {
+                    msg: "组件中的msg"
+                }
+            },
+            created(){
+                console.log("组件被创建了")
+            }
+        })
+
+
+
+        //2. 局部注册
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                msg: "这是vm对象中的data"
+            },
+            components: {
+                "my-component": {
+                    template: "#tpl",
+                    data(){
+                        return {
+                            msg: "hello 我是局部注册的组件"
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

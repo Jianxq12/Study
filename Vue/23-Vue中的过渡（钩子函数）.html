@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="isShow = !isShow">切换显示div</button>
+
+        <transition 
+            v-on:before-enter="beforeEnter"
+            v-on:enter="enter"
+            v-on:after-enter="afterEnter"
+            v-on:enter-cancelled="enterCancelled"
+            v-on:before-leave="beforeLeave"
+            v-on:leave="leave"
+            v-on:after-leave="afterLeave"
+            v-on:leave-cancelled="leaveCancelled"
+        >
+            <div class="box" v-if="isShow"></div>
+        </transition>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                isShow: false
+            },
+            methods:{
+                beforeEnter(el){
+                    el.style.marginLeft = "200px";
+                    console.log("beforeEnter执行了")
+                },
+                enter(el){
+                    el.offsetWidth;
+                    el.style.marginLeft = "0px";
+                    el.style.transition = "all 1s linear"
+                    this.isShow = false;
+
+                    console.log("enter执行了")
+                },
+                afterEnter(){
+                    console.log("afterEnter执行了")
+
+                },
+                enterCancelled(){
+                    console.log("enterCancelled执行了")
+
+                },
+                beforeLeave(){
+
+                    console.log("beforeLeave执行了")
+                },
+                leave(){
+                    console.log("leave执行了")
+
+                },
+                afterLeave(){
+                    console.log("afterLeave执行了")
+
+                },
+                leaveCancelled(){
+                    console.log("leaveCancelled执行了")
+                    
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

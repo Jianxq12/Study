@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .post-text {
+            border: 1px solid black;
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        #app {
+            padding: 10px;
+        }
+
+        .post-btn {
+            width: 100%;
+            height: 35px;
+            border-radius: 5px;
+            border: none;
+            background-color: lightskyblue;
+        }
+
+        .cmt-info {
+            font-size: 13px;
+            background-color: #ccc;
+            line-height: 30px;
+        }
+
+        .comment-list {
+            margin-top: 10px;
+        }
+
+        .cmt-content {
+            line-height: 40px;
+            font-size: 14px;
+            text-indent: 2em;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <comment></comment>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+
+    <script type="text/template" id="comment-tpl">
+        <div>
+            <post @tellfatheraddcmt="addComment"/>
+
+            <div class="comment-list">
+                <div class="comment-item" v-for="(item,index) in cmtList" :key="index">
+                    <div class="cmt-info"><span>第{{index + 1}}楼</span>&nbsp;&nbsp;
+                        <span>用户：匿名用户</span>&nbsp;&nbsp;
+                        <span>发表时间：{{item.createTime}}</span>&nbsp;&nbsp;
+                    </div>
+                    <div class="cmt-content">{{item.content}}</div>
+                </div>
+
+            </div>
+        </div>
+    </script>
+
+    <script type="text/template" id="post-tpl">
+        <div>
+            <textarea class="post-text" v-model="content" name="" id="" cols="30" rows="10">
+
+            </textarea>
+            <button class="post-btn" @click="post">发表评论</button>
+        </div>
+    </script>
+
+    <script>
+        Vue.component("comment", {
+            template: "#comment-tpl",
+            data(){
+                return {
+                    cmtList: [
+                        {content: "窗前明月光", createTime: new Date()},
+                        {content: "一行白鹭上青天", createTime: new Date()},
+                        {content: "飞流直下三千尺", createTime: new Date()},
+                        {content: "不及汪伦送我情", createTime: new Date()},
+                        {content: "咦嘘兮，危乎高哉", createTime: new Date()}
+                    ]
+                }
+            },
+            methods: {
+                addComment(cmt){
+                    this.cmtList.push(cmt);
+                }
+            }
+        })
+
+        Vue.component("post", {
+            template: "#post-tpl",
+            data(){
+                return {
+                    content: ""
+                }
+            },
+            methods: {
+                post(){
+                    //1. 评论列表的数组，是在父组件comment里面
+                    //2. 子组件中无法获取到父组件中的评论列表，所以就无法直接添加
+                    //3. 但是父组件中可以直接添加
+                    //4. 在子组件中通知父组件，添加
+                    //5. 只需要触发父组件绑定的事件
+                    this.$emit("tellfatheraddcmt", {content: this.content, createTime: new Date()})
+                    this.content = ""
+                }
+            }
+        })
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+            }
+        })
+    </script>
+</body>
+
+</html>
