@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        class Person{
+            constructor(name, age){
+                this.name = name;
+                this.age = age;
+            }
+
+            eat(){
+                console.log("吃个大鸡腿儿！");
+            }
+        }
+
+        class Student extends Person{
+            constructor(name, age, stuNo){
+                //在继承了其他的类的时候，如果自己的类要有自己的属性，那么必须在类中自己书写构造函数
+                //在构造函数中，首先得手动调用一下父类的构造函数来添加父类的属性 super()
+                //接下来就可以通过this添加自己类特有的内容
+                super(name, age);
+                this.stuNo = stuNo;
+            }
+        }
+
+        var stu = new Student("Jianxq", 23, 9527);
+
+        
+    </script>
+</body>
+</html>

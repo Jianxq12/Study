@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <script src="./require.js"></script>
+    <script>
+        //1. 如何定义一个模块
+            //在requirejs当中，每一个模块都会被划分到一个单独的文件中
+            //在文件中需要通过define函数来定义模块
+            //define
+
+            //语法：
+            //声明一个匿名模块
+            //1. define(function(){模块中的代码})
+
+            //声明一个具名模块
+            //2. define("模块名称", function(){})
+
+        //2. 如何引用一个模块
+            //require
+
+            //语法:
+            // require(["模块路径不带js后缀的"])
+            
+            // require(["./a"])
+
+            require(["./tools"], function(toolBox){
+                console.log(toolBox);
+            })
+
+        //3. 定义模块的时候，如何设置模块的导出项
+            //直接将导出项作为返回值 用 return关键字进行返回即可
+
+        //4. 定义模块的时候，如何给当前模块设置依赖项，以及依赖项的导出内容如何接收
+            //define(["依赖项的路径（不带.js）"], function(形参用来接收前面的模块的返回值){})
+        
+    </script>
+</body>
+</html>

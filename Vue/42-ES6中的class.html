@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function Person(name, age){
+        //     this.name = name;
+        //     this.age = age;
+        // }
+
+        // Person.prototype.sayHello = function(){
+
+        // }
+
+        // var p = new Person("Jianxq", 21);
+
+        // Person.sayHi = function(){}
+
+        // Person.sayHi();
+
+
+        //ES6 
+
+        class Person{
+            constructor(nam, age){
+                this.name = name;
+                this.age = age;
+            }
+
+            sayHello(){
+                console.log("我是对象的方法")
+            }
+
+            static sayHi(){
+                console.log("我是函数的方法")
+            }
+        }
+
+
+        var p = new Person("Jianxq", 22);
+
+        Person.sayHi();
+
+        
+    </script>
+</body>
+</html>

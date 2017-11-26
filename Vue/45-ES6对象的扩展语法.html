@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+            var obj = {
+                name: "Jianxq",
+                age: 40
+            }
+
+            //将obj里面所有的属性全部给obj1来一份，并且值要一模一样
+            // var obj1 = {
+
+            // }
+
+            // for(var k in obj){
+            //     obj1[k] = obj[k];
+            // }
+
+            var obj1 = {...obj};
+
+
+
+            function test(){
+                return {
+                    sayHello(){},
+                    gender: "female"
+                }
+            }   
+            
+            var obj = {
+                ...test()
+            }
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./require.js"></script>
+    <script>
+        //1. 别人写的代码可以称为第三方内容
+        //使用requirejs加载第三方内容：
+        //首先考虑：
+            //这个第三方内容是否支持 AMD模块化
+            //1. 支持，直接像使用正常模块一样使用即可
+
+            //2. 如果第三方内容不支持 AMD模块化
+                //继续考虑： 这个第三方内容是否有导出项
+                    //1. 如果没有导出项
+                        //直接使用require进行加载即可
+                        // require(["./ejs"])
+                    //2. 如果有导出项
+                        //我们需要先对这个模块进行配置，配置其导出项
+
+
+                        require.config({
+                            baseUrl: "/",
+                            paths: {
+                                "djs": "djs",
+                                "fjs": "fjs",
+                                "jquery": "jquery"
+                            },
+                            shim: {
+                                "djs": {
+                                    //如果想要给这个第三方内容设置一个导出项
+                                    //那么需要设置exports这个属性
+                                    //这个属性的值，就是在第三方内容里面的一个全局变量的名字
+                                    exports: "obj"
+                                },
+                                "fjs": {
+                                    deps: ["jquery"]
+                                }
+                            }
+                        })
+
+                        // require(["./djs"], function(test){
+                        //     console.log(test);
+                        // })
+
+
+                    //继续考虑，这个第三方内容，有没有依赖项
+
+                        require(["./fjs"]);
+
+
+        
+
+            //总结：
+                //使用requirejs加载第三方模块，其实就是对于配置中shim属性的应用
+                //1. 如果一个第三方内容，不支持模块化，并且没有依赖项，也没有返回值，那么直接使用require进行加载即可
+
+                //2. 如果一个第三方内容，不支持模块化，但是有依赖项，就需要做如下的事情：
+                        //1. 为这个模块配置一个别名（ID）
+                        //2. 在配置的shim属性中，为这个模块配置依赖项
+                            //shim: {模快别名： {deps: ["依赖项"]}}
+
+                //3. 如果一个第三方内容，不支持模块化，但是有导出项，就需要做如下的事情：
+                        //1. 为这个模块配置一个别名（ID）
+                        //2. 在配置的shim属性中，为这个模块配置导出项
+                            //shim: {模快别名： {exports: "需要导出的内容的名字"}}
+                        //注意： 只能导出一个内容， 这个导出的内容的名字，必须是这个模块中的一个全局变量的名字
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./require.js" data-main="./main.js"></script>
+
+    <!-- <script src="./main.js"></script> -->
+    <script>
+        //在require.js中。路径的查找一共分三种情况
+        //1. 没有做任何的路径配置的情况下，查找模块文件都是以当前的文件作为参照的
+        // require(['./a'])
+
+        //2. data-main 这是一个属性  引用requires.js文件的时候可以给script抱歉加这个属性
+            //如果在引用requirejs的script标签中添加了data-main属性，那么模块的查找，都会以data-main所指向的文件作为参照
+
+        //3. 使用require.config方法配置了baseUrl和path之后，  路径的查找基本上就按照 baseUrl + path 的方式去查找
+    </script>
+</body>
+</html>

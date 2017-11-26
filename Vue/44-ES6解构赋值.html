@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        // var obj = {
+        //     name: "Jianxq",
+        //     age: 24
+        // }
+
+        // var name = obj.name;
+        // var age = obj.age;
+
+
+        
+
+        //语法：  var {对象的属性名: 要声明的变量名, ...} = 对象
+        // var {name: name1, age: age1} = obj;
+
+        //如果要声明的变量和属性同名，那么可以如下形式
+        // var {要声明的变量名, ...} = 对象
+        // var {name, age} = obj;
+
+
+        var arr = [1, 2, 3, 4];
+
+        // var num1 = arr[0];
+        // var num2 = arr[1];
+        // var num3 = arr[2];
+        // var num4 = arr[3];
+
+        var [num1, ...num2] = arr;
+
+    
+    </script>
+</body>
+</html>

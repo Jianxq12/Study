@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./require.js"></script>
+
+    <script>
+        require.config({
+            //baseUrl
+            baseUrl: "/",
+            paths: {
+                //如果要配置别名（id）的模块是一个具名模块
+                //这个别名必须是他的模块中声明的名字
+                "jquery": "jquery",
+                "tools": "modules/abc/efg/tools",
+                "singer": "modules/abc/efg/singer",
+                "dancer": "modules/abc/efg/dancer",
+                "microphone": "modules/abc/efg/microphone"
+            }
+        })
+ 
+        require(["jquery"],function($){
+            console.log($);
+        }); 
+
+        //在引用模块的时候，如果使用的是如下3中形式的路径，那么将不会遵守baseUrl+paths的方式去查找模块：
+
+        //1. 引用模块的路径是以/开头的（加上后缀）
+        //2. 文件名带了.js后缀的
+        //3. 模块的路径是以http 或者 https开头
+    
+    </script>
+</body>
+</html>
