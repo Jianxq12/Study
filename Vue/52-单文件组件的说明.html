@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        
+        Vue.component("mycomp", {
+            template: "<h1></h1>"
+        })
+
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+            }
+        })
+
+        //什么是单文件组件？
+        //就是把html css js 单独放到一个文件中， 文件的后缀为.vue
+        //在使用webpack对这个文件进行打包的时候，.vue文件会被编译成一个组件
+
+        //单文件组件的组成
+        //html
+            //放在<template></template>
+        //js
+            //放在<script><、/script >
+        //css
+            //放在<style></style>
+    </script>
+</body>
+
+</html>
