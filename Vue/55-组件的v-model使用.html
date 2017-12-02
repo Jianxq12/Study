@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <comp v-model="msg"></comp>
+    </div>
+    <script src="./black-horse-vue-cms/node_modules/vue/dist/vue.js"></script>
+    <script>
+
+        Vue.component("comp", {
+            template: "<input type='text' :value='value' @input='handleInput'>",
+            data(){
+                
+            },
+            methods: {
+                handleInput(event){
+                    var value = event.target.value;
+
+                    //v-model的内部实现：
+                    //1. 从数据--->元素
+                        //:value="数据"
+                    //2. 从元素--->数据
+                        //@input="function(){数据=value}"
+
+                    //为什么会有input事件
+                    //1. 使用v-model的时候，会自动给当前组件注册一个input事件
+                    //这个事件就是在元素内容发生改变的时候 用来更新数据的
+                    //2. 当我们组件内需要让外面的数据更新的时候，只需要触发这个input事件就可以了
+                    this.$emit('input', value); 
+                }
+            },
+            props: ["value"]
+        })
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                msg: "这是父组件中的内容"
+            }
+        })
+    </script>
+</body>
+
+</html>

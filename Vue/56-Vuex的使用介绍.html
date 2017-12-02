@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <father></father>
+        <son></son>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/vuex/dist/vuex.js"></script>
+
+    <script>
+
+        Vue.component("father", {
+            template: "<div>{{$store.getters.getIndexByNumber(5)}} <span v-for='item in $store.getters.oddNumber'>{{item}}</span></div>",
+            methods: {
+
+            },
+            computed: {
+                count(){
+                    return this.$store.state.count;
+                }
+            }
+        })
+
+        Vue.component("son", {
+            template: "<div>{{count}} <span v-for='item in $store.getters.oddNumber'>{{item}}</span></div>",
+            computed: {
+                count(){
+                    return this.$store.state.count;
+                }
+            }
+        })
+
+
+        var store = new Vuex.Store({
+            state: {
+                count: 0,
+                arr: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+            },
+            mutations: {
+                increment(state, value){
+                    state.count +=value;
+                }
+            },
+            getters: {
+                oddNumber: state =>{
+                    return state.arr.filter(v=> v % 2 != 0);
+                },
+                getIndexByNumber: (state, getters) => (number) => {
+                    return state.arr.indexOf(number);
+                }
+            }
+        })
+
+        var vm = new Vue({
+            el: "#app",
+            store,
+            data: {
+            }
+        })
+    </script>
+</body>
+
+</html>
